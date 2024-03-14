@@ -1,8 +1,8 @@
 ## Installation
 
-* Clone the repository
+- Clone the repository
 
-* Open it and run
+- Open it and run
 
 ```bash
 npm install
@@ -16,4 +16,3 @@ Once you've created a project and installed dependencies with `npm install` (or 
 npm run dev
 
 ```
-
