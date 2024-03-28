@@ -1,7 +1,11 @@
-<h1>Welcome to SpeakShqip!!!!!!</h1>
-<h2>Hallo</h2>
+<script>
+  export let data;
+</script>
 
-<p>
-  Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the Sveltekit
-  documentation
-</p>
+<h1>Welcome to SpeakShqip!!!!!!</h1>
+
+<ul>
+  {#each data.words as word}
+    <li>{word.word_al} - {word.word_en}</li>
+  {/each}
+</ul>
