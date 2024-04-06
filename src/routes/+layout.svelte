@@ -1,12 +1,10 @@
 <script>
-    import "../app.css";
-    import InfoSection from "../lib/components/InfoSection.svelte";
+  import "../app.css";
+  import Footer from "../lib/components/Footer.svelte";
+  import NavBar from "../lib/components/NavBar.svelte";
 </script>
 
-<header></header>
-<nav></nav>
+<NavBar></NavBar>
 
 <slot />
-
-<InfoSection></InfoSection>
-<footer class="bg-red-400">Das ist mein Footer</footer>
+<Footer></Footer>
