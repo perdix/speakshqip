@@ -1,23 +1,22 @@
 <div
-  class="h-60 bg-zinc-300 flex justify-center items-center flex-col p-3 text-center"
+  class=" bg-zinc-300 flex justify-center items-center flex-col p-3 text-center"
+  style="height: 500px;"
 >
-  <br /><br />
-  <h1 class=" text-4xl font-extrabold">Learn Albanian with us</h1>
-  <p class=" mt-5">
+  <h1 class=" text-4xl font-extrabold md:text-6xl">Learn Albanian with us</h1>
+  <p class=" mt-7">
     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam, quia
     officia minima.
   </p>
   <div class="buttons flex mt-5">
     <a
       href="#"
-      class="p-3 bg-zinc-900 text-white text-center rounded-md m-6 shadow-lg"
+      class="p-3 bg-zinc-900 text-white text-center rounded-md m-6 shadow-lg transition-all hover:opacity-85"
       >Try for free</a
     >
     <a
       href="#"
-      class="p-3 bg-zinc-500 text-white text-center rounded-md m-6 shadow-lg"
+      class="p-3 bg-zinc-500 text-white text-center rounded-md m-6 shadow-lg transition-all hover:opacity-85"
       >Learn More</a
     >
-    <br /><br />
   </div>
 </div>

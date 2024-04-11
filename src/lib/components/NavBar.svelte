@@ -2,7 +2,10 @@
   class="w-screen flex justify-between items-center p-3 bg-zinc-900 flex-row"
 >
   <h1 class="z-10 text-2xl font-extrabold text-white">SpeakShqip</h1>
-  <div class="nav-burger cursor-pointer bg-zinc-900 block z-10 sm:hidden">
+  <div
+    class="nav-burger cursor-pointer bg-zinc-900 block z-10 sm:hidden"
+    on:click={toggleNavbar}
+  >
     <div class="nav__line1 h-px m-1.5 w-4 bg-white"></div>
     <div class="nav__line2 h-px m-1.5 w-4 bg-white"></div>
   </div>

@@ -21,7 +21,9 @@
 </p>
 
 <div class="flex justify-center mt-6">
-  <a href="#" class="p-2 bg-zinc-900 text-white text-center rounded-md"
+  <a
+    href="#"
+    class="p-2 bg-zinc-900 text-white text-center rounded-md transition-all hover:opacity-85"
     >Get Started</a
   >
 </div>
@@ -31,12 +33,16 @@
 
 <!--Sign Up CTA-->
 <div class="flex justify-center h-60 flex-col items-center">
-  <h1 class=" text-4xl font-bold mt-9 md:text-6xl">Sign up today</h1>
+  <h1
+    class=" text-4xl font-bold mt-9 md:text-6xl transition-all hover:opacity-85"
+  >
+    Sign up today
+  </h1>
 </div>
 <div class="flex justify-center">
   <a
     href="#"
-    class="p-2 bg-zinc-900 text-white text-center rounded-md shadow-lg"
+    class="p-2 bg-zinc-900 text-white text-center rounded-md shadow-lg transition-all hover:opacity-85"
     >Get Started</a
   >
 </div>
