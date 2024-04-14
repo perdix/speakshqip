@@ -1,4 +1,3 @@
-// src/hooks.server.js
 import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public'
 import { createSupabaseServerClient } from '@supabase/auth-helpers-sveltekit'
 
@@ -18,7 +17,7 @@ export const handle = async ({ event, resolve }) => {
     const {
       data: { user },
       error,
-    } = await supabase.auth.getUser()
+    } = await event.locals.supabase.auth.getUser()
     if (error) {
       return { session: null, user: null }
     }

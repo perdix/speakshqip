@@ -15,6 +15,7 @@
     <li class="p-3"><a href="#">Home</a></li>
     <li class="p-3"><a href="/about">About</a></li>
     <li class="mr-2 p-3"><a href="/login">Learn</a></li>
+    <li class="mr-2 p-3"><a href="src\routes\login\+page.svelte">Login</a></li>
     <li class="p-3">
       <a href="#">
         <button class="p-2 bg-white rounded-md text-zinc-800">Contact</button>
