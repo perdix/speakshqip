@@ -20,10 +20,18 @@
   <ul
     class={`flex fixed -top-full h-screen justify-center items-center w-screen left-0 z-40 text-white flex-col bg-zinc-800 sm:flex-row sm:bg-transparent sm:relative sm:h-11 sm:justify-end ${isOpen ? "top-0" : "-top-full"}`}
   >
+<<<<<<< HEAD
     <li class="p-3" on:click={toggleNav}><a href="/">Home</a></li>
     <li class="p-3" on:click={toggleNav}><a href="/about">About</a></li>
     <li class="p-3" on:click={toggleNav}><a href="/login">Learn</a></li>
     <li class="p-3" on:click={toggleNav}>
+=======
+    <li class="p-3"><a href="#">Home</a></li>
+    <li class="p-3"><a href="/about">About</a></li>
+    <li class="mr-2 p-3"><a href="/login">Learn</a></li>
+    <li class="mr-2 p-3"><a href="src\routes\login\+page.svelte">Login</a></li>
+    <li class="p-3">
+>>>>>>> 44714897f3f213f6dcb848a971a1798d8ea71de5
       <a href="#">
         <button class="p-2 bg-white rounded-md text-zinc-800">Login</button>
       </a>
