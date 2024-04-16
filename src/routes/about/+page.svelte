@@ -40,16 +40,16 @@
     minus, aperiam consequatur suscipit delectus veniam.
   </p>
 
-  <div class="flex justify-center">
+  <div class="flex justify-center -z-10">
     <a
       href="#"
-      class="p-2 bg-zinc-900 text-white text-center rounded-md drop-shadow-lg mt-6 mr-2 transition-all hover:opacity-85"
+      class="p-2 cursor-pointer bg-zinc-900 text-white text-center rounded-md drop-shadow-lg mt-6 mr-2 transition-all hover:opacity-85"
       >Get Started</a
     >
 
     <a
       href="#"
-      class="p-2 bg-zinc-500 text-white text-center rounded-md mt-6 drop-shadow-lg transition-all hover:opacity-85"
+      class="p-2 cursor-pointer bg-zinc-500 text-white text-center rounded-md mt-6 drop-shadow-lg transition-all hover:opacity-85"
       >Learn More</a
     >
   </div>

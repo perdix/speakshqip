@@ -16,14 +16,14 @@
 </div>
 
 <p class=" text-base text-center mt-10">
-  Lorem, ipsum dolor sit amet consectetur adipisicing elit. <br />
-  Enim natus, sapiente fugiat quidem voluptates tempora hic voluptatum
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim natus, sapiente
+  fugiat quidem voluptates tempora hic voluptatum
 </p>
 
 <div class="flex justify-center mt-6">
   <a
     href="#"
-    class="p-2 bg-zinc-900 text-white text-center rounded-md transition-all hover:opacity-85"
+    class="p-2 cursor-pointer bg-zinc-900 text-white text-center rounded-md transition-all hover:opacity-85"
     >Get Started</a
   >
 </div>
@@ -42,7 +42,7 @@
 <div class="flex justify-center">
   <a
     href="#"
-    class="p-2 bg-zinc-900 text-white text-center rounded-md shadow-lg transition-all hover:opacity-85"
+    class="p-2 cursor-pointer bg-zinc-900 text-white text-center rounded-md shadow-lg transition-all hover:opacity-85"
     >Get Started</a
   >
 </div>
