@@ -48,8 +48,8 @@
 </div>
 <br /><br />
 
-<ul>
+<!-- <ul>
   {#each data.words as word}
     <li>{word.word_al} - {word.word_en}</li>
   {/each}
-</ul>
+</ul> -->

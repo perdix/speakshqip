@@ -1,34 +1,58 @@
-// page.server.js
-import { supabase } from '$lib/supabaseClient';
+import { redirect } from "@sveltejs/kit";
 
-export async function post({ body }) {
-  const { email, password } = body;
+export const actions = {
+  login: async ({ cookies, request, locals: { supabase } }) => {
+    console.log("login action");
+    const data = await request.formData();
+    const email = data.get("email");
+    const password = data.get("password");
 
-  try {
-    const { user, error } = await supabase.auth.signIn({
-      email,
-      password
+    console.log("email:", email);
+    console.log("password", password);
+
+    const { data: loginData, error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password,
     });
-    
     if (error) {
-      console.error('Login error:', error.message);
-      return {
-        status: 400,
-        body: { error: 'Invalid credentials' }
-      };
-    } else if(user) {
-      console.log('Login Succesfull');
+      console.error("error:", error);
+      return { success: false, error: "Login not successful!" };
     }
+    return redirect(303, "/dashboard");
+  },
+};
 
-    return {
-      status: 200,
-      body: { user }
-    };
-  } catch (error) {
-    console.error('Server error:', error.message);
-    return {
-      status: 500,
-      body: { error: 'Server error' }
-    };
-  }
-}
+// // page.server.js
+// import { supabase } from '$lib/supabaseClient';
+
+// export async function post({ body }) {
+//   const { email, password } = body;
+
+//   try {
+//     const { user, error } = await supabase.auth.signIn({
+//       email,
+//       password
+//     });
+
+//     if (error) {
+//       console.error('Login error:', error.message);
+//       return {
+//         status: 400,
+//         body: { error: 'Invalid credentials' }
+//       };
+//     } else if(user) {
+//       console.log('Login Succesfull');
+//     }
+
+//     return {
+//       status: 200,
+//       body: { user }
+//     };
+//   } catch (error) {
+//     console.error('Server error:', error.message);
+//     return {
+//       status: 500,
+//       body: { error: 'Server error' }
+//     };
+//   }
+// }

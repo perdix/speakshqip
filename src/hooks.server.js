@@ -1,12 +1,31 @@
-import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public'
-import { createSupabaseServerClient } from '@supabase/auth-helpers-sveltekit'
+import {
+  PUBLIC_SUPABASE_URL,
+  PUBLIC_SUPABASE_ANON_KEY,
+} from "$env/static/public";
+import { createServerClient } from "@supabase/ssr";
 
 export const handle = async ({ event, resolve }) => {
-  event.locals.supabase = createSupabaseServerClient({
-    supabaseUrl: PUBLIC_SUPABASE_URL,
-    supabaseKey: PUBLIC_SUPABASE_ANON_KEY,
-    event,
-  })
+  event.locals.supabase = createServerClient(
+    PUBLIC_SUPABASE_URL,
+    PUBLIC_SUPABASE_ANON_KEY,
+    {
+      cookies: {
+        get: (key) => event.cookies.get(key),
+        /**
+         * Note: You have to add the `path` variable to the
+         * set and remove method due to sveltekit's cookie API
+         * requiring this to be set, setting the path to an empty string
+         * will replicate previous/standard behaviour (https://kit.svelte.dev/docs/types#public-types-cookies)
+         */
+        set: (key, value, options) => {
+          event.cookies.set(key, value, { ...options, path: "/" });
+        },
+        remove: (key, options) => {
+          event.cookies.delete(key, { ...options, path: "/" });
+        },
+      },
+    },
+  );
 
   /**
    * Unlike `supabase.auth.getSession`, which is unsafe on the server because it
@@ -17,20 +36,20 @@ export const handle = async ({ event, resolve }) => {
     const {
       data: { user },
       error,
-    } = await event.locals.supabase.auth.getUser()
+    } = await event.locals.supabase.auth.getUser();
     if (error) {
-      return { session: null, user: null }
+      return { session: null, user: null };
     }
 
     const {
       data: { session },
-    } = await event.locals.supabase.auth.getSession()
-    return { session, user }
-  }
+    } = await event.locals.supabase.auth.getSession();
+    return { session, user };
+  };
 
   return resolve(event, {
     filterSerializedResponseHeaders(name) {
-      return name === 'content-range'
+      return name === "content-range";
     },
-  })
-}
+  });
+};
