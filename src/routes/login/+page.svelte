@@ -1,6 +1,7 @@
 <!-- page.svelte -->
 <script>
   import { enhance } from "$app/forms";
+  import Login from "../../lib/components/Login.svelte";
   export let data;
   export let form = {};
 
@@ -24,11 +25,13 @@
   // }
 </script>
 
-<form method="POST" action="?/login" use:enhance>
+<!-- <form method="POST" action="?/login" use:enhance>
   <input type="email" name="email" placeholder="Email" required />
   <input type="password" name="password" placeholder="Password" required />
   <button type="submit">Login</button>
-</form>
+</form> -->
+
+<Login />
 
 {#if form?.error}
   <p>{form.error}</p>

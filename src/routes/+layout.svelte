@@ -4,7 +4,7 @@
   import NavBar from "../lib/components/NavBar.svelte";
 </script>
 
-<!-- <NavBar></NavBar> -->
+<NavBar></NavBar>
 
 <slot />
 <Footer></Footer>
