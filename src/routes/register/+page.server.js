@@ -1,7 +1,7 @@
 import { redirect } from "@sveltejs/kit";
 
 export const actions = {
-  register: async ({ cookies, request, locals: { supabase } }) => {
+  register: async ({ cookies, request, locals: { supabase }, url }) => {
     console.log("register action");
     const data = await request.formData();
     const email = data.get("email");
@@ -10,9 +10,13 @@ export const actions = {
     console.log("email:", email);
     console.log("password", password);
 
-    const { data:signUpData, error } = await supabase.auth.signUp({
+    const { data: signUpData, error } = await supabase.auth.signUp({
       email: email,
       password: password,
+      options: {
+        // data: { username: username },
+        emailRedirectTo: `${url.origin}/auth/callback`
+      }
     });
     if (error) {
       console.error("error:", error);
