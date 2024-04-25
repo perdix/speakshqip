@@ -13,8 +13,7 @@ export const actions = {
     const { data:signUpData, error } = await supabase.auth.signUp({
       email: email,
       password: password,
-      
-    })
+    });
     if (error) {
       console.error("error:", error);
       return { success: false, error: "Register not successful!" };
