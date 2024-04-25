@@ -7,5 +7,6 @@ export async function load({ params, parent }) {
     redirect(302, "/login");
   }
 
+
   return {};
 }
