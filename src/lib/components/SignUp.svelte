@@ -5,7 +5,7 @@
 
 <div class="login-container flex justify-center items-center flex-col">
   <form
-    action=""
+    action="?/register"
     use:enhance
     method="POST"
     class="flex justify-center items-center flex-col mt-16 mr-16 ml-16"
