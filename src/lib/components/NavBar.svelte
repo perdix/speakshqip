@@ -14,6 +14,7 @@
     <li class="p-3"><a href="/">Home</a></li>
     <li class="p-3"><a href="/about">About</a></li>
     <li class="p-3"><a href="/dashboard">Learn</a></li>
+    <li class="p-3"><a href="/register">Signup</a></li>
     <li class="p-3">
       <a href="/login">
         <button class="p-2 bg-white rounded-md text-zinc-800">Login</button>
