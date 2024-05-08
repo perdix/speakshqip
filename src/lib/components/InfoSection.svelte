@@ -1,5 +1,5 @@
 <br /><br />
-<div class="bg-zinc-100 w-full">
+<div class=" bg-cd-lightred w-full">
   <div
     class="info-top flex justify-between items-center p-3 flex-col sm:flex-row"
   >
@@ -15,7 +15,7 @@
       </p>
       <a
         href="#"
-        class="p-3 bg-zinc-900 text-white text-center rounded-md m-6 ml-10 shadow-lg transition-all hover:opacity-85"
+        class="p-3 bg-cd-red text-white text-center rounded-md m-6 ml-10 shadow-lg transition-all hover:opacity-85"
         >Read More</a
       >
     </div>
@@ -36,7 +36,7 @@
       </p>
       <a
         href="#"
-        class="ml-10 p-3 bg-zinc-900 text-white text-center rounded-md m-6 shadow-lg transition-all hover:opacity-85"
+        class="ml-10 p-3 bg-cd-red text-white text-center rounded-md m-6 shadow-lg transition-all hover:opacity-85"
         >Get Started</a
       >
     </div>

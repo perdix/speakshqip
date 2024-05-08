@@ -1,8 +1,13 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: ["./src/**/*.{html,js,svelte,ts}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'cd-red': '#a80707',
+        'cd-black': '#1d1d1a'
+      },
+    },
   },
   plugins: [],
 };

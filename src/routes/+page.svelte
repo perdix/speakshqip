@@ -1,17 +1,21 @@
 <script>
   import InfoSection from "../lib/components/InfoSection.svelte";
+
   import QuoteSection from "../lib/components/QuoteSection.svelte";
 
   export let data;
 </script>
 
 <div class="flex justify-center">
-  <h1 class=" text-6xl font-bold mt-36 mr-48 ml-48">SpeakShqip</h1>
+  <h1 class=" text-6xl font-bold mt-28 mr-48 ml-48 text-cd-black">
+    SpeakShqip
+  </h1>
 </div>
 
 <div class="flex justify-center">
   <div
-    class="rounded-3xl bg-zinc-900 ml-auto mr-auto mt-9 h-52 w-80 sm:h-60"
+    class="rounded-3xl border-2 border-cd-red mt-9 w-4/5"
+    style="height: 500px;"
   ></div>
 </div>
 
@@ -23,7 +27,7 @@
 <div class="flex justify-center mt-6">
   <a
     href="#"
-    class="p-2 cursor-pointer bg-zinc-900 text-white text-center rounded-md transition-all hover:opacity-85"
+    class="p-2 cursor-pointer bg-cd-red text-white text-center rounded-md transition-all hover:opacity-85"
     >Get Started</a
   >
 </div>
@@ -42,7 +46,7 @@
 <div class="flex justify-center">
   <a
     href="#"
-    class="p-2 cursor-pointer bg-zinc-900 text-white text-center rounded-md shadow-lg transition-all hover:opacity-85"
+    class="p-2 cursor-pointer bg-cd-red text-white text-center rounded-md shadow-lg transition-all hover:opacity-85"
     >Get Started</a
   >
 </div>

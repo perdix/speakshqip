@@ -1,0 +1,26 @@
+<script>
+  import "@fortawesome/fontawesome-free/css/all.min.css";
+
+  function closeModal() {
+    document.getElementById("modal").style.display = "none";
+  }
+</script>
+
+<div
+  id="modal"
+  class=" z-50h-64 w-80 ml-auto mr-auto border-2 border-t-cd-red rounded-lg bg-white text-cd-black m-6 flex flex-col justify-center items-center relative transition-all"
+  style="border-top-width: 12px; z-index: 1000000000000;"
+>
+  <div class="flex justify-center items-center flex-col">
+    <i class="fa-regular fa-circle-xmark text-6xl mb-3 text-cd-red"></i>
+    <h1 class="font-bold text-3xl mb-8 text-cd-red text-center">
+      An error occurred!
+    </h1>
+    <p class="text-center w-64">There was an error while fetching the data!</p>
+  </div>
+
+  <i
+    class="absolute top-0 right-0 mr-4 mt-4 fa-solid fa-xmark text-lg cursor-pointer"
+    on:click={closeModal}
+  ></i>
+</div>

@@ -1,10 +1,12 @@
-<nav
-  class="w-screen flex justify-between items-center p-3 bg-zinc-800 flex-row"
->
-  <a class=" z-50 text-2xl font-extrabold text-white no-underline" href="/"
-    >SpeakShqip</a
+<nav class="w-screen flex justify-between items-center p-3 bg-cd-red flex-row">
+  <a
+    class=" z-50 text-2xl font-extrabold text-white no-underline flex"
+    href="/"
   >
-  <div class="nav-burger cursor-pointer bg-zinc-800 block z-50 sm:hidden">
+    <img src="logo.png" class=" h-10 mr-3" alt="" />
+    <span class=" mt-1">SpeakShqip</span></a
+  >
+  <div class="nav-burger cursor-pointer block z-50 sm:hidden">
     <div class="nav__line1 h-px m-1.5 w-4 bg-white"></div>
     <div class="nav__line2 h-px m-1.5 w-4 bg-white"></div>
   </div>
