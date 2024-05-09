@@ -38,20 +38,7 @@
       id="password"
       placeholder="Password"
     />
-    <input
-      class=" bg-zinc-200 h-12 w-72 p-3 rounded-md mt-8 focus:outline-none focus:border-zinc-600 focus:ring-1 focus:ring-zinc-600 transition-all"
-      type="text"
-      name="username"
-      id="username"
-      placeholder="Enter your name"
-    />
-    <input
-      class=" bg-zinc-200 h-12 w-72 p-3 rounded-md mt-8 focus:outline-none focus:border-zinc-600 focus:ring-1 focus:ring-zinc-600 transition-all"
-      type="number"
-      name="phone"
-      id="phone"
-      placeholder="Enter your phone number"
-    />
+    
     <a href="#" class=" mt-8 hover:opacity-85"
       >Why do we need this information?</a
     >
