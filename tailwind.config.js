@@ -7,6 +7,9 @@ module.exports = {
         'cd-red': '#a80707',
         'cd-black': '#1d1d1a'
       },
+      width: Object.fromEntries(
+        Array.from({ length: 100 }, (_, i) => [`w-${i + 1}/100`, `${i + 1}%`])
+      ),
     },
   },
   plugins: [],
