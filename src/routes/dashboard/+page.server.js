@@ -11,9 +11,10 @@ export async function load({ params, parent }) {
   // Falls benutzer noch keine profildaten hat wird er zu setup redirected
 const { data: userDetails, error } = await supabase
 .from('userdetails')
-.select('username').eq("id",session.user.id);
-const userEmail = userDetails.email;
-if(userEmail == null){
+.select('username').eq('id',session.user.id);
+const userName = userDetails[0].username;
+console.log(userName);
+if(userName == null){
   redirect(303, "/setup");
 }
  if(error) {

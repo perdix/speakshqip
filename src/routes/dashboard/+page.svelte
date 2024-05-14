@@ -3,7 +3,10 @@
 
   export let data;
 
+<<<<<<< HEAD
   console.log(data);
+=======
+>>>>>>> 1c0d0fa5cd825d1a12ebc6bc64e9bee76d3f01bb
 </script>
 
 <!-- <h1>My dashboard</h1>

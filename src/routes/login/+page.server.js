@@ -18,6 +18,7 @@ export const actions = {
       console.error("error:", error);
       return { success: false, error: "Login not successful!" };
     }
+
     return redirect(303, "/dashboard");
   },
 };
