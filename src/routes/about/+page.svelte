@@ -43,7 +43,7 @@
   <div class="flex justify-center">
     <a
       href="#"
-      class="p-2 bg-zinc-900 text-white text-center rounded-md drop-shadow-lg mt-6 mr-2 transition-all hover:opacity-85"
+      class=" z-10 p-2 bg-zinc-900 text-white text-center rounded-md drop-shadow-lg mt-6 mr-2 transition-all hover:opacity-85"
       >Get Started</a
     >
 

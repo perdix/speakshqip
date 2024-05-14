@@ -3,7 +3,7 @@
 
   export let data;
 
-    console.log(data);
+  console.log(data);
 </script>
 
 <!-- <h1>My dashboard</h1>
@@ -17,6 +17,8 @@
 {/each} -->
 
 <div class="flex justify-center">
+  <div class=" w-3/5 bg-red-300"></div>
+
   <div
     class="rounded-3xl border-2 border-cd-red mt-9 w-w-65/100"
     style="height: 450px;"

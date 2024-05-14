@@ -1,5 +1,5 @@
 <footer
-  class="h-auto flex justify-between items-center bg-zinc-800 p-5 flex-col sm:flex-row"
+  class="h-auto flex justify-between items-center bg-cd-red p-5 flex-col sm:flex-row"
 >
   <div class="left p-2">
     <p class="text-white mt-4 mb-2">© SpeakShqip</p>

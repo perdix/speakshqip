@@ -2,11 +2,13 @@
 <script>
   import { enhance } from "$app/forms";
   export let data;
-  export let form; 
+  export let form;
 </script>
 
 <div class="flex justify-center items-center flex-col h-64">
-  <h1 class=" text-5xl font-bold mt-28 mr-28 ml-28 sm:text-6xl">Welcome to SpeakShqip</h1>
+  <h1 class=" text-5xl font-bold mt-28 mr-28 ml-28 sm:text-6xl">
+    Welcome to SpeakShqip
+  </h1>
   <h3 class="text-5xl font-bold mt-14 text-center">Let's set you up!</h3>
 </div>
 
@@ -48,26 +50,19 @@
     />
     <input type="hidden" name="user_id" value={data.session.user.id} />
     <datalist id="nationality-list">
-      <option value="Afghan">
-      <option value="Albanian">
-      <option value="Algerian">
-    </datalist>
+      <option value="Afghan"> </option><option value="Albanian">
+      </option><option value="Algerian"> </option></datalist
+    >
 
-
-    
-    
-    
     <button
-      class="transition-all bg-zinc-800 h-10 p-2 flex justify-center items-center w-auto rounded-lg mt-8 drop-shadow-md text-white hover:opacity-75"
+      class="transition-all bg-cd-red h-10 p-2 flex justify-center items-center w-auto rounded-lg mt-8 mb-8 drop-shadow-md text-white hover:opacity-75"
       type="submit"
       name="submit"
       id="submit"
       value="Sign Up">Continue</button
     >
   </form>
-  
 </div>
-
 
 {#if form?.error}
   <p>{form.error}</p>
