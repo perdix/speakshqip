@@ -1,4 +1,6 @@
 <script>
+
+
   let isNavOpen = false;
 
   function toggleNavbar() {
@@ -9,8 +11,6 @@
     isNavOpen = false;
   }
 
-  export let data;
-  import { enhance } from "$app/forms";
 </script>
 
 <nav class="w-screen flex justify-between items-center p-3 bg-cd-red flex-row">
@@ -18,8 +18,7 @@
   <h1 class="z-30 text-2xl font-extrabold text-white">SpeakShqip</h1>
   <div
     class="nav-burger cursor-pointer bg-cd-red block z-30 sm:hidden"
-    on:click={toggleNavbar}
-  >
+    on:click={toggleNavbar}>
     <div class="nav_line1 h-px m-1.5 w-4 bg-white"></div>
     <div class="nav_line2 h-px m-1.5 w-4 bg-white"></div>
   </div>
@@ -32,8 +31,7 @@
     <li class="mr-2 p-3"><a href="/login" on:click={closeNavbar}>Learn</a></li>
     <li class="p-3">
       <a href="/contact" on:click={closeNavbar}>
-        <button class="p-2 text-zinc-800">Contact</button>
-
+      
         <a href="/login">
           <button class="p-2 bg-white rounded-md text-zinc-800">Login</button>
         </a>
