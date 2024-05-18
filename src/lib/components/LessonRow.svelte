@@ -1,5 +1,7 @@
 <script>
   export let lessonName;
+  export let lessonDescription;
+
 </script>
 
 <div
@@ -11,11 +13,7 @@
   </div>
   <div class="description mt-9 md:-mt-12 md:ml-5">
     <p>
-      <b>Lorem Ipsum</b> dolor sit amet consectetur adipisicing elit. Error voluptatem
-      officia, consequatur deserunt corrupti provident iure. Impedit officia enim
-      sequi quos, amet earum. Magnam beatae sapiente fuga. Quae, sint nisi. Error
-      voluptatem officia, consequatur deserunt corrupti provident iure. Impedit officia
-      enim sequi quos, amet earum. Magnam beatae sapiente fuga. Quae, sint nisi.
+      {lessonDescription}
     </p>
   </div>
 </div>
