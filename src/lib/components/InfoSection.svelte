@@ -9,9 +9,9 @@
     <div class="info-right sm:w-3/5 md:w-4/6">
       <h1 class=" text-left m-8 ml-10 font-bold text-5xl">About Us</h1>
       <p class=" m-7 ml-10">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas autem
-        quas, dicta ab vero at neque est eos earum pariatur tenetur provident
-        odit aperiam. At aliquid ex enim in sit!
+        SpeakShqip is a website that helps people learn Albanian. It has different sections with lots of words to learn. 
+        You can practice these words and build your Albanian skills step by step. Whether you're just starting or want to improve, 
+        SpeakShqip is here to help. It's easy to use, and you can learn at your own pace.
       </p>
       <a
         href="#"
@@ -30,9 +30,9 @@
     <div class="info-left order-2 sm:w-3/5 sm:order-1 md:w-4/6">
       <h1 class=" text-left m-7 ml-10 font-bold text-5xl">Contact Us</h1>
       <p class=" m-7 ml-10">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas autem
-        quas, dicta ab vero at neque est eos earum pariatur tenetur provident
-        odit aperiam. At aliquid ex enim in sit!
+        Have questions, feedback, or just want to say hello? 
+        We'd love to hear from you! Reach out to us using the form below or connect with us via email or social media. 
+        Your input is invaluable as we strive to improve SpeakShqip and provide you with the best language learning experience possible.
       </p>
       <a
         href="#"

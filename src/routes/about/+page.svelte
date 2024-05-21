@@ -36,8 +36,12 @@
 <div class="flex justify-center items-center flex-col mt-28">
   <h1 class=" text-5xl font-bold">Who are we?</h1>
   <p class=" text-center mt-6 text-gray-600">
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque impedit
-    minus, aperiam consequatur suscipit delectus veniam.
+    SpeakShqip is a comprehensive web application designed to introduce users to the fundamentals of the Albanian language.<br> 
+    Our platform features a diverse array of modules, each meticulously crafted to focus on specific aspects of Albanian vocabulary and grammar.<br> 
+    Through engaging exercises and interactive activities, users have the opportunity to immerse themselves in the language, 
+    gradually building up their vocabulary and understanding.<br> Whether you're a complete beginner or looking to brush up on your skills, 
+    SpeakShqip provides a supportive environment for learners of all levels. <br>With our user-friendly interface and customizable learning paths, 
+    mastering Albanian has never been more accessible. <br>Join our community today and embark on a rewarding journey of language discovery with SpeakShqip!
   </p>
 
   <div class="flex justify-center">

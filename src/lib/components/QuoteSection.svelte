@@ -4,8 +4,7 @@
 >
   <h1 class=" text-4xl font-extrabold md:text-6xl">Learn Albanian with us</h1>
   <p class=" mt-7">
-    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam, quia
-    officia minima.
+    Join the SpeakShqip community and elevate your Albanian.
   </p>
   <div class="buttons flex mt-5">
     <a

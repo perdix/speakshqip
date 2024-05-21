@@ -20,8 +20,7 @@
 </div>
 
 <p class=" text-base text-center mt-10">
-  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim natus, sapiente
-  fugiat quidem voluptates tempora hic voluptatum
+  Start your Albanian language journey with SpeakShqip.
 </p>
 
 <div class="flex justify-center mt-6">
