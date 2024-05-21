@@ -1,7 +1,6 @@
 <script>
   /** @type {import('./$types').PageLoad} */
 
-	export let data;
   let isNavOpen = false;
 
   function toggleNavbar() {
