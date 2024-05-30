@@ -10,6 +10,9 @@
   function closeNavbar() {
     isNavOpen = false;
   }
+
+  import { page } from "$app/stores";
+  $: currentPage = $page.url.pathname;
 </script>
 
 <nav class="w-screen flex justify-between items-center p-3 bg-cd-red flex-row">
@@ -26,9 +29,18 @@
     class="nav-menu flex absolute z-20 -top-full h-screen justify-center items-center w-screen left-0 text-white flex-col bg-cd-red sm:flex-row sm:bg-transparent sm:relative sm:h-11 sm:justify-end"
     class:opened={isNavOpen}
   >
-    <li class="p-3"><a href="/" on:click={closeNavbar}>Home</a></li>
-    <li class="p-3"><a href="/about" on:click={closeNavbar}>About</a></li>
-    <li class="mr-2 p-3"><a href="/lessons" on:click={closeNavbar}>Learn</a></li>
+    <!-- {#if $page.data.session}
+      <li class="p-3"><a href="/neu">Nur für eingeloggte user</a></li>
+    {/if} -->
+    <li class="p-3 {currentPage === '/' ? 'font-bold' : ''}">
+      <a href="/" on:click={closeNavbar}>Home</a>
+    </li>
+    <li class="p-3 {currentPage === '/about' ? 'font-bold' : ''}">
+      <a href="/about" on:click={closeNavbar}>About</a>
+    </li>
+    <li class="mr-2 p-3">
+      <a href="/lessons" on:click={closeNavbar}>Learn</a>
+    </li>
     <li class="p-3">
       <a href="/contact" on:click={closeNavbar}>
         <a href="/login">

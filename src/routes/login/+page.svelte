@@ -7,6 +7,7 @@
   let email = "";
   let password = "";
 
+  console.log(data);
 </script>
 
 <div class="flex justify-center items-center flex-col h-64">
