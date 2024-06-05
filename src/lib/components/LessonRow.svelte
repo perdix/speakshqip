@@ -1,6 +1,7 @@
 <script>
   export let lessonName;
   export let lessonDescription;
+  export let lessonID;
 
 </script>
 
@@ -15,5 +16,6 @@
     <p>
       {lessonDescription}
     </p>
+    <a href="/lessons/{lessonID}">Play</a>
   </div>
 </div>

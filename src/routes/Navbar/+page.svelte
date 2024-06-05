@@ -39,7 +39,7 @@
       <a href="/about" on:click={closeNavbar}>About</a>
     </li>
     <li class="mr-2 p-3">
-      <a href="/lessons" on:click={closeNavbar}>Learn</a>
+      <a href="/learn" on:click={closeNavbar}>Learn</a>
     </li>
     <li class="p-3">
       <a href="/contact" on:click={closeNavbar}>
