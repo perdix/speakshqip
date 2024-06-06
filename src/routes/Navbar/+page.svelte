@@ -1,4 +1,6 @@
 <script>
+  import { page } from "$app/stores";
+
   /** @type {import('./$types').PageLoad} */
 
   let isNavOpen = false;
@@ -11,7 +13,6 @@
     isNavOpen = false;
   }
 
-  import { page } from "$app/stores";
   $: currentPage = $page.url.pathname;
 </script>
 
@@ -42,11 +43,21 @@
       <a href="/learn" on:click={closeNavbar}>Learn</a>
     </li>
     <li class="p-3">
-      <a href="/contact" on:click={closeNavbar}>
-        <a href="/login">
-          <button class="p-2 bg-white rounded-md text-zinc-800">Login</button>
+      {#if $page.data.session}
+        <form action="/logout" method="POST" use:enhance>
+          <button
+            class="p-2 bg-white rounded-md text-zinc-800"
+            type="submit"
+            name="submit"
+            id="submit"
+            value="Log In">Log Out</button
+          >
+        </form>
+      {:else}
+        <a href="/login" on:click={closeNavbar}>
+          <button class="p-2 bg-white rounded-md text-zinc-800">Log In</button>
         </a>
-      </a>
+      {/if}
     </li>
   </ul>
 </nav>

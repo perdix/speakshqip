@@ -32,7 +32,6 @@
   import DashboardCart from "../../lib/components/DashboardCart.svelte";
 
   export let data;
-
 </script>
 
 <!-- <h1>My dashboard</h1>
@@ -42,20 +41,12 @@
 <hr />
 -->
 {#each data.words as word}
-    <p>{word.word_en}</p>
-{/each} 
-<form action="/logout" method="POST" use:enhance>
-  <button
-  class="transition-all bg-zinc-800 h-10 p-2 flex justify-center items-center w-auto rounded-lg mt-8 drop-shadow-md text-white hover:opacity-75"
-  type="submit"
-  name="submit"
-  id="submit"
-  value="Log In">Log Out</button
->
-</form>
+  <p>{word.word_en}</p>
+{/each}
+
 <h1 class="text-6xl font-bold m-9 text-cd-black">Dashboard</h1>
 
-<div class=" w-w-95/100 ml-auto mr-auto">
+<div class=" w-w-70/100 ml-auto mr-auto">
   <div class="flex justify-center">
     <div
       class="rounded-3xl border-2 border-cd-red mt-9 w-full"
