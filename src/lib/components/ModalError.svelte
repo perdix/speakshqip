@@ -1,6 +1,8 @@
 <script>
   import "@fortawesome/fontawesome-free/css/all.min.css";
 
+  export let errorMessage;
+
   function closeModal() {
     document.getElementById("modal").style.display = "none";
   }
@@ -12,11 +14,11 @@
   style="border-top-width: 12px; z-index: 1000000000000;"
 >
   <div class="flex justify-center items-center flex-col">
-    <i class="fa-regular fa-circle-xmark text-6xl mb-3 text-cd-red"></i>
+    <i class="fa-regular fa-circle-xmark text-6xl mb-3 text-cd-red mt-3"></i>
     <h1 class="font-bold text-3xl mb-8 text-cd-red text-center">
       An error occurred!
     </h1>
-    <p class="text-center w-64">There was an error while fetching the data!</p>
+    <p class="text-center w-64 mb-3">{errorMessage}</p>
   </div>
 
   <i

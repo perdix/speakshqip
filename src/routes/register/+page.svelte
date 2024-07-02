@@ -8,8 +8,6 @@
 
   let email = "";
   let password = "";
-
- 
 </script>
 
 <div class="flex justify-center items-center flex-col h-64">
@@ -38,7 +36,7 @@
       id="password"
       placeholder="Password"
     />
-    
+
     <a href="#" class=" mt-8 hover:opacity-85"
       >Why do we need this information?</a
     >
@@ -57,7 +55,6 @@
   >
 </div>
 
-
 {#if form?.error}
-  <p>{form.error}</p>
+  <ModalError errorMessage={form.error}></ModalError>
 {/if}
