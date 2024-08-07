@@ -1,3 +1,8 @@
+<script>
+  import QuizOptionBox from "../../lib/components/QuizOptionBox.svelte";
+  import UnitCard from "../../lib/components/UnitCard.svelte";
+</script>
+
 <div>
   <div
     class="p-8 bg-cd-red w-8 m-3 rounded-full cursor-pointer border-white border-2"
@@ -30,3 +35,6 @@
     </ul>
   </div>
 </div>
+
+<UnitCard></UnitCard>
+<QuizOptionBox></QuizOptionBox>
