@@ -11,7 +11,7 @@
 />
 
 <div
-  class="unitComponent cursor-pointer flex flex-col h-96 w-96 transition-all mr-auto ml-auto md:w-auto hover:bg-slate-100 p-2 rounded-2xl"
+  class="unitComponent cursor-pointer flex flex-col h-96 w-full transition-all mr-auto ml-auto md:w-auto hover:bg-slate-100 p-2 rounded-2xl"
 >
   <div class="bg-slate-500 h-full w-full rounded-xl"></div>
   <div class="flex justify-between mt-3 mb-3">

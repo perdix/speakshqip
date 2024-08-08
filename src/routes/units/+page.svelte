@@ -30,7 +30,7 @@
       animi odit ducimus fugiat illum vero officiis. Rerum, similique sint.
     </p>
   </div>
-  <div class="sm:w-full md:w-2/4 h-full">
+  <div class="w-full md:w-2/4 h-full">
     {#each unitCard as card, i}
       <UnitCard unitName={card.unitName} key={i} />
     {/each}
