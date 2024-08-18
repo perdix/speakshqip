@@ -1,8 +1,46 @@
 <script>
-  import QuizOptionBox from "../../lib/components/QuizOptionBox.svelte";
-  import UnitCard from "../../lib/components/UnitCard.svelte";
+  import QuizOptionTest from "../../lib/components/QuizOptionTest.svelte";
+
+  let questions = [
+    {
+      question: "How are you?",
+      options: ["si je", "mirembrema", "cfare po ben"],
+      answer: "si je",
+    },
+    {
+      question: "How is Enio?",
+      options: ["very good", "very bad", "ignore"],
+      answer: "very good",
+    },
+    {
+      question: "How is he?",
+      options: ["Si eshte ajo", "Si eshte ai", "Prit o ***"],
+      answer: "Si eshte ai",
+    },
+  ];
+
+  let currentQuestionIndex = 0;
+  let userAnswer = null;
+  let showNextQuestion = false;
+
+  function checkQuizAnwer(option) {
+    userAnswer = option;
+    if (option === questions[currentQuestionIndex].answer) {
+      showNextQuestion = true;
+    } else {
+      alert("Wrong!");
+    }
+
+    /* function nextQuestion() {
+      currentQuestionIndex++;
+      userAnswer = null;
+      showNextQuestion = false;
+    }
+    */
+  }
 </script>
 
+<!--
 <div>
   <div
     class="p-8 bg-cd-red w-8 m-3 rounded-full cursor-pointer border-white border-2"
@@ -35,6 +73,32 @@
     </ul>
   </div>
 </div>
+-->
 
-<UnitCard></UnitCard>
-<QuizOptionBox></QuizOptionBox>
+<div>
+  {#if currentQuestionIndex < questions.length}
+    <h2 class="text-2xl m-3">{questions[currentQuestionIndex].question}</h2>
+    <div>
+      {#each questions[currentQuestionIndex].options as option}
+        <div on:click={() => checkQuizAnwer(option)} class=" md:w-full md:flex">
+          <div
+            class=" bg-cd-red h-48 rounded-md flex justify-center items-center text-white m-2 cursor-pointer transition-all hover:opacity-95 md:w-1/2"
+          >
+            {option}
+          </div>
+        </div>
+      {/each}
+    </div>
+    {#if showNextQuestion}
+      <button
+        on:click={() => {
+          currentQuestionIndex++;
+          userAnswer = null;
+          showNextQuestion = false;
+        }}>Next Question</button
+      >
+    {/if}
+  {:else}
+    <h2>Quiz Complete</h2>
+  {/if}
+</div>
