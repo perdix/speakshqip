@@ -1,5 +1,4 @@
 <script lang="js">
-  import QuizOptionTest from "../../lib/components/QuizOptionTest.svelte";
   export let data;
 
   let questions = [
