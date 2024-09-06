@@ -16,7 +16,7 @@
   $: currentPage = $page.url.pathname;
 </script>
 
-<nav class="w-screen flex justify-between items-center p-3 bg-cd-red flex-row">
+<nav class="w-screen flex justify-between items-center p-3 bg-red-500 flex-row">
   <img src="logo.png" class="z-30 h-10 mr-3" alt="" />
   <h1 class="z-30 text-2xl font-extrabold text-white">SpeakShqip</h1>
   <div
