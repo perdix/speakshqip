@@ -1,5 +1,6 @@
 <script>
   import { page } from "$app/stores";
+  import { enhance } from "$app/forms";
 
   /** @type {import('./$types').PageLoad} */
 
@@ -20,14 +21,14 @@
   <img src="logo.png" class="z-30 h-10 mr-3" alt="" />
   <h1 class="z-30 text-2xl font-extrabold text-white">SpeakShqip</h1>
   <div
-    class="nav-burger cursor-pointer bg-cd-red block z-30 sm:hidden"
+    class="nav-burger cursor-pointer bg-red-500 block z-30 sm:hidden"
     on:click={toggleNavbar}
   >
     <div class="nav_line1 h-px m-1.5 w-4 bg-white"></div>
     <div class="nav_line2 h-px m-1.5 w-4 bg-white"></div>
   </div>
   <ul
-    class="nav-menu flex absolute z-20 -top-full h-screen justify-center items-center w-screen left-0 text-white flex-col bg-cd-red sm:flex-row sm:bg-transparent sm:relative sm:h-11 sm:justify-end"
+    class="nav-menu flex absolute z-20 -top-full h-screen justify-center items-center w-screen left-0 text-white flex-col bg-red-500 sm:flex-row sm:bg-transparent sm:relative sm:h-11 sm:justify-end"
     class:opened={isNavOpen}
   >
     <!-- {#if $page.data.session}
