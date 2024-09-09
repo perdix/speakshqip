@@ -40,7 +40,7 @@
     </label>
 
     <label class="mb-4 flex items-center">
-      XP
+      User XP
       <input
         class={!edit
           ? "bg-zinc-100 p-3 rounded-md ml-auto w-64 transition-all"
