@@ -13,9 +13,8 @@ export async function load({ params, parent }) {
     throw redirect(302, "/login");
   }
 
-  // Fetch user details from Supabase
   const { data: userDetails, error } = await supabase
-    .from('userdetails')
+    .from('userDetails')
     .select('*')
     .eq('id', session.user.id);
 
@@ -30,3 +29,25 @@ export async function load({ params, parent }) {
     userDetails
   };
 }
+
+export const actions = {
+    editUser: async ({ cookies, request, locals: { supabase }, url }) => {
+      const formData = await request.formData();
+      const username = formData.get('username');
+      const bio = formData.get('bio')
+      const age = formData.get('age')
+      const nationality = formData.get('nationality')
+      const user_id = formData.get("user_id");
+
+     
+    const { data, error } = await supabase.from("userdetails").update({username:username,bio:bio,age:age,nationality:nationality}).eq("id",user_id);
+  
+      if (error) {
+        console.error('Failed to edit user details:', error);
+        return { success: false, message: "Failed to edit user details" };      }
+        else {
+          redirect(302, "/profile");
+        }
+  
+    }
+  };
