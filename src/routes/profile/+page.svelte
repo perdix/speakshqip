@@ -12,10 +12,11 @@
 
 <form 
     class="flex flex-col m-3"
-    action="?/editUser"
+    action={edit ? "?/editUser" : ""}
     use:enhance
     method="POST"
 >
+
     <label class="mb-4 flex items-center">
       Username
       <input

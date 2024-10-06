@@ -8,5 +8,5 @@ export async function POST({locals: { supabase }}) {
     if(error){
         return { success: false, error: "Logout not successful!" };
     }
-    return redirect(303, "/login");
+    return redirect(302, "/login");
 }

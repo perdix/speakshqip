@@ -3,7 +3,7 @@ export async function load({ params, parent }) {
   const { supabase } = await parent();
 
   // Fetch infoCards
-  const { data: infoCards, error: infoError } = await supabase.from("infoCards").select("*").eq('lessonId', params.lessonId);
+  const { data: infoCards, error: infoError } = await supabase.from("infocards").select("*").eq('lessonId', params.lessonId);
   if (infoError) {
     console.error('Error fetching infoCards:', infoError.message);
     return {
@@ -23,7 +23,7 @@ export async function load({ params, parent }) {
   }
 
   // Fetch tests
-  const { data: tests, error: testError } = await supabase.from("test").select("*").eq('lessonId', params.lessonId);
+  const { data: tests, error: testError } = await supabase.from("tests").select("*").eq('lessonId', params.lessonId);
   if (testError) {
     console.error('Error fetching tests:', testError.message);
     return {

@@ -30,7 +30,8 @@ export const actions = {
       console.error("error:", error);
       return { success: false, error: "Register not successful!" };
     } 
-    return redirect(303, "/dashboard");
+    return redirect(302, "/login");
+
   }
 };
 

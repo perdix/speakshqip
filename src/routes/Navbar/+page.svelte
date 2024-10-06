@@ -31,9 +31,7 @@
     class="nav-menu flex absolute z-20 -top-full h-screen justify-center items-center w-screen left-0 text-white flex-col bg-red-500 sm:flex-row sm:bg-transparent sm:relative sm:h-11 sm:justify-end"
     class:opened={isNavOpen}
   >
-    <!-- {#if $page.data.session}
-      <li class="p-3"><a href="/neu">Nur für eingeloggte user</a></li>
-    {/if} -->
+  
     <li class="p-3 {currentPage === '/' ? 'font-bold' : ''}">
       <a href="/" on:click={closeNavbar}>Home</a>
     </li>
@@ -45,7 +43,7 @@
     </li>
     <li class="p-3">
       {#if $page.data.session}
-        <form action="/logout" method="POST" use:enhance>
+        <form action="/logout" method="POST" >
           <button
             class="p-2 bg-white rounded-md text-zinc-800"
             type="submit"

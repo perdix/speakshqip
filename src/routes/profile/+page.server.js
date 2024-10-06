@@ -14,7 +14,7 @@ export async function load({ params, parent }) {
   }
 
   const { data: userDetails, error } = await supabase
-    .from('userDetails')
+    .from('userdetails')
     .select('*')
     .eq('id', session.user.id);
 
