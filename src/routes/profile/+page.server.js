@@ -1,11 +1,9 @@
 // +page.server.js
 import { redirect } from "@sveltejs/kit";
-import { createClient } from '@supabase/supabase-js';
 
-const supabase = createClient('https://bwzdxxvcoifrajdrfrai.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ3emR4eHZjb2lmcmFqZHJmcmFpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDg2OTc5NjgsImV4cCI6MjAyNDI3Mzk2OH0.bsXtaDV4P95MZD7UETjk17ckEXedoZV6O4VKpVqit0E');
 
 /** @type {import('./$types').PageServerLoad} */
-export async function load({ params, parent }) {
+export async function load({ params, parent, locals: { supabase } }) {
   const { session } = await parent();
 
   // Properly throw the redirect
@@ -38,9 +36,27 @@ export const actions = {
       const age = formData.get('age')
       const nationality = formData.get('nationality')
       const user_id = formData.get("user_id");
+      const image = formData.get("image");
+      console.log(image);
+      console.log(image.size);
+      let image_url = null;
+      let public_image_url = null;
 
-     
-    const { data, error } = await supabase.from("userdetails").update({username:username,bio:bio,age:age,nationality:nationality}).eq("id",user_id);
+      if (image.size > 0) {
+        const { data: imageData, error: imageError } = await supabase.storage.from("profiles").upload(`${user_id}/${image.name}`, image, {
+          cacheControl: '3600',
+          upsert: true,
+        });
+        if (imageError) {
+          console.error('Failed to upload image:', imageError);
+          return { success: false, message: "Failed to upload image" };
+        }  
+        image_url = imageData.path;
+        const { data: urlData } = supabase.storage.from('profiles').getPublicUrl(image_url)
+        public_image_url = urlData.publicUrl;
+      }
+
+      const { data, error } = await supabase.from("userdetails").update({username:username,bio:bio,age:age,nationality:nationality,image_url, public_image_url}).eq("id",user_id);
   
       if (error) {
         console.error('Failed to edit user details:', error);
