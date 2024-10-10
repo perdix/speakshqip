@@ -17,21 +17,20 @@
   $: currentPage = $page.url.pathname;
 </script>
 
-<nav class="w-screen flex justify-between items-center p-3 bg-red-500 flex-row">
+<nav class="w-screen flex justify-between items-center p-3 bg-cd-red flex-row">
   <img src="logo.png" class="z-30 h-10 mr-3" alt="" />
   <h1 class="z-30 text-2xl font-extrabold text-white">SpeakShqip</h1>
   <div
-    class="nav-burger cursor-pointer bg-red-500 block z-30 sm:hidden"
+    class="nav-burger cursor-pointer bg-cd-red block z-30 sm:hidden"
     on:click={toggleNavbar}
   >
     <div class="nav_line1 h-px m-1.5 w-4 bg-white"></div>
     <div class="nav_line2 h-px m-1.5 w-4 bg-white"></div>
   </div>
   <ul
-    class="nav-menu flex absolute z-20 -top-full h-screen justify-center items-center w-screen left-0 text-white flex-col bg-red-500 sm:flex-row sm:bg-transparent sm:relative sm:h-11 sm:justify-end"
+    class="nav-menu flex absolute z-20 -top-full h-screen justify-center items-center w-screen left-0 text-white flex-col bg-cd-red sm:flex-row sm:bg-transparent sm:relative sm:h-11 sm:justify-end"
     class:opened={isNavOpen}
   >
-  
     <li class="p-3 {currentPage === '/' ? 'font-bold' : ''}">
       <a href="/" on:click={closeNavbar}>Home</a>
     </li>
@@ -43,7 +42,7 @@
     </li>
     <li class="p-3">
       {#if $page.data.session}
-        <form action="/logout" method="POST" >
+        <form action="/logout" method="POST">
           <button
             class="p-2 bg-white rounded-md text-zinc-800"
             type="submit"
