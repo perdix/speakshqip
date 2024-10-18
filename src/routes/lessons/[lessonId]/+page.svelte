@@ -29,7 +29,7 @@
 <!-- Info Cards -->
 {#if !showExamples && !showQuiz}
   <div
-    class=" flex flex-col justify-center items-center mt-6 bg-red-100 w-w-85/100 ml-auto mr-auto relative"
+    class=" flex flex-col justify-center items-center mt-6 w-w-85/100 ml-auto mr-auto relative"
   >
     <div
       class="flex flex-col justify-center items-start m-4 bg-zinc-800 h-48 rounded-md w-full p-6 text-white relative md:h-96"
@@ -68,7 +68,7 @@
 <!-- Examples Card -->
 {#if showExamples && !showQuiz}
   <div
-    class="flex flex-col justify-center items-center mt-6 bg-red-100 w-w-85/100 ml-auto mr-auto relative"
+    class="flex flex-col justify-center items-center mt-6 w-w-85/100 ml-auto mr-auto relative"
   >
     <div
       class="flex flex-col justify-center items-start m-4 bg-zinc-800 h-48 rounded-md w-full p-6 text-white relative md:h-96"
@@ -108,7 +108,7 @@
 <!-- Quiz -->
 {#if showQuiz}
   <div
-    class="flex flex-col justify-center items-center mt-6 bg-red-100 w-w-85/100 ml-auto mr-auto relative md:w-w-60/100"
+    class="flex flex-col justify-center items-center mt-6 w-w-85/100 ml-auto mr-auto relative md:w-w-60/100"
     id="quiz"
   >
     <h2 class="text-3xl font-semibold m-3">{data.tests[0].testInfo}</h2>
@@ -125,7 +125,7 @@
             }}
           >
             <div
-              class="bg-zinc-800 p-3 font-semibold h-48 w-full rounded-md flex justify-center items-center text-white cursor-pointer transition-all hover:opacity-95 md:flex-col md:w-full"
+              class="bg-zinc-800 p-3 font-semibold h-24 md:h-48 w-full rounded-md flex justify-center items-center text-white cursor-pointer transition-all hover:opacity-95 md:flex-col md:w-full"
             >
               {option}
             </div>

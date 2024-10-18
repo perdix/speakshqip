@@ -55,7 +55,7 @@
     <li class="p-3 {currentPage === '/about' ? 'font-bold' : ''}">
       <a href="/about" on:click={closeNavbar}>About</a>
     </li>
-    <li class="mr-2 p-3">
+    <li class="md:mr-2 p-3">
       <a href="/learn" on:click={closeNavbar}>Learn</a>
     </li>
     <li class="p-3">

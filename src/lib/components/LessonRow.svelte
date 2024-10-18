@@ -1,20 +1,23 @@
 <script>
-  export let lessonName;
   export let lessonDescription;
   export let lessonID;
 </script>
 
 <div
-  class="flex justify-start items-center ml-5 mr-5 mt-6 mb-6 rounded-lg cursor-pointer flex-col p-5 transition-all hover:bg-zinc-50 md:flex-row focus:scale-50"
+  class="w-w-95/100 ml-3 bg-zinc-800 text-white pb-7 flex justify-center items-center rounded-lg cursor-pointer flex-col mb-5 transition-all hover:opacity-95"
 >
-  <div class="banner w-full md:w-96">
-    <div class=" h-60 w-full bg-cd-red rounded-lg">Thumbnail</div>
-    <h1 class=" font-bold mt-3">Lesson: {lessonName}</h1>
-  </div>
-  <div class="description mt-9 md:-mt-12 md:ml-5">
-    <p>
-      {lessonDescription}
-    </p>
-    <a href="/lessons/{lessonID}">Play</a>
+  <div class="banner mt-0 w-full">
+    <div class=" h-60 w-full bg-cd-red rounded-md"></div>
+    <div>
+      <div class=" mt-3">
+        <p class=" mb-6 ml-3 w-2/3">
+          {lessonDescription}
+        </p>
+        <a
+          class=" p-3 ml-3 h-7 w-32 bg-cd-red rounded-md text-white font-semibold"
+          href="/lessons/{lessonID}">Start</a
+        >
+      </div>
+    </div>
   </div>
 </div>
