@@ -1,6 +1,9 @@
 <script lang="js">
-  export let data;
 
+  import { enhance } from "$app/forms";
+
+  export let data;
+  let lostXP =10;
   let currentInfoCardIndex = 0; // Tracks the current info card
   let currentExampleIndex = 0; // Tracks the current example
   let showExamples = false; // Controls when to show examples
@@ -23,7 +26,8 @@
     } else {
       showQuiz = true; // When done with examples, show quiz
     }
-  }
+   }
+
 </script>
 
 <!-- Info Cards -->
@@ -145,9 +149,11 @@
             Next Question
           </button>
         {:else}
-          <button class="bg-cd-red w-40 h-11 m-3 text-white rounded-md">
-            Finish Quiz
-          </button>
+        <form method="post" action="?/endLesson"     use:enhance>
+          <input type="hidden" name="lostXP" value={lostXP} />
+          <input type="hidden" name="user_id" value={data.session.user.id} />
+          <button type="submit" class="bg-cd-red w-40 h-11 m-3 text-white rounded-md">Finish Lesson</button>
+        </form>
         {/if}
       {/if}
     {:else}
