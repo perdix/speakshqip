@@ -4,27 +4,27 @@
 
   export let data;
   let lostXP =10;
-  let currentInfoCardIndex = 0; // Tracks the current info card
-  let currentExampleIndex = 0; // Tracks the current example
-  let showExamples = false; // Controls when to show examples
-  let showQuiz = false; // Controls when to show quiz
-  let currentQuestionIndex = 0; // Tracks the current quiz question
+  let currentInfoCardIndex = 0;
+  let currentExampleIndex = 0;
+  let showExamples = false;
+  let showQuiz = false; 
+  let currentQuestionIndex = 0; 
   let userAnswer = null;
   let showNextQuestion = false;
 
   function showNextInfoCard() {
     if (currentInfoCardIndex < data.infoCards.length - 1) {
-      currentInfoCardIndex++; // Move to next info card
+      currentInfoCardIndex++; 
     } else {
-      showExamples = true; // When done with info cards, show examples
+      showExamples = true; 
     }
   }
 
   function showNextExample() {
     if (currentExampleIndex < data.examples.length - 1) {
-      currentExampleIndex++; // Move to next example
+      currentExampleIndex++; 
     } else {
-      showQuiz = true; // When done with examples, show quiz
+      showQuiz = true; 
     }
    }
 
