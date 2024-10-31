@@ -2,30 +2,20 @@
 import { redirect } from "@sveltejs/kit";
 
 
-/** @type {import('./$types').PageServerLoad} */
 export async function load({ params, parent, locals: { supabase } }) {
-  const { session } = await parent();
+  const { session, userDetails } = await parent();
+
 
   // Properly throw the redirect
   if (!session) {
     throw redirect(302, "/login");
   }
 
-  const { data: userDetails, error } = await supabase
-    .from('userdetails')
-    .select('*')
-    .eq('id', session.user.id);
-
-  if (error) {
-    console.error('Error fetching user details:', error);
-    throw new Error('Failed to fetch user details');
-  }
-
-
-
   return {
     userDetails
   };
+
+
 }
 
 export const actions = {
@@ -37,8 +27,6 @@ export const actions = {
       const nationality = formData.get('nationality')
       const user_id = formData.get("user_id");
       const image = formData.get("image");
-      console.log(image);
-      console.log(image.size);
       let image_url = null;
       let public_image_url = null;
 
@@ -54,16 +42,12 @@ export const actions = {
         image_url = imageData.path;
         const { data: urlData } = supabase.storage.from('profiles').getPublicUrl(image_url)
         public_image_url = urlData.publicUrl;
+        const { data, error } = await supabase.from("userdetails").update({username,bio,age,nationality, public_image_url, image_url}).eq("id",user_id);
+      } else {
+        const { data, error } = await supabase.from("userdetails").update({username,bio,age,nationality}).eq("id",user_id);
       }
 
-      const { data, error } = await supabase.from("userdetails").update({username:username,bio:bio,age:age,nationality:nationality,image_url, public_image_url}).eq("id",user_id);
   
-      if (error) {
-        console.error('Failed to edit user details:', error);
-        return { success: false, message: "Failed to edit user details" };      }
-        else {
-          redirect(302, "/profile");
-        }
-  
+
     }
   };
