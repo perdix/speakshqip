@@ -16,7 +16,7 @@
   <h1 class="text-1xl font-semibold m-9 text-cd-black">{unit.desc}</h1>
 
   <div class="flex flex-col h-full rounded-md p-4">
-    {#each data.lesson as lesson}
+    {#each data.lesson.sort((a, b) => a.count - b.count) as lesson}
       <div on:click={() => toggleLesson(lesson.id)}>
         <a href="#{lesson.id}"><SidebarLessons lessonName={lesson.name} /></a>
       </div>

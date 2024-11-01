@@ -1,34 +1,55 @@
 <script lang="js">
-
   import { enhance } from "$app/forms";
 
   export let data;
-  let lostXP =10;
   let currentInfoCardIndex = 0;
   let currentExampleIndex = 0;
   let showExamples = false;
-  let showQuiz = false; 
-  let currentQuestionIndex = 0; 
+  let showQuiz = false;
+  let currentQuestionIndex = 0;
   let userAnswer = null;
   let showNextQuestion = false;
+  let isCorrect = false;
 
   function showNextInfoCard() {
     if (currentInfoCardIndex < data.infoCards.length - 1) {
-      currentInfoCardIndex++; 
+      currentInfoCardIndex++;
     } else {
-      showExamples = true; 
+      showExamples = true;
     }
   }
 
   function showNextExample() {
     if (currentExampleIndex < data.examples.length - 1) {
-      currentExampleIndex++; 
+      currentExampleIndex++;
     } else {
-      showQuiz = true; 
+      showQuiz = true;
     }
-   }
+  }
 
+  function handleAnswerSelection(option) {
+    userAnswer = option;
+    showNextQuestion = true;
+    isCorrect = userAnswer === data.questions[currentQuestionIndex].ans;
+  }
+
+  function handleNextQuestion() {
+    if (currentQuestionIndex < data.questions.length - 1) {
+      currentQuestionIndex++;
+      userAnswer = null;
+      showNextQuestion = false;
+      isCorrect = false;
+    }
+  }
 </script>
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+  integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
 
 <!-- Info Cards -->
 {#if !showExamples && !showQuiz}
@@ -110,50 +131,51 @@
 {/if}
 
 <!-- Quiz -->
-{#if showQuiz}
+{#if showExamples && showQuiz}
   <div
     class="flex flex-col justify-center items-center mt-6 w-w-85/100 ml-auto mr-auto relative md:w-w-60/100"
     id="quiz"
   >
     <h2 class="text-3xl font-semibold m-3">{data.tests[0].testInfo}</h2>
+
     {#if currentQuestionIndex < data.questions.length}
       <h2 class="text-xl font-semibold m-3">
         {data.questions[currentQuestionIndex].questionInfo}
       </h2>
       <div class="w-full m-3 grid gap-2 md:grid-cols-2">
         {#each [data.questions[currentQuestionIndex].op1, data.questions[currentQuestionIndex].op2, data.questions[currentQuestionIndex].op3, data.questions[currentQuestionIndex].op4] as option}
-          <div
-            on:click={() => {
-              userAnswer = option;
-              showNextQuestion = true;
-            }}
-          >
+          <div on:click={() => handleAnswerSelection(option)}>
             <div
-              class="bg-zinc-800 p-3 font-semibold h-24 md:h-48 w-full rounded-md flex justify-center items-center text-white cursor-pointer transition-all hover:opacity-95 md:flex-col md:w-full"
+              class=" {userAnswer === option
+                ? isCorrect
+                  ? ' bg-green-400'
+                  : 'bg-cd-red'
+                : 'bg-zinc-800'} text-white p-3 font-semibold h-24 md:h-48 w-full rounded-md flex justify-center items-center cursor-pointer transition-all hover:opacity-95 md:flex-col md:w-full"
             >
               {option}
             </div>
           </div>
         {/each}
       </div>
+
       {#if showNextQuestion}
         {#if currentQuestionIndex < data.questions.length - 1}
           <button
             class="bg-cd-red w-40 h-11 m-3 text-white rounded-md"
-            on:click={() => {
-              currentQuestionIndex++;
-              userAnswer = null;
-              showNextQuestion = false;
-            }}
+            on:click={handleNextQuestion}
           >
-            Next Question
+            Next Question <i class="fa-solid fa-arrow-right ml-2"></i>
           </button>
         {:else}
-        <form method="post" action="?/endLesson"     use:enhance>
-          <input type="hidden" name="lostXP" value={lostXP} />
-          <input type="hidden" name="user_id" value={data.session.user.id} />
-          <button type="submit" class="bg-cd-red w-40 h-11 m-3 text-white rounded-md">Finish Lesson</button>
-        </form>
+          <form method="post" action="?/endLesson" use:enhance>
+            <input type="hidden" name="lostXP" />
+            <input type="hidden" name="user_id" value={data.session.user.id} />
+            <button
+              type="submit"
+              class="bg-cd-red w-40 h-11 m-3 text-white rounded-md"
+              >Finish Lesson
+            </button>
+          </form>
         {/if}
       {/if}
     {:else}
