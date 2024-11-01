@@ -4,12 +4,12 @@
   export let errorMessage;
 
   function closeModal() {
-    document.getElementById("modal").style.display = "none";
+    document.getElementById("modal").style.display = "none"; 
   }
 </script>
-
+<div id="modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center">
 <div
-  id="modal"
+  
   class=" z-50h-64 w-80 ml-auto mr-auto border-2 border-t-cd-red rounded-lg bg-white text-cd-black m-6 flex flex-col justify-center items-center relative transition-all"
   style="border-top-width: 12px; z-index: 1000000000000;"
 >
@@ -25,4 +25,5 @@
     class="absolute top-0 right-0 mr-4 mt-4 fa-solid fa-xmark text-lg cursor-pointer"
     on:click={closeModal}
   ></i>
+</div>
 </div>

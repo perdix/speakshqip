@@ -37,7 +37,7 @@
       id="password"
       placeholder="Password"
     />
-    <a href="#" class=" mt-8 hover:opacity-85">Forgot Password</a>
+    <a href="/forgotPassword" class=" mt-8 hover:opacity-85">Forgot Password</a>
     <button
       class="transition-all bg-zinc-800 h-10 p-2 flex justify-center items-center w-auto rounded-lg mt-8 drop-shadow-md text-white hover:opacity-75"
       type="submit"
