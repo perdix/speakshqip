@@ -6,11 +6,9 @@ export async function load({ params, parent }) {
   if (!session) {
     redirect(302, "/login");
   }
-  
 
   return {};
 }
-
 
 export const actions = {
   setup: async ({ cookies, request, locals: { supabase }, url }) => {
@@ -23,25 +21,27 @@ export const actions = {
     const nation = formData.get("nationality");
     const user_id = formData.get("user_id");
 
+    const { data, error } = await supabase
+      .from("userdetails")
+      .update({
+        username: username,
+        bio: desc,
+        age: age,
+        nationality: nation,
+        level: 0,
+        xp: 0,
+      })
+      .eq("id", user_id);
 
-
-  
-    
-
-    const { data, error } = await supabase.from("userdetails").update({username:username,bio:desc,age:age,nationality:nation,level:0,xp:0}).eq("id",user_id);
-  
-      if (error) {
-        console.error("error:", error);
-        return { success: false, message: "Word not saved!" };
-      } else {
-        redirect(302, "/dashboard");
-      }
-      return {
-        success: true,
-        message: "Super!!!"
-
-      }
-    
-  }
+    if (error) {
+      console.error("error:", error);
+      return { success: false, message: "Word not saved!" };
+    } else {
+      redirect(302, "/dashboard");
+    }
+    return {
+      success: true,
+      message: "Super!!!",
+    };
+  },
 };
-

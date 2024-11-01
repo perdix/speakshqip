@@ -10,20 +10,19 @@ export async function load({ params, parent }) {
   return {};
 }
 
-
 export const actions = {
   saveWord: async ({ cookies, request, locals: { supabase } }) => {
-
     const formData = await request.formData();
     const englishWord = formData.get("word_en");
     const albanianWord = formData.get("word_al");
 
     const user_id = formData.get("user_id");
 
-
-    const { data, error } = await supabase.from("words").insert([
-      { word_en: englishWord, word_al: albanianWord }
-    ]).select("*").single();
+    const { data, error } = await supabase
+      .from("words")
+      .insert([{ word_en: englishWord, word_al: albanianWord }])
+      .select("*")
+      .single();
 
     if (error) {
       console.error("error:", error);
@@ -31,9 +30,7 @@ export const actions = {
     }
     return {
       success: true,
-      message: "Super!!!"
-    }
-
-
+      message: "Super!!!",
+    };
   },
 };
