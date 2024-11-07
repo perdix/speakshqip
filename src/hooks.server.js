@@ -38,13 +38,21 @@ export const handle = async ({ event, resolve }) => {
       error,
     } = await event.locals.supabase.auth.getUser();
     if (error) {
-      return { session: null, user: null };
+      return { session: null, user: null, userDetails: null };
     }
 
     const {
       data: { session },
     } = await event.locals.supabase.auth.getSession();
-    return { session, user };
+
+    // Get user details
+    const { data: userDetails, error: userDetailsError } =
+      await event.locals.supabase
+        .from("userdetails")
+        .select("*")
+        .eq("id", session?.user.id)
+        .single();
+    return { session, user, userDetails };
   };
 
   return resolve(event, {
