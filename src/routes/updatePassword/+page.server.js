@@ -1,5 +1,19 @@
 import { redirect } from "@sveltejs/kit";
 
+export const load = async ({parent, url, locals: { supabase }}) => {
+  const { session, user } = await parent();
+  if (!session) {
+    // detect code
+    let code = url.searchParams.get("code");
+    if (code) {
+      const { error, data } = await supabase.auth.exchangeCodeForSession(code)
+      // redirect(302, "/updatePassword");
+    } else {
+      redirect(302, "/login");
+    }
+  }
+};
+
 export const actions = {
   login: async ({ cookies, request, locals: { supabase } }) => {
     if (!session) {
@@ -8,6 +22,9 @@ export const actions = {
     const data = await request.formData();
     const newPassword = data.get("password");
     const repeatpassword = data.get("repeatpassword");
+    const code = url.searchParams.get("code");
+
+
     if (newPassword != repeatpassword) {
       console.error("Error Password is not the same");
     } else {

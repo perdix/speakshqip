@@ -18,7 +18,7 @@
   $: currentPage = $page.url.pathname;
 </script>
 
-{#key $page.data.userDetails.public_image_url}
+{#key $page.data.userDetails?.public_image_url}
   <nav
     class="w-screen flex justify-between items-center p-3 bg-cd-red flex-row"
   >
@@ -54,7 +54,7 @@
               id="submit"
               value="Log In"
             >
-              {#if $page.data.userDetails.public_image_url}
+              {#if $page.data.userDetails?.public_image_url}
                 <img
                   src={$page.data.userDetails.public_image_url}
                   alt="profile"
