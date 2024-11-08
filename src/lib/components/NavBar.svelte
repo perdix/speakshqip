@@ -1,6 +1,4 @@
 <script>
-
-
   let isNavOpen = false;
 
   function toggleNavbar() {
@@ -10,15 +8,17 @@
   function closeNavbar() {
     isNavOpen = false;
   }
-
 </script>
 
 <nav class="w-screen flex justify-between items-center p-3 bg-cd-red flex-row">
   <img src="logo.png" class="z-30 h-10 mr-3" alt="" />
   <h1 class="z-30 text-2xl font-extrabold text-white">SpeakShqip</h1>
+  <!-- svelte-ignore a11y-click-events-have-key-events -->
+  <!-- svelte-ignore a11y-no-static-element-interactions -->
   <div
     class="nav-burger cursor-pointer bg-cd-red block z-30 sm:hidden"
-    on:click={toggleNavbar}>
+    on:click={toggleNavbar}
+  >
     <div class="nav_line1 h-px m-1.5 w-4 bg-white"></div>
     <div class="nav_line2 h-px m-1.5 w-4 bg-white"></div>
   </div>
@@ -28,11 +28,14 @@
   >
     <li class="p-3"><a href="/" on:click={closeNavbar}>Home</a></li>
     <li class="p-3"><a href="/about" on:click={closeNavbar}>About</a></li>
-    <li class="mr-2 p-3"><a href="/lessons" on:click={closeNavbar}>Learn</a></li>
-    <li class="mr-2 p-3"><a href="/contact" on:click={closeNavbar}>Contact</a></li>
+    <li class="mr-2 p-3">
+      <a href="/lessons" on:click={closeNavbar}>Learn</a>
+    </li>
+    <li class="mr-2 p-3">
+      <a href="/contact" on:click={closeNavbar}>Contact</a>
+    </li>
     <li class="p-3">
       <a href="/contact" on:click={closeNavbar}>
-      
         <a href="/login">
           <button class="p-2 bg-white rounded-md text-zinc-800">Login</button>
         </a>
