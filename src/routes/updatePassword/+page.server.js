@@ -17,7 +17,6 @@ export const load = async ({parent, url, locals: { supabase }}) => {
 export const actions = {
   login: async ({ cookies, request, locals: { supabase, safeGetSession } }) => {
     const { session } = await safeGetSession();
-    console.log("session", session);
 
     if (!session) {
       console.error("Error no session");
