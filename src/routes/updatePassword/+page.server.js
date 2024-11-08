@@ -15,15 +15,17 @@ export const load = async ({parent, url, locals: { supabase }}) => {
 };
 
 export const actions = {
-  login: async ({ cookies, request, locals: { supabase } }) => {
+  login: async ({ cookies, request, locals: { supabase, safeGetSession } }) => {
+    const { session } = await safeGetSession();
+    console.log("session", session);
+
     if (!session) {
+      console.error("Error no session");
       redirect(302, "/login");
     }
     const data = await request.formData();
     const newPassword = data.get("password");
     const repeatpassword = data.get("repeatpassword");
-    const code = url.searchParams.get("code");
-
 
     if (newPassword != repeatpassword) {
       console.error("Error Password is not the same");
