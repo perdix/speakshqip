@@ -6,7 +6,7 @@ export const actions = {
     const email = data.get("email");
 
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: "https://speakshqip.net/UpdatePassword",
+      redirectTo: "https://speakshqip.net/updatePassword",
     });
     if (error) {
       console.error("error:", error);
