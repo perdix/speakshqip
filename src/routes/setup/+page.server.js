@@ -1,15 +1,15 @@
 import { redirect } from "@sveltejs/kit";
 
 /** @type {import('./$types').PageServerLoad} */
-export async function load({ params, parent , locals: { supabase }}) {
+export async function load({ params, parent, locals: { supabase } }) {
   const { session, user } = await parent();
   if (!session) {
     redirect(302, "/login");
   }
 
   const { data: nationalities, error: countryError } = await supabase
-  .from("countries")
-  .select("*");
+    .from("countries")
+    .select("*");
 
   if (countryError) {
     console.error("error:", nationalityError);
@@ -17,7 +17,6 @@ export async function load({ params, parent , locals: { supabase }}) {
   }
 
   return { nationalities };
-
 }
 
 export const actions = {

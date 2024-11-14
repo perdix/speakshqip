@@ -16,10 +16,12 @@ export const actions = {
     });
     if (error) {
       console.error("error:", error);
-      return { success: false, error: "Login not successful! Username or Password are incorrect" };
+      return {
+        success: false,
+        error: "Login not successful! Username or Password are incorrect",
+      };
     }
 
     return redirect(303, "/dashboard");
   },
 };
-

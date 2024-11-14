@@ -3,7 +3,7 @@ import { redirect, fail } from "@sveltejs/kit";
 export const actions = {
   register: async ({ request, locals: { supabase }, url }) => {
     console.log("register action");
-    
+
     const data = await request.formData();
     const email = data.get("email");
     const password = data.get("password");
@@ -14,10 +14,15 @@ export const actions = {
     }
 
     if (!password || password.length < 8) {
-      return fail(400, { error: "Password must be at least 8 characters long." });
+      return fail(400, {
+        error: "Password must be at least 8 characters long.",
+      });
     }
     if (!/[A-Z]/.test(password) || !/[0-9]/.test(password)) {
-      return fail(400, { error: "Password must contain at least one uppercase letter and one number." });
+      return fail(400, {
+        error:
+          "Password must contain at least one uppercase letter and one number.",
+      });
     }
 
     if (password !== passwordRepeat) {
@@ -29,18 +34,21 @@ export const actions = {
       password,
       options: {
         emailRedirectTo: `${url.origin}/auth/callback`,
-      }
+      },
     });
 
     if (error) {
       console.error("Supabase error:", error.message);
-      return fail(400, { error: "Registration was not successful. Please try again." });
+      return fail(400, {
+        error: "Registration was not successful. Please try again.",
+      });
     }
 
     return {
-      success: { 
-        successMessage: "Registration successful. Check your email for the verification." 
-      }
+      success: {
+        successMessage:
+          "Registration successful. Check your email for the verification.",
+      },
     };
-    }
+  },
 };
