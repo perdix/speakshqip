@@ -37,6 +37,10 @@ export const actions = {
       return fail(400, { error: "Registration was not successful. Please try again." });
     }
 
-    return redirect(302, "/login");
-  }
+    return {
+      success: { 
+        successMessage: "Registration successful. Check your email for the verification." 
+      }
+    };
+    }
 };

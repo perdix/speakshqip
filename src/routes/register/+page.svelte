@@ -2,8 +2,9 @@
 <script>
   import { enhance } from "$app/forms";
   import ModalError from "../../lib/components/ModalError.svelte";
+  import ModalSuccess from "../../lib/components/ModalSuccess.svelte";
   export let data;
-  export let form = { error: null };
+  export let form = { error: null, successMessage: null };
 
 </script>
 
@@ -61,4 +62,8 @@
 
 {#if form?.error}
 <ModalError errorMessage={form.error} />
+{/if}
+
+{#if form?.success?.successMessage}
+  <ModalSuccess message={form.success.successMessage} />
 {/if}

@@ -50,9 +50,10 @@
     />
     <input type="hidden" name="user_id" value={data.session.user.id} />
     <datalist id="nationality-list">
-      <option value="Afghan"> </option><option value="Albanian">
-      </option><option value="Algerian"> </option></datalist
-    >
+      {#each data.nationalities as nationality}
+      <option value="{nationality.country_ennationality}"></option>
+    {/each}
+    </datalist>
 
     <button
       class="transition-all bg-cd-red h-10 p-2 flex justify-center items-center w-auto rounded-lg mt-8 mb-8 drop-shadow-md text-white hover:opacity-75"
