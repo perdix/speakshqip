@@ -13,5 +13,11 @@ export const actions = {
     } else {
       console.log("Password reset email sent");
     }
+    return {
+      success: {
+        successMessage:
+          "Password recovery email has been sent",
+      },
+    };
   },
 };
