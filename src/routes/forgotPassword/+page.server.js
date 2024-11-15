@@ -15,8 +15,7 @@ export const actions = {
     }
     return {
       success: {
-        successMessage:
-          "Password recovery email has been sent",
+        successMessage: "Password recovery email has been sent",
       },
     };
   },
