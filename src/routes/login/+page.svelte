@@ -4,11 +4,8 @@
   import ModalError from "../../lib/components/ModalError.svelte";
   export let data;
   export let form = {};
-
   let email = "";
   let password = "";
-
-  console.log(data);
 </script>
 
 <div class="flex justify-center items-center flex-col h-64">

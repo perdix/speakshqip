@@ -184,11 +184,10 @@
       </button>
     {/if}
   </form>
-
   <datalist id="nationality-list">
-    <option value="Afghan"></option>
-    <option value="Albanian"></option>
-    <option value="Algerian"></option>
+    {#each data.nationalities as nationality}
+    <option value="{nationality.country_ennationality}"></option>
+  {/each}
   </datalist>
 
   {#if form?.error}
