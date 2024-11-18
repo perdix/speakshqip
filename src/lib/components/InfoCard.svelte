@@ -1,14 +1,18 @@
 <script>
+  import tilt from "svelte-tilt";
+
   export let header;
   export let message;
+  export let image;
 </script>
 
 <div
+  use:tilt={{ strength: 0.2 }}
   class=" rounded-2xl border mt-16 ml-5 shadow-lg"
   style="height: 460px; width: 350px;"
 >
   <img
-    src="https://accessally.com/wp-content/uploads/2023/10/accessally-featured-image-how-to-create-training-modules-1024x675.png"
+    src={image}
     class="w-full h-64 object-cover rounded-t-2xl rounded-tr-2xl"
     alt=""
   />

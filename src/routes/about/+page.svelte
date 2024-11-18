@@ -6,29 +6,35 @@
     {
       header: "Quick Start",
       message: "Start your learning journey now with our quick-start guide",
+      image: "graphics/about1.jpg",
     },
     {
       header: "Learn Fast",
       message:
         "Accelerate your learning with our proven methods and strategies",
+      image: "graphics/about2.jpg",
     },
     {
       header: "Master Skills",
       message:
         "Become a skillful expert in no time with our comprehensive modules",
+      image: "graphics/masterskills_about.jpg",
     },
     {
       header: "Expert Tips",
       message: "Discover expert tips and tricks for mastering the language",
+      image: "graphics/experttips_about.jpg",
     },
     {
       header: "Practice Daily",
       message: "Commit to daily practice and see noticeable improvements",
+      image: "graphics/practicedaily_about.jpg",
     },
     {
       header: "Boost Knowledge",
       message:
         "Boost your knowledge and skills with our interactive lessons and resources",
+      image: "graphics/boostknowledge_about.jpg",
     },
   ];
 </script>
@@ -36,9 +42,9 @@
 <div class="flex justify-center items-center flex-col mt-28">
   <h1 class=" text-5xl font-bold">Who are we?</h1>
   <p class=" mt-6 text-gray-600 w-w-70/100 text-center mr-auto ml-auto">
-    SpeakShqip is a  web application designed to introduce users to
-    the fundamentals of the Albanian language. Our platform features a diverse
-    array of modules, each meticulously crafted to focus on specific aspects of
+    SpeakShqip is a web application designed to introduce users to the
+    fundamentals of the Albanian language. Our platform features a diverse array
+    of modules, each meticulously crafted to focus on specific aspects of
     Albanian vocabulary and grammar. Through engaging exercises and interactive
     activities, users have the opportunity to immerse themselves in the
     language, gradually building up their vocabulary and understanding. <br
@@ -72,7 +78,12 @@
 >
   <!--Generate Cards-->
   {#each cardInfo as card, i}
-    <InfoCard header={card.header} message={card.message} key={i} />
+    <InfoCard
+      header={card.header}
+      message={card.message}
+      image={card.image}
+      key={i}
+    />
   {/each}
 </div>
 

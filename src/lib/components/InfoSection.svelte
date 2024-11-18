@@ -4,8 +4,10 @@
     class="info-top flex justify-between items-center p-3 flex-col sm:flex-row"
   >
     <div
-      class="rounded-3xl bg-zinc-900 ml-auto mr-auto mt-9 h-52 w-80 sm:h-60 sm:w-2/5 md:w-2/6"
+      class="rounded-3xl border-2 border-cd-red ml-auto mr-auto mt-9 h-52 w-80 sm:h-60 sm:w-2/5 md:w-2/6 bg-cover bg-no-repeat bg-center"
+      style="background-image: url('graphics/home_1.jpg');"
     ></div>
+
     <div class="info-right sm:w-3/5 md:w-4/6">
       <h1 class=" text-left m-8 ml-10 font-bold text-5xl">About Us</h1>
       <p class=" m-7 ml-10">
@@ -27,7 +29,8 @@
     class="info-top flex justify-between items-center p-3 flex-col sm:flex-row"
   >
     <div
-      class="rounded-3xl bg-zinc-900 ml-auto mr-auto mt-9 h-52 w-80 sm:h-60 sm:w-2/5 order-2 md:w-2/6"
+      class="border-2 border-cd-red rounded-3xl ml-auto mr-auto mt-9 h-52 w-80 sm:h-60 sm:w-2/5 order-2 md:w-2/6 bg-cover bg-no-repeat bg-center"
+      style="background-image: url('graphics/home_2.jpg');"
     ></div>
     <div class="info-left order-2 sm:w-3/5 sm:order-1 md:w-4/6">
       <h1 class=" text-left m-7 ml-10 font-bold text-5xl">Contact Us</h1>

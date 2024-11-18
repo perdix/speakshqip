@@ -20,7 +20,7 @@
   referrerpolicy="no-referrer"
 />
 
-<div class="w-w-90/100 ml-auto mr-auto">
+<div class="w-w-90/100 ml-auto mr-auto flex items-start flex-col">
   <h1 class="text-4xl font-bold mt-9 mb-2 text-cd-black">Vocabulary</h1>
   <p class="mt-4">
     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo a molestias
@@ -29,7 +29,9 @@
   <p class="mt-4">You are on the right track</p>
   <p class="mt-12 text-2xl text-gray-400">New words and phrases learnt</p>
 
-  <div class=" flex justify-start items-center flex-wrap w-full">
+  <div
+    class=" flex justify-center md:justify-start items-center flex-wrap w-full mt-2 mb-3"
+  >
     {#each repeatTimes as _}
       <LearnWordVocab />
     {/each}

@@ -1,7 +1,7 @@
 <script>
   import InfoSection from "../lib/components/InfoSection.svelte";
-
   import QuoteSection from "../lib/components/QuoteSection.svelte";
+  import tilt from "svelte-tilt";
 
   export let data;
 </script>
@@ -12,9 +12,9 @@
   </h1>
 </div>
 
-<div class="flex justify-center">
+<div use:tilt class="flex justify-center">
   <div
-    class="rounded-3xl border-2 border-cd-red mt-9 w-4/5"
+    class=" rounded-3xl border-2 border-cd-red mt-9 w-4/5 flex justify-center items-center"
     style="height: 500px;"
   ></div>
 </div>
