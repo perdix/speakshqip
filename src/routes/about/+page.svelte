@@ -36,7 +36,7 @@
 <div class="flex justify-center items-center flex-col mt-28">
   <h1 class=" text-5xl font-bold">Who are we?</h1>
   <p class=" mt-6 text-gray-600 w-w-70/100 text-center mr-auto ml-auto">
-    SpeakShqip is a comprehensive web application designed to introduce users to
+    SpeakShqip is a  web application designed to introduce users to
     the fundamentals of the Albanian language. Our platform features a diverse
     array of modules, each meticulously crafted to focus on specific aspects of
     Albanian vocabulary and grammar. Through engaging exercises and interactive
