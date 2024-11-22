@@ -39,36 +39,44 @@
   ];
 </script>
 
-<div class="flex justify-center items-center flex-col mt-28">
-  <h1 class=" text-5xl font-bold">Who are we?</h1>
-  <p class=" mt-6 text-gray-600 w-w-70/100 text-center mr-auto ml-auto">
-    SpeakShqip is a web application designed to introduce users to the
-    fundamentals of the Albanian language. Our platform features a diverse array
-    of modules, each meticulously crafted to focus on specific aspects of
-    Albanian vocabulary and grammar. Through engaging exercises and interactive
-    activities, users have the opportunity to immerse themselves in the
-    language, gradually building up their vocabulary and understanding. <br
-    /><br /> <br /> Whether you're a complete beginner or looking to brush up on
-    your skills, SpeakShqip provides a supportive environment for learners of all
-    levels. With our user-friendly interface and customizable learning paths, mastering
-    Albanian has never been more accessible. Join our community today and embark
-    on a rewarding journey of language discovery with SpeakShqip!
-  </p>
 
-  <div class="flex justify-center">
-    <a
-      href="#"
-      class=" z-10 p-2 bg-zinc-900 text-white text-center rounded-md drop-shadow-lg mt-6 mr-2 transition-all hover:opacity-85"
-      >Get Started</a
-    >
 
-    <a
-      href="#"
-      class="p-2 bg-zinc-500 text-white text-center rounded-md mt-6 drop-shadow-lg transition-all hover:opacity-85"
-      >Learn More</a
-    >
+
+<div class="relative bg-purple-100 min-h-screen flex items-center justify-center overflow-hidden">
+  <!-- Background Circle -->
+  <div class="absolute bg-purple-300 h-[450px] w-[450px] rounded-full -top-24 -right-24 opacity-40"></div>
+
+  <div class="relative z-10 text-center max-w-4xl px-4 lg:px-0">
+    <!-- Heading -->
+    <h1 class="text-5xl lg:text-6xl font-bold text-gray-800 leading-tight">
+      Develop your skills in a <br />
+      <span class="text-purple-600">new and unique way</span>
+    </h1>
+    <!-- Subtext -->
+    <p class="mt-6 text-lg text-gray-600">
+      Explore a transformative approach to skill development on our online
+      learning platform. Elevate your learning experience and unlock new
+      possibilities today!
+    </p>
+    <!-- Buttons -->
+    <div class="mt-8 flex justify-center gap-4">
+      <a
+        href="#"
+        class="bg-purple-600 text-white py-3 px-6 rounded-md text-lg shadow-lg hover:bg-purple-700 transition"
+      >
+        Enroll Now
+      </a>
+      <a
+        href="#"
+        class="bg-gray-200 text-gray-800 py-3 px-6 rounded-md text-lg shadow-lg hover:bg-gray-300 transition"
+      >
+        Learn More
+      </a>
+    </div>
   </div>
-</div>
+
+
+
 
 <div class="flex justify-center mt-40">
   <h1 class=" text-5xl font-bold">Our Courses</h1>
