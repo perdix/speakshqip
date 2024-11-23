@@ -1,4 +1,5 @@
 <script lang="js">
+  import { slide } from "svelte/transition";
   import LessonRow from "../../lib/components/LessonRow.svelte";
   import SidebarLessons from "../../lib/components/SidebarLessons.svelte";
   export let data;
@@ -18,11 +19,20 @@
   <div class="flex flex-col h-full rounded-md p-4">
     {#each data.lesson.sort((a, b) => a.count - b.count) as lesson}
       <div on:click={() => toggleLesson(lesson.id)}>
-        <a href="#{lesson.id}"><SidebarLessons lessonName={lesson.name} /></a>
+        <a href="#{lesson.id}">
+          <SidebarLessons lessonName={lesson.name} />
+        </a>
       </div>
       {#if lesson.unitId == unit.id && selectedLessonId === lesson.id}
-        <div class="mt-4">
-          <LessonRow lessonDescription={lesson.desc} lessonID={lesson.id} />
+        <div
+          class="mt-4 overflow-hidden"
+          transition:slide={{ y: -50, duration: 300 }}
+        >
+          <LessonRow
+            lessonDescription={lesson.desc}
+            lessonID={lesson.id}
+            image={lesson.image}
+          />
         </div>
       {/if}
     {/each}

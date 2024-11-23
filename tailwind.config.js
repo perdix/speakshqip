@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "cd-red": "#e71d36",
+        "cd-red": "#e71d36", //alternative: dc2626
         "cd-black": "#011627",
       },
       width: Object.fromEntries(
