@@ -27,7 +27,7 @@
             <td class="border border-gray-300 px-4 py-2">{details.age}</td>
             <td class="border border-gray-300 px-4 py-2">{details.nationality}</td>
             <td class="border border-gray-300 px-4 py-2">{details.level}</td>
-            <td class="border border-gray-300 px-4 py-2">{details.row}</td>
+            <td class="border border-gray-300 px-4 py-2">{details.role}</td>
         </tr>
         {/if}
     {/each}
