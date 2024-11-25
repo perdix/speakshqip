@@ -245,8 +245,6 @@ let scrollContainer;
 
 
 
-
-<!-- Our Courses Section -->
 <!-- Our Courses Section -->
 <div class="bg-gray-50 py-16 px-8">
   <div class="max-w-6xl mx-auto mb-12 text-center">
@@ -302,7 +300,7 @@ let scrollContainer;
           <!-- Card Content -->
           <div class="p-6">
             <h3 class="text-lg font-bold text-gray-800 mb-2">{lesson.name}</h3>
-            <p class="text-sm text-gray-600 mb-4 line-clamp-3">
+            <p class="text-sm text-gray-600 mb-10 line-clamp-3">
               {lesson.desc}
             </p>
           </div>
