@@ -38,28 +38,26 @@
     },
   ];
 
+  
+
   let benefits = [
     {
       title: "Albanian Courses",
-      description:
-        "Learn the Albanian language through structured courses for beginners and advanced learners.",
+      description: "Learn the Albanian language through structured courses for beginners and advanced learners.",
     },
     {
       title: "Vocabulary Training",
-      description:
-        "Expand your vocabulary with interactive word lists and exercises.",
+      description: "Expand your vocabulary with interactive word lists and exercises.",
     },
     {
       title: "Quizzes & Games",
-      description:
-        "Test your knowledge with quizzes and language games for fun learning.",
+      description: "Test your knowledge with quizzes and language games for fun learning.",
     },
     {
       title: "1.5k+ Hours of Material",
       description: "Access a vast range of learning resources and exercises.",
     },
   ];
-<<<<<<< HEAD
 
  
   const blogPosts = [
@@ -82,48 +80,7 @@
     image: "graphics/image3.jpg"  // Gleiche Bildstruktur wie cardInfo
   }
 ];
-const courses = [
-    {
-      id: "0a74a405-c3b4-4c79-ad0d-84e0af52e89",
-      name: "Ordering in a restaurant",
-      desc: "Basic phrases and words that help you order",
-      count: 6,
-      xp: 100,
-      students: 25,
-      lessons: 8,
-      rating: 4.8
-    },
-    {
-      id: "17d723b1-3965-43ef-8c29-7c9fc4a7959d",
-      name: "Belongings",
-      desc: "Learning how to talk about belongings",
-      count: 8,
-      xp: 100,
-      students: 32,
-      lessons: 6,
-      rating: 4.9
-    },
-    {
-      id: "3f4951e9-ce8c-412f-b86f-ec43982d2527",
-      name: "Shopping around the city",
-      desc: "Basic phrases and words that help you while shopping",
-      count: 4,
-      xp: 100,
-      students: 28,
-      lessons: 7,
-      rating: 4.7
-    },
-    {
-      id: "40e113b8-b63e-4816-a15c-99174a47d6c3",
-      name: "Getting groceries",
-      desc: "Basic phrases and words that help you buy groceries",
-      count: 5,
-      xp: 100,
-      students: 30,
-      lessons: 5,
-      rating: 4.6
-    }
-  ];
+
 
 
   import { createClient } from "@supabase/supabase-js";
@@ -139,7 +96,7 @@ let lessons = []; // Speichert die abgerufenen Daten
 async function loadLessons() {
   const { data, error } = await supabase
     .from("lessons")
-    .select("id, name, desc,image");
+    .select("id, name, desc ,image");
 
   if (error) {
     console.error("Fehler beim Abrufen der Daten:", error);
@@ -151,52 +108,61 @@ async function loadLessons() {
 // Beim Laden der Komponente Daten abrufen
 loadLessons();
 
+let scrollContainer;
+  
+  function scrollLeft() {
+    if (scrollContainer) {
+      scrollContainer.scrollBy({
+        left: -300,
+        behavior: 'smooth'
+      });
+    }
+  }
+  
+  function scrollRight() {
+    if (scrollContainer) {
+      scrollContainer.scrollBy({
+        left: 300,
+        behavior: 'smooth'
+      });
+    }
+  }
 
-=======
->>>>>>> 8d8e016d57545dd9d3f9da5e0cec6573cdc52660
 </script>
 
-<div
-  class="relative bg-white min-h-screen flex items-center justify-start overflow-hidden px-8"
->
+<div class="relative bg-white min-h-screen flex items-center justify-start overflow-hidden px-8">
   <!-- Background Circle -->
-  <div
-    class="absolute bg-red-300 h-[450px] w-[450px] rounded-full -top-24 -right-24 opacity-40"
-  ></div>
-
+  <div class="absolute bg-red-300 h-[450px] w-[450px] rounded-full -top-24 -right-24 opacity-40"></div>
+  
   <div class="relative z-10 max-w-6xl mx-auto w-full flex items-center">
     <!-- Text content -->
     <div class="w-1/2 z-20 pr-12">
       <h1 class="text-4xl lg:text-5xl font-bold text-gray-800 leading-tight">
         Develop your skills in a <br />
-        <span class=" text-cd-red">new and unique way</span>
+        <span class="text-red-600">new and unique way</span>
       </h1>
-
+      
       <p class="mt-6 text-base lg:text-lg text-gray-600">
-        Explore a transformative approach to skill development on our online
-        learning platform. Elevate your learning experience and unlock new
-        possibilities today!
+        Explore a transformative approach to skill development on our online learning platform. Elevate your learning experience and unlock new possibilities today!
       </p>
-
+      
       <div class="mt-8 flex justify-start gap-4">
-        <button
-          class="bg-cd-red text-white py-3 px-6 rounded-md text-base shadow-lg hover:bg-red-700 transition"
+        <button 
+          class="bg-red-600 text-white py-3 px-6 rounded-md text-base shadow-lg hover:bg-red-700 transition"
         >
           Enroll Now
         </button>
-        <button
+        <button 
           class="bg-red-200 text-red-800 py-3 px-6 rounded-md text-base shadow-lg hover:bg-red-300 transition"
         >
           Learn More
         </button>
       </div>
     </div>
-
+    
     <!-- SVG Section -->
-    <div
-      class="absolute top-0 right-0 w-1/2 h-full flex items-center justify-end"
-    >
-      <img
+    <div class="absolute top-0 right-0 w-1/2 h-full flex items-center justify-end">
+      <img 
         src="/graphics/Animation_Hero.svg"
         alt="Hero Animation"
         class="w-3/4 max-w-[600px] h-auto z-10 relative"
@@ -207,28 +173,22 @@ loadLessons();
 
 <!-- Our Benefits Section -->
 <div class="bg-white py-12 sm:py-16 px-4 sm:px-8">
-  <div
-    class="container mx-auto flex flex-col lg:flex-row items-center justify-between space-y-8 lg:space-y-0 lg:space-x-12"
-  >
+  <div class="container mx-auto flex flex-col lg:flex-row items-center justify-between space-y-8 lg:space-y-0 lg:space-x-12">
     <!-- Text Section -->
     <div class="w-full lg:w-1/2 text-center lg:text-left">
-      <h2
-        class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-800 leading-tight"
-      >
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-800 leading-tight">
         Why <span class="text-red-600">Learn Albanian?</span>
       </h2>
       <p class="mt-4 sm:mt-6 text-base sm:text-lg text-gray-600">
-        Discover the beauty of the Albanian language with our interactive
-        learning platform. Learn at your own pace and enjoy exciting content
-        that will help you make rapid progress.
+        Discover the beauty of the Albanian language with our interactive learning platform. Learn at your own pace and enjoy exciting content that will help you make rapid progress.
       </p>
     </div>
 
     <!-- Benefits Grid -->
     <div class="w-full lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6">
       {#each benefits as benefit}
-        <div
-          class="bg-red-50 border border-red-200 rounded-xl p-6 text-center shadow-md
+        <div 
+          class="bg-red-50 border border-red-200 rounded-xl p-6 text-center shadow-md 
                  transition duration-300 transform hover:scale-105 hover:shadow-lg"
         >
           <h3 class="text-xl font-semibold text-red-600">{benefit.title}</h3>
@@ -239,7 +199,6 @@ loadLessons();
   </div>
 </div>
 
-<<<<<<< HEAD
 <!-- Read our Blog Section -->
 <div class="bg-gray-50 py-16 px-8 mt-24"> <!-- Added mt-24 for more spacing -->
   <!-- Blog Section Header -->
@@ -285,83 +244,82 @@ loadLessons();
 </div>
 
 
-=======
->>>>>>> 8d8e016d57545dd9d3f9da5e0cec6573cdc52660
-<!-- Our Courses Section -->
 
-<!-- Our Lessons Section -->
+
+<!-- Our Courses Section -->
+<!-- Our Courses Section -->
 <div class="bg-gray-50 py-16 px-8">
-  <div class="max-w-6xl mx-auto mb-12">
-    <h2 class="text-3xl font-bold text-gray-800 text-center mb-8">Our Lessons</h2>
-    <p class="text-gray-600 text-center max-w-3xl mx-auto mb-12">
-      Dive into our curated lessons that help you expand your knowledge and skills in an engaging way.
+  <div class="max-w-6xl mx-auto mb-12 text-center">
+    <h2 class="text-3xl font-bold text-gray-800 mb-6">About Our Lessons</h2>
+    <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+      Learn more about our curated lessons that help you grow your skills and knowledge.
     </p>
   </div>
 
-  <!-- Horizontal Scrollable Container -->
+  <!-- Scroll Container with Buttons -->
   <div class="max-w-6xl mx-auto relative">
-    <!-- Lessons Cards Horizontal Scroll -->
-    <div class="overflow-x-auto pb-6 hide-scrollbar">
-      <div class="flex gap-6 min-w-min">
-        {#each lessons as lesson}
-          <!-- Fixed width for each card to ensure consistent sizing -->
-          <div class="w-80 flex-shrink-0">
-            <div class="bg-white rounded-lg shadow-md overflow-hidden group hover:shadow-lg transition duration-300 h-full">
-              <!-- Card Header (Image) -->
-              <div class="relative h-40 overflow-hidden">
-                {#if lesson.image}
-                  <img 
-                    src={lesson.image}
-                    alt={lesson.name}
-                    class="w-full h-full object-cover"
-                  />
-                {:else}
-                  <!-- Placeholder if no image -->
-                  <div class="bg-gray-200 h-full flex items-center justify-center">
-                    <span class="text-xl font-semibold text-gray-600">#{lesson.id}</span>
-                  </div>
-                {/if}
-              </div>
-              <!-- Card Content -->
-              <div class="p-6">
-                <h3 class="text-lg font-bold text-gray-800 mb-2">{lesson.name}</h3>
-                <p class="text-sm text-gray-600 mb-4">{lesson.desc}</p>
-                <button 
-                  class="text-red-600 text-sm hover:text-red-800 transition flex items-center gap-2"
-                >
-                  Learn More →
-                </button>
-              </div>
-            </div>
+    <!-- Left Scroll Button -->
+    <button 
+      on:click={scrollLeft}
+      class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    <!-- Right Scroll Button -->
+    <button 
+      on:click={scrollRight}
+      class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+
+    <!-- Cards Container -->
+    <div 
+      bind:this={scrollContainer}
+      class="overflow-x-auto flex gap-6 scroll-smooth pb-4"
+      style="scrollbar-width: none; -ms-overflow-style: none;"
+    >
+      {#each lessons as lesson}
+        <div class="min-w-[300px] bg-white rounded-lg shadow-md overflow-hidden group hover:shadow-lg transition duration-300 relative">
+          <!-- Card Header -->
+          <div class="bg-gray-200 h-40 flex items-center justify-center">
+            {#if lesson.image}
+              <img
+                src={lesson.image}
+                alt={lesson.name}
+                class="w-full h-full object-cover"
+              />
+            {:else}
+              <span class="text-lg font-semibold text-gray-700">{lesson.name}</span>
+            {/if}
           </div>
-        {/each}
-      </div>
+
+          <!-- Card Content -->
+          <div class="p-6">
+            <h3 class="text-lg font-bold text-gray-800 mb-2">{lesson.name}</h3>
+            <p class="text-sm text-gray-600 mb-4 line-clamp-3">
+              {lesson.desc}
+            </p>
+          </div>
+
+          <!-- Card Button -->
+          <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2">
+            <button
+              class="bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition"
+            >
+              Learn More
+            </button>
+          </div>
+        </div>
+      {/each}
     </div>
   </div>
 </div>
 
-<<<<<<< HEAD
-<style>
-  /* Hide scrollbar but keep functionality */
-  .hide-scrollbar {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
-  }
-
-  .hide-scrollbar::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
-  }
-</style>
 
 <FaqSection />
-=======
-<div
-  class="mx-8 sm:mx-12 md:mx-16 flex justify-center items-center flex-col sm:flex-row sm:flex-wrap mt-8"
->
-  {#each cardInfo as card (card.header)}
-    <InfoCard header={card.header} message={card.message} image={card.image} />
-  {/each}
-</div>
-
-<FaqSection />
->>>>>>> 8d8e016d57545dd9d3f9da5e0cec6573cdc52660
