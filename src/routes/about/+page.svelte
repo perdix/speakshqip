@@ -59,6 +59,96 @@
     },
   ];
 
+ 
+  const blogPosts = [
+  {
+    id: "051d532d-2b90-4c49-8034-7e2e4578296",
+    titel: "Viel sprechen, auch mit Fehlern",
+    description: "Zögere nicht, Fehler zu machen. Je mehr du sprichst, desto besser wirst du.",
+    image: "graphics/image1.jpg"  // Gleiche Bildstruktur wie cardInfo
+  },
+  {
+    id: "1c70ec9a-2b70-4c67-b3c9-6d2c8411f2f0",
+    titel: "Verwende die Sprache im Alltag",
+    description: "Versuche, die neue Sprache in deinen Alltag zu integrieren.",
+    image: "graphics/image2.jpg"  // Gleiche Bildstruktur wie cardInfo
+  },
+  {
+    id: "23a3c668-0c09-4d95-9f5a-8f38eefc9c26",
+    titel: "Setze auf regelmäßige Wiederholungen",
+    description: "Verwende Apps wie Quizlet oder Anki, um regelmäßig zu üben.",
+    image: "graphics/image3.jpg"  // Gleiche Bildstruktur wie cardInfo
+  }
+];
+const courses = [
+    {
+      id: "0a74a405-c3b4-4c79-ad0d-84e0af52e89",
+      name: "Ordering in a restaurant",
+      desc: "Basic phrases and words that help you order",
+      count: 6,
+      xp: 100,
+      students: 25,
+      lessons: 8,
+      rating: 4.8
+    },
+    {
+      id: "17d723b1-3965-43ef-8c29-7c9fc4a7959d",
+      name: "Belongings",
+      desc: "Learning how to talk about belongings",
+      count: 8,
+      xp: 100,
+      students: 32,
+      lessons: 6,
+      rating: 4.9
+    },
+    {
+      id: "3f4951e9-ce8c-412f-b86f-ec43982d2527",
+      name: "Shopping around the city",
+      desc: "Basic phrases and words that help you while shopping",
+      count: 4,
+      xp: 100,
+      students: 28,
+      lessons: 7,
+      rating: 4.7
+    },
+    {
+      id: "40e113b8-b63e-4816-a15c-99174a47d6c3",
+      name: "Getting groceries",
+      desc: "Basic phrases and words that help you buy groceries",
+      count: 5,
+      xp: 100,
+      students: 30,
+      lessons: 5,
+      rating: 4.6
+    }
+  ];
+
+
+  import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient(
+  "https://bwzdxxvcoifrajdrfrai.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ3emR4eHZjb2lmcmFqZHJmcmFpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDg2OTc5NjgsImV4cCI6MjAyNDI3Mzk2OH0.bsXtaDV4P95MZD7UETjk17ckEXedoZV6O4VKpVqit0E"
+);
+
+let lessons = []; // Speichert die abgerufenen Daten
+
+// Daten abrufen
+async function loadLessons() {
+  const { data, error } = await supabase
+    .from("lessons")
+    .select("id, name, desc,image");
+
+  if (error) {
+    console.error("Fehler beim Abrufen der Daten:", error);
+  } else {
+    lessons = data; // Daten setzen
+  }
+}
+
+// Beim Laden der Komponente Daten abrufen
+loadLessons();
+
 
 </script>
 
@@ -131,22 +221,114 @@
   </div>
 </div>
 
+<!-- Read our Blog Section -->
+<div class="bg-gray-50 py-16 px-8 mt-24"> <!-- Added mt-24 for more spacing -->
+  <!-- Blog Section Header -->
+  <div class="max-w-6xl mx-auto flex justify-between items-center mb-12">
+    <h2 class="text-3xl font-bold text-gray-800">Read Our Blog</h2>
+    <button 
+      class="bg-red-600 text-white py-2 px-6 rounded-md hover:bg-red-700 transition duration-300"
+    >
+      Read More
+    </button>
+  </div>
+
+  <!-- Blog Cards Grid -->
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+    {#each blogPosts as post, index}
+      <div class="bg-white overflow-hidden group hover:shadow-lg transition duration-300">
+        <!-- Image Container -->
+        <div class="relative overflow-hidden">
+          <!-- Index Number -->
+          <div class="absolute top-4 left-4 bg-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-medium text-gray-600">
+            {index + 1}
+          </div>
+          <!-- Image -->
+          <img 
+            src={post.image}
+            alt={post.titel}
+            class="w-full h-64 object-cover group-hover:scale-105 transition duration-300"
+          />
+        </div>
+        
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">{post.titel}</h3>
+          <p class="text-gray-600 text-sm mb-4 line-clamp-2">{post.description}</p>
+          <button 
+            class="text-gray-600 text-sm hover:text-gray-800 transition flex items-center gap-2"
+          >
+            Learn more →
+          </button>
+        </div>
+      </div>
+    {/each}
+  </div>
+</div>
+
 
 <!-- Our Courses Section -->
 
-<div class="mx-8 sm:mx-12 md:mx-16 flex justify-center mt-40">
-  <h1 class="text-5xl font-bold">Our Courses</h1>
+<!-- Our Lessons Section -->
+<div class="bg-gray-50 py-16 px-8">
+  <div class="max-w-6xl mx-auto mb-12">
+    <h2 class="text-3xl font-bold text-gray-800 text-center mb-8">Our Lessons</h2>
+    <p class="text-gray-600 text-center max-w-3xl mx-auto mb-12">
+      Dive into our curated lessons that help you expand your knowledge and skills in an engaging way.
+    </p>
+  </div>
+
+  <!-- Horizontal Scrollable Container -->
+  <div class="max-w-6xl mx-auto relative">
+    <!-- Lessons Cards Horizontal Scroll -->
+    <div class="overflow-x-auto pb-6 hide-scrollbar">
+      <div class="flex gap-6 min-w-min">
+        {#each lessons as lesson}
+          <!-- Fixed width for each card to ensure consistent sizing -->
+          <div class="w-80 flex-shrink-0">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden group hover:shadow-lg transition duration-300 h-full">
+              <!-- Card Header (Image) -->
+              <div class="relative h-40 overflow-hidden">
+                {#if lesson.image}
+                  <img 
+                    src={lesson.image}
+                    alt={lesson.name}
+                    class="w-full h-full object-cover"
+                  />
+                {:else}
+                  <!-- Placeholder if no image -->
+                  <div class="bg-gray-200 h-full flex items-center justify-center">
+                    <span class="text-xl font-semibold text-gray-600">#{lesson.id}</span>
+                  </div>
+                {/if}
+              </div>
+              <!-- Card Content -->
+              <div class="p-6">
+                <h3 class="text-lg font-bold text-gray-800 mb-2">{lesson.name}</h3>
+                <p class="text-sm text-gray-600 mb-4">{lesson.desc}</p>
+                <button 
+                  class="text-red-600 text-sm hover:text-red-800 transition flex items-center gap-2"
+                >
+                  Learn More →
+                </button>
+              </div>
+            </div>
+          </div>
+        {/each}
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="mx-8 sm:mx-12 md:mx-16 flex justify-center items-center flex-col sm:flex-row sm:flex-wrap mt-8">
-  {#each cardInfo as card (card.header)}
-    <InfoCard
-      header={card.header}
-      message={card.message}
-      image={card.image}
-    />
-  {/each}
-</div>
+<style>
+  /* Hide scrollbar but keep functionality */
+  .hide-scrollbar {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
 
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+</style>
 
 <FaqSection />
