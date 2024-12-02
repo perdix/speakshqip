@@ -36,6 +36,7 @@
     "esbuild": "^0.24.0",
     "font": "^0.0.4",
     "font-awesome": "^4.7.0",
+    "i": "^0.3.7",
     "punycode": "^2.3.1",
     "svelte-sound": "^0.6.0",
     "uglify-js": "^3.19.3",
