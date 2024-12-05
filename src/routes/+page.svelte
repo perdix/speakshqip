@@ -25,7 +25,7 @@
 
 <div class="flex justify-center mt-6">
   <a
-    href="#"
+    href="/learn"
     class="p-2 cursor-pointer bg-cd-red text-white text-center rounded-md transition-all hover:opacity-85"
     >Get Started</a
   >
@@ -44,7 +44,7 @@
 </div>
 <div class="flex justify-center">
   <a
-    href="#"
+    href="/learn"
     class="p-2 cursor-pointer bg-cd-red text-white text-center rounded-md shadow-lg transition-all hover:opacity-85"
     >Get Started</a
   >

@@ -18,7 +18,7 @@
         use, and you can learn at your own pace.
       </p>
       <a
-        href="#"
+        href="/about"
         class="p-3 bg-cd-red text-white text-center rounded-md m-6 ml-10 shadow-lg transition-all hover:opacity-85"
         >Read More</a
       >
@@ -42,7 +42,7 @@
         possible.
       </p>
       <a
-        href="#"
+        href="/learn"
         class="ml-10 p-3 bg-cd-red text-white text-center rounded-md m-6 shadow-lg transition-all hover:opacity-85"
         >Get Started</a
       >
