@@ -44,6 +44,9 @@
       <li class="md:mr-2 p-3">
         <a href="/learn" on:click={closeNavbar}>Learn</a>
       </li>
+      <li class="md:mr-2 p-3">
+        <a href="/profile" on:click={closeNavbar}>Profile</a>
+      </li>
       <li class="p-3">
         {#if $page.data.session}
           <form action="/logout" method="POST">
