@@ -1,7 +1,5 @@
 <script>
-  import DashboardCartLeft from "../../lib/components/DashboardCartLeft.svelte";
-  import DashboardCartMiddle from "../../lib/components/DashboardCartMiddle.svelte";
-  import DashboardCartRight from "../../lib/components/DashboardCartRight.svelte";
+  import DashboardContainerLeft from "../../lib/components/DashboardContainerLeft.svelte";
 
   export let data;
 </script>
@@ -14,8 +12,6 @@
   referrerpolicy="no-referrer"
 />
 
-<div class="flex w-full justify-center items-center flex-col md:flex-row">
-  <DashboardCartLeft />
-  <DashboardCartMiddle />
-  <DashboardCartRight />
+<div class=" mx-3 mt-2 h-screen flex justify-start items-center flex-col">
+  <DashboardContainerLeft />
 </div>
