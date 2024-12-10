@@ -14,7 +14,7 @@ export async function load({ params, parent }) {
   // Falls benutzer noch keine profildaten hat wird er zu setup redirected
   const { data: userDetails, error } = await supabase
     .from("userdetails")
-    .select("username")
+    .select("username, xp")
     .eq("id", session.user.id);
   const userName = userDetails[0].username;
   console.log(userName);
@@ -25,5 +25,5 @@ export async function load({ params, parent }) {
     console.error("Error fetching user details:", error.message);
   }
 
-  return {};
+  return {userDetails};
 }

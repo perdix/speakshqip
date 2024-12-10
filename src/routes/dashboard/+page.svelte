@@ -13,5 +13,5 @@
 />
 
 <div class=" mx-3 mt-2 h-screen flex justify-start items-center flex-col">
-  <DashboardContainerLeft />
+  <DashboardContainerLeft xp={data.userDetails.xp} />
 </div>
