@@ -2,25 +2,39 @@
   export let data;
 </script>
 
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+  integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+
 <div
-  class="w-full bg-red-50 mt-5 p-5 rounded-lg flex justify-center items-center flex-col border-2 border-cd-red shadow-md"
+  class="w-full mt-5 p-5 rounded-lg flex justify-start items-start flex-col border-2 shadow-md"
 >
-  <h1 class="text-3xl font-bold text-cd-red mb-4">Leaderboard</h1>
+  <h1 class="text-3xl font-bold text-cd-black mb-4">Leaderboard</h1>
   <ul class="w-full list-none">
     {#each data.leaderboard as user, index}
       <li
         class="flex justify-between items-center bg-white border-2 border-gray-200 rounded-lg p-3 mt-2 shadow-sm transition hover:bg-gray-50"
       >
-        <span class="font-bold text-lg flex"
+        <span class="font-bold text-lg flex justify-center items-center"
           >{index + 1}
           <img
-            class=" h-16 w-16 object-cover rounded-full"
+            class=" h-16 w-16 object-cover rounded-full ml-3 border-2"
             src={user.public_image_url}
             alt=""
           />
-          {user.username}</span
+          <span class=" ml-3">{user.username}</span></span
         >
-        <span class="text-yellow-500 font-medium">{user.xp} XP</span>
+        <span class="text-yellow-300 font-medium"
+          >{user.xp}
+          <i
+            class="fa-solid text-yellow-300 fa-bolt ml-1"
+            style="text-shadow: 0 0 10px yellow;"
+          ></i></span
+        >
       </li>
     {/each}
   </ul>

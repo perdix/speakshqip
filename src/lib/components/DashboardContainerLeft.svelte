@@ -10,7 +10,7 @@
 >
   <div class=" flex w-full justify-center items-center">
     <div
-      class=" h-20 w-20 rounded-full border-2 border-cd-red object-cover bg-center bg-cover"
+      class=" h-20 w-20 rounded-full border-2 object-cover bg-center bg-cover"
       style="background-image: url({pfp});"
     ></div>
   </div>

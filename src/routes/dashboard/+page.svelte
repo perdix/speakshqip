@@ -2,7 +2,6 @@
   import DashboardContainerLeft from "../../lib/components/DashboardContainerLeft.svelte";
   import DashboardContainerMiddle from "../../lib/components/DashboardContainerMiddle.svelte";
   import DashboardLeaderboardRight from "../../lib/components/DashboardLeaderboardRight.svelte";
-  import Leaderboard from "../leaderboard/+page.svelte";
 
   export let data;
 </script>
@@ -23,4 +22,5 @@
     level={data.userDetails.level}
   />
   <DashboardContainerMiddle />
+  <DashboardLeaderboardRight />
 </div>
