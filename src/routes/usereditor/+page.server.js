@@ -27,3 +27,27 @@ export async function load({ url, parent, locals: { supabase } }) {
     limit,
   };
 }
+export const actions = {
+  default: async ({ request, locals: { supabase } }) => {
+    try {
+      const { updatedDetails } = await request.json();
+      const { error } = await supabase
+        .from("userdetails")
+        .update(updatedDetails)
+        .eq("id", updatedDetails.id); 
+
+      if (error) {
+        console.error("Error updating user details:", error);
+        return { success: false, error: "Failed to update user details" };
+      }
+
+      return { success: true };
+    } catch (err) {
+      console.error("Error processing request:", err);
+      return { success: false, error: "Invalid request" };
+    }
+  },
+};
+
+
+

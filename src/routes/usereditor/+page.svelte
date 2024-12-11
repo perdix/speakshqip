@@ -15,20 +15,35 @@
       }
   };
 
-  let editableRow = null; // Tracks the row currently being edited
-  let updatedDetails = {}; // Stores updated data for the row
+  let editableRow = null; 
+  let updatedDetails = {}; 
 
   const editRow = (index, details) => {
-      editableRow = index; // Set the index of the row being edited
-      updatedDetails = { ...details }; // Initialize with current row details
+      editableRow = index; 
+      updatedDetails = { ...details }; 
   };
 
-  const submitRow = (index) => {
-      console.log("Updated Details:", updatedDetails); // Replace this with your update logic
-      // Reset editing state
-      editableRow = null;
-      updatedDetails = {};
-  };
+  const submitRow = async (index) => {
+  console.log("Updated Details:", updatedDetails);
+
+  const response = await fetch("/usereditor", {
+    method: "POST",
+    body: JSON.stringify({ updatedDetails }),
+  });
+  console.log(JSON.stringify({ updatedDetails }));
+
+
+  if (response.ok) {
+    console.log("Update successful");
+    window.location.reload();
+
+  } else {
+    console.error("Update failed");
+  }
+
+  editableRow = null;
+  updatedDetails = {};
+};
 </script>
 
 <table class="table-auto w-full border-collapse border border-gray-300">
@@ -37,7 +52,6 @@
       {#each data.userDetails as details, index}
           {#if details.username != null}
               <tr class="even:bg-gray-100 hover:bg-gray-200 transition-colors">
-                  <!-- Make cells editable if this row is being edited -->
                   <td class="border border-gray-300 px-4 py-2">
                       {#if editableRow === index}
                           <input type="text" bind:value={updatedDetails.username} class="border border-gray-300 px-2 py-1 w-full" />
