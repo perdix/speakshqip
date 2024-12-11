@@ -1,25 +1,35 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient } from "@supabase/supabase-js";
 
+// Verwende Umgebungsvariablen für sensible Daten wie Supabase-URL und API-Schlüssel
 const supabase = createClient(
-  'https://bwzdxxvcoifrajdrfrai.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ3emR4eHZjb2lmcmFqZHJmcmFpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDg2OTc5NjgsImV4cCI6MjAyNDI3Mzk2OH0.bsXtaDV4P95MZD7UETjk17ckEXedoZV6O4VKpVqit0E'
+  process.env.SUPABASE_URL,  // Nimm die URL aus der Umgebungsvariable
+  process.env.SUPABASE_KEY   // Nimm den API-Schlüssel aus der Umgebungsvariable
 );
 
+/** @type {import('@sveltejs/kit').PageServerLoad} */
 export async function load() {
-  // Supabase-Abfrage zur Funfacts-Tabelle
-  const { data, error } = await supabase
-    .from('Funfacts') // Name der Tabelle
-    .select('uuid, title, subtitle'); // Spalten, die abgerufen werden sollen
+  try {
+    // Abfrage zur Tabelle '10tips'
+    const { data, error, status } = await supabase
+      .from("10tips")
+      .select("id, titel, description");
 
-  if (error) {
-    console.error('Fehler beim Abrufen der Daten:', error);
-    throw new Error('Daten konnten nicht geladen werden');
-  }
-
-  // Rückgabe der abgerufenen Daten
-  return {
-    props: {
-      funfacts: data // Array der Ergebnisse
+    // Überprüfe, ob ein Fehler aufgetreten ist
+    if (error && status !== 406) {
+      throw new Error(`Fehler beim Abrufen der Daten: ${error.message}`);
     }
-  };
+
+    // Falls keine Daten gefunden wurden, gib ein leeres Array zurück
+    return {
+      tips: data || [] // Rückgabe der abgerufenen Daten oder leeres Array
+    };
+  } catch (error) {
+    // Fehlerbehandlung: Ausgabe der Fehlernachricht in der Konsole
+    console.error("Fehler beim Laden der Daten:", error.message);
+
+    // Rückgabe einer leeren Liste oder einer entsprechenden Fehlermeldung
+    return {
+      tips: []
+    };
+  }
 }
