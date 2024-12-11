@@ -222,7 +222,10 @@
   <!-- Added mt-24 for more spacing -->
   <!-- Blog Section Header -->
   <div class="max-w-6xl mx-auto flex justify-between items-center mb-12">
-    <h2 class="text-3xl font-bold text-gray-800">Read Our Blog</h2>
+    <a href="src\routes\blogs\+page.svelte">
+      <h2 class="text-3xl font-bold text-gray-800 hover:text-red-500">Read Our Blog</h2>
+    </a>
+    
   </div>
 
   <!-- Blog Cards Grid -->
@@ -252,11 +255,13 @@
           <p class="text-gray-600 text-sm mb-4 line-clamp-2">
             {post.description}
           </p>
-          <button
-            class="text-gray-600 text-sm hover:text-gray-800 transition flex items-center gap-2"
-          >
-            Learn more →
-          </button>
+          <a 
+  href="src\routes\blogs\+page.svelte" 
+  class="text-gray-600 text-sm hover:text-gray-800 transition flex items-center gap-2"
+>
+  Learn more →
+</a>
+
         </div>
       </div>
     {/each}
