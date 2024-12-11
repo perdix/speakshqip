@@ -1,21 +1,50 @@
+<script>
+  export let xp;
+  export let username;
+  export let pfp;
+  export let level;
+</script>
+
 <div
-  class=" w-full p-3 rounded-lg flex justify-center items-center flex-col"
-  style="box-shadow: 0 0 2px;"
+  class=" w-full p-3 rounded-lg flex justify-center items-center flex-col border-2"
 >
-  <div class=" h-20 w-20 rounded-full border-2 border-cd-red">.</div>
+  <div class=" flex w-full justify-center items-center">
+    <div
+      class=" h-20 w-20 rounded-full border-2 object-cover bg-center bg-cover"
+      style="background-image: url({pfp});"
+    ></div>
+  </div>
   <h1
-    class=" mt-5 text-2xl font-semibold flex justify-around items-center w-1/2"
+    class=" mt-2 text-2xl font-semibold flex justify-center items-center w-1/2"
   >
-    Username <a
-      href="/profile"
-      class="fa-solid fa-sliders mt-0.5 opacity-40 transition-all hover:opacity-30"
-    ></a>
+    {username}
   </h1>
-  <a
-    href="/learn"
-    class=" flex justify-start items-center p-2 rounded-md text-white bg-cd-red mt-5"
-    style="box-shadow: 0 0 4px red;"
-    ><p>Continute learning</p>
-    <i class="fa-solid fa-arrow-right-long mt-0.5 ml-2"></i></a
-  >
+  <div class=" w-full mx-auto">
+    <div
+      class="w-1/2 mx-auto mt-5 flex justify-center items-center p-2 rounded-md text-white transition-all border-2 border-yellow-300 hover:opacity-80"
+      style="box-shadow: 2px 0px 300px -59px yellow;"
+    >
+      <span class=" font-bold text-yellow-300">{xp}</span>
+      <i
+        class="fa-solid text-yellow-300 fa-bolt ml-1"
+        style="text-shadow: 0 0 10px yellow;"
+      ></i>
+    </div>
+    <div
+      class="w-1/2 mx-auto mt-2 flex justify-center items-center p-2 rounded-md text-white transition-all border-2 border-cd-red hover:opacity-80"
+      style="box-shadow: 2px 0px 300px -59px red;"
+    >
+      <span class=" font-bold text-cd-red">Level {level}</span>
+      <i class="fa-solid fa-layer-group text-cd-red ml-1"></i>
+    </div>
+    <a href="/profile">
+      <button
+        class="w-1/2 mx-auto mt-2 flex justify-center items-center p-2 rounded-md text-white transition-all border-2 border-cd-red bg-cd-red hover:opacity-80"
+        style="box-shadow: 2px 0px 300px -59px red;"
+      >
+        <span class=" font-bold">Edit profile</span>
+        <i class="fa-solid fa-user ml-1"></i>
+      </button></a
+    >
+  </div>
 </div>

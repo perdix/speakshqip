@@ -1,5 +1,7 @@
 <script>
   import DashboardContainerLeft from "../../lib/components/DashboardContainerLeft.svelte";
+  import DashboardContainerMiddle from "../../lib/components/DashboardContainerMiddle.svelte";
+  import DashboardLeaderboardRight from "../../lib/components/DashboardLeaderboardRight.svelte";
 
   export let data;
 </script>
@@ -12,6 +14,13 @@
   referrerpolicy="no-referrer"
 />
 
-<div class=" mx-3 mt-2 h-screen flex justify-start items-center flex-col">
-  <DashboardContainerLeft />
+<div class=" m-5 flex flex-col md:flex-row">
+  <DashboardContainerLeft
+    pfp={data.userDetails.public_image_url}
+    username={data.userDetails.username}
+    xp={data.userDetails.xp}
+    level={data.userDetails.level}
+  />
+  <DashboardContainerMiddle />
+  <DashboardLeaderboardRight />
 </div>

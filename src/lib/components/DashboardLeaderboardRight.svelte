@@ -1,28 +1,20 @@
 <script>
-  export let data;
+  export let leaderboard = [];
 </script>
 
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-  integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>
-
 <div
-  class="w-full mt-5 p-5 rounded-lg flex justify-start items-start flex-col border-2 shadow-md"
+  class="w-full mt-3 md:mt-0 p-5 rounded-lg flex justify-start items-start flex-col border-2 md:ml-3"
 >
   <h1 class="text-3xl font-bold text-cd-black mb-4">Leaderboard</h1>
   <ul class="w-full list-none">
-    {#each data.leaderboard as user, index}
+    {#each leaderboard as user, index}
       <li
         class="flex justify-between items-center bg-white border-2 border-gray-200 rounded-lg p-3 mt-2 shadow-sm transition hover:bg-gray-50"
       >
         <span class="font-bold text-lg flex justify-center items-center"
           >{index + 1}
           <img
-            class=" h-16 w-16 object-cover rounded-full ml-3 border-2"
+            class=" h-16 w-16 object-cover rounded-full ml-3 border-2 pointer-events-none"
             src={user.public_image_url}
             alt=""
           />
