@@ -7,13 +7,18 @@
 </script>
 
 <div class="flex justify-center">
-  <h1 class=" text-6xl font-bold mt-28 mr-48 ml-48 text-cd-black">
+  <h1 class="text-6xl font-bold mt-28 mr-48 ml-48 text-cd-black">
     SpeakShqip
   </h1>
 </div>
 
 <div use:tilt class="flex justify-center">
   <div
+<<<<<<< HEAD
+    class="h-[30rem] md:h-[40rem] lg:h-[50rem] rounded-3xl border-2 border-cd-red mt-9 w-4/5 flex justify-center items-center"
+    style="background-image: url('/graphics/fd.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;"
+  ></div>
+=======
     class=" pointer-events-none m-9 flex justify-center items-center bg-center bg-cover"
   >
     <img
@@ -22,9 +27,10 @@
       style=" object-fit:cover;"
     />
   </div>
+>>>>>>> 1863e02a8a92768e930169f5dbb21cea0eb6f202
 </div>
 
-<p class=" text-base text-center mt-10">
+<p class="text-base text-center mt-10">
   Start your Albanian language journey with SpeakShqip.
 </p>
 
@@ -32,20 +38,20 @@
   <a
     href="/learn"
     class="p-2 cursor-pointer bg-cd-red text-white text-center rounded-md transition-all hover:opacity-85"
-    >Get Started</a
   >
+    Get Started
+  </a>
 </div>
 
 <InfoSection></InfoSection>
-<div class=" mt-32">
+
+<div class="mt-32">
   <QuoteSection></QuoteSection>
 </div>
 
-<!--Sign Up CTA-->
+<!-- Sign Up CTA -->
 <div class="flex justify-center h-60 flex-col items-center">
-  <h1
-    class=" text-4xl font-bold mt-9 md:text-6xl transition-all hover:opacity-85"
-  >
+  <h1 class="text-4xl font-bold mt-9 md:text-6xl transition-all hover:opacity-85">
     Sign up today
   </h1>
 </div>
@@ -53,9 +59,11 @@
   <a
     href="/learn"
     class="p-2 cursor-pointer bg-cd-red text-white text-center rounded-md shadow-lg transition-all hover:opacity-85"
-    >Get Started</a
   >
+    Get Started
+  </a>
 </div>
+
 <br /><br />
 
 <!-- <ul>
