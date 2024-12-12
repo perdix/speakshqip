@@ -14,9 +14,12 @@
 
 <div use:tilt class="flex justify-center">
   <div
-    class=" h-96 rounded-3xl border-2 border-cd-red mt-9 w-4/5 flex justify-center items-center"
-    style="background-image: url('/static/graphics/fd.jpg');"
-  ></div>
+  class="h-[30rem] md:h-[40rem] lg:h-[50rem] rounded-3xl border-2 border-cd-red mt-9 w-4/5 flex justify-center items-center"
+  style="background-image: url('/graphics/fd.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;"
+></div>
+
+
+
 </div>
 
 <p class=" text-base text-center mt-10">
