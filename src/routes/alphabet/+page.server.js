@@ -8,7 +8,7 @@ const supabase = createClient(
 export async function load({ params, parent, locals }) {
   const { session, user } = await parent();
   const { data } = supabase.storage.from('media').getPublicUrl('TestAudio/test.m4a');
-  const { data : alphabetData } = await supabase.from("alphabet").select("*");
+  const { data : alphabetData } = await supabase.from("alphabet").select("*") .order('uppercase_letter', { ascending: true });
  return {
    publicUrl: data.publicUrl,
    alphabetData 
