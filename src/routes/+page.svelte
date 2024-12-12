@@ -14,9 +14,14 @@
 
 <div use:tilt class="flex justify-center">
   <div
-    class=" h-96 rounded-3xl border-2 border-cd-red mt-9 w-4/5 flex justify-center items-center"
-    style="background-image: url('/static/graphics/fd.jpg');"
-  ></div>
+    class=" pointer-events-none m-9 flex justify-center items-center bg-center bg-cover"
+  >
+    <img
+      src="/graphics/fd.jpg"
+      class="h-96 rounded-3xl border-2 border-cd-red"
+      style=" object-fit:cover;"
+    />
+  </div>
 </div>
 
 <p class=" text-base text-center mt-10">
@@ -32,7 +37,9 @@
 </div>
 
 <InfoSection></InfoSection>
-<QuoteSection></QuoteSection>
+<div class=" mt-32">
+  <QuoteSection></QuoteSection>
+</div>
 
 <!--Sign Up CTA-->
 <div class="flex justify-center h-60 flex-col items-center">
