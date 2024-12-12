@@ -14,7 +14,6 @@
 
 <div use:tilt class="flex justify-center">
   <div
-<<<<<<< HEAD
     class=" pointer-events-none m-9 flex justify-center items-center bg-center bg-cover"
   >
     <img
@@ -23,14 +22,6 @@
       style=" object-fit:cover;"
     />
   </div>
-=======
-  class="h-[30rem] md:h-[40rem] lg:h-[50rem] rounded-3xl border-2 border-cd-red mt-9 w-4/5 flex justify-center items-center"
-  style="background-image: url('/graphics/fd.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;"
-></div>
-
-
-
->>>>>>> 17e297f1135044fa951c304029f2abc09157ed9b
 </div>
 
 <p class=" text-base text-center mt-10">
