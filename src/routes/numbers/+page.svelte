@@ -8,7 +8,7 @@ export let data;
 
 
 {#each data.numberData as numbers}
-<Numbers letterUpperCase={numbers.numbers_column} />
+<Numbers numbersColumn={numbers.numbers_column} />
 
 {/each}
 
