@@ -7,9 +7,12 @@ export let data;
 </script>
 
 
-{#each data.numberData as numbers}
-<Numbers letterUpperCase={numbers.numbers_column} />
-
-{/each}
+{#if data.error}
+  <p class="error">{data.error}</p>
+{:else}
+  {#each data.numbersData as numbers}
+    <Numbers numbersColumn={numbers.numbers_column} />
+  {/each}
+{/if}
 
 

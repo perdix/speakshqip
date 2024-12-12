@@ -11,6 +11,6 @@ export async function load({ params, parent, locals }) {
   const { data : numbersData } = await supabase.from("numbers").select("*");
  return {
    publicUrl: data.publicUrl,
-   alphabetData 
+   numbersData 
  }
 }
