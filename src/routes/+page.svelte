@@ -14,8 +14,8 @@
 
 <div use:tilt class="flex justify-center">
   <div
-    class=" rounded-3xl border-2 border-cd-red mt-9 w-4/5 flex justify-center items-center"
-    style="height: 500px;"
+    class=" h-96 rounded-3xl border-2 border-cd-red mt-9 w-4/5 flex justify-center items-center"
+    style="background-image: url('/static/graphics/fd.jpg');"
   ></div>
 </div>
 

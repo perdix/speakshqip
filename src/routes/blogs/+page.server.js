@@ -1,3 +1,4 @@
+
 import { createClient } from "@supabase/supabase-js";
 
 // Verwende Umgebungsvariablen für sensible Daten wie Supabase-URL und API-Schlüssel
