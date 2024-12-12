@@ -96,11 +96,11 @@
                   </td>
                   <td class="border border-gray-300 px-4 py-2">
                       {#if editableRow === index}
-                          <button on:click={() => submitRow(index)} class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+                          <button on:click={() => submitRow(index)} class="bg-cd-red text-white px-4 py-2 rounded hover:bg-green-600">
                               Submit
                           </button>
                       {:else}
-                          <button on:click={() => editRow(index, details)} class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                          <button on:click={() => editRow(index, details)} class="bg-cd-red text-white px-4 py-2 rounded hover:bg-red-600">
                               Edit
                           </button>
                       {/if}
