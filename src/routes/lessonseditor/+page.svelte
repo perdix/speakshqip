@@ -26,11 +26,8 @@
   const submitRow = async (index) => {
       console.log("Updated Details:", updatedDetails);
 
-      const response = await fetch("/lessoneditor", {
+      const response = await fetch("/lessonseditor", {
           method: "POST",
-          headers: {
-              'Content-Type': 'application/json'
-          },
           body: JSON.stringify({ updatedDetails }),
       });
 

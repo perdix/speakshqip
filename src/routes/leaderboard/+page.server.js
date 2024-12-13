@@ -1,4 +1,6 @@
 /** @type {import('./$types').PageServerLoad} */
+import { redirect } from "@sveltejs/kit";
+
 export async function load({ url, parent, locals: { supabase } }) {
     const { session, user } = await parent();
     if (!session) {

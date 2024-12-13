@@ -1,13 +1,9 @@
-<div class=" bg-cd-lightred w-full mt-16">
-  <div
-    class="info-top flex justify-between items-center p-3 flex-col sm:flex-row"
-  >
-    <div
-      class="  ml-auto mr-auto mt-9 mb-8 md:mb-0 h-52 sm:h-60 sm:w-2/5 md:w-2/6 w-full"
-    >
+<div class="bg-cd-lightred w-full mt-16">
+  <div class="info-top flex justify-between items-center p-3 flex-col sm:flex-row">
+    <div class="ml-auto mr-auto mt-9 mb-8 md:mb-0 h-52 sm:h-60 sm:w-2/5 md:w-2/6 w-full">
       <img
         src="graphics/home_1.jpg"
-        class=" border-2 border-cd-red rounded-3xl"
+        class="border-2 border-cd-red rounded-3xl"
         alt=""
       />
     </div>
@@ -29,19 +25,8 @@
     </div>
   </div>
   <br /><br />
-  <div
-    class="info-top flex justify-between items-center p-3 flex-col sm:flex-row"
-  >
-    <div
-      class="  ml-auto mr-auto mt-9 mb-8 md:mb-0 h-52 sm:h-60 sm:w-2/5 md:w-2/6 w-full"
-    >
-      <img
-        src="graphics/home_2.jpg"
-        class=" border-2 border-cd-red rounded-3xl"
-        alt=""
-      />
-    </div>
-    <div class="info-left sm:w-3/5 sm:order-1 md:w-4/6">
+  <div class="info-top flex justify-between items-center p-3 flex-col sm:flex-row">
+    <div class="info-left sm:w-3/5 md:w-4/6">
       <h1 class="text-left m-7 ml-10 font-bold text-5xl">Contact Us</h1>
       <p class="m-7 ml-10">
         Have questions, feedback, or just want to say hello? We'd love to hear
@@ -55,6 +40,13 @@
         class="ml-10 p-3 bg-cd-red text-white text-center rounded-md m-6 shadow-lg transition-all hover:opacity-85"
         >Get Started</a
       >
+    </div>
+    <div class="ml-auto mr-auto mt-9 mb-8 md:mb-0 h-52 sm:h-60 sm:w-2/5 md:w-2/6 w-full sm:order-2">
+      <img
+        src="graphics/home_2.jpg"
+        class="border-2 border-cd-red rounded-3xl"
+        alt=""
+      />
     </div>
   </div>
   <br /><br />

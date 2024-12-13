@@ -13,9 +13,14 @@
 </div>
 <div use:tilt class="flex justify-center">
   <div
-    class="h-[30rem] md:h-[40rem] lg:h-[50rem] rounded-3xl border-2 border-cd-red mt-9 w-4/5 flex justify-center items-center bg-center bg-cover"
-    style="background-image: url('/graphics/fd.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;"
-  ></div>
+    class=" pointer-events-none m-9 flex justify-center items-center bg-center bg-cover"
+  >
+    <img
+      src="/graphics/fd.jpg"
+      class="h-96 rounded-3xl border-2 border-cd-red"
+      style=" object-fit:cover;"
+    />
+  </div>
 </div>
 
 
