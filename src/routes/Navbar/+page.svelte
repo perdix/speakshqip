@@ -41,11 +41,14 @@
       <li class="p-3 {currentPage === '/about' ? 'font-bold' : ''}">
         <a href="/about" on:click={closeNavbar}>About</a>
       </li>
-      <li class="md:mr-2 p-3">
+      <li class="p-3 {currentPage === '/learn' ? 'font-bold' : ''}">
         <a href="/learn" on:click={closeNavbar}>Learn</a>
       </li>
-      <li class="md:mr-2 p-3">
+      <li class="p-3 {currentPage === '/profile' ? 'font-bold' : ''}">
         <a href="/profile" on:click={closeNavbar}>Profile</a>
+      </li>
+      <li class="p-3 {currentPage === '/dashboard' ? 'font-bold' : ''}">
+        <a href="/dashboard" on:click={closeNavbar}>Dashboard</a>
       </li>
       <li class="p-3">
         {#if $page.data.session}
