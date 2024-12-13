@@ -1,7 +1,6 @@
 <script>
     import { useSound } from "svelte-sound";
     import Alphabet from "../../lib/components/Alphabet.svelte";
-<<<<<<< HEAD
   
     export let data;
     const click_sound = useSound(data.publicUrl, ["click"]);
