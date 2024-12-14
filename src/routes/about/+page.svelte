@@ -222,7 +222,7 @@
   <!-- Added mt-24 for more spacing -->
   <!-- Blog Section Header -->
   <div class="max-w-6xl mx-auto flex justify-between items-center mb-12">
-    <a href="src\routes\blog1\+page.svelte">
+    <a href="\blog1">
       <h2 class="text-3xl font-bold text-gray-800 hover:text-red-500">Read Our Blog</h2>
     </a>
     

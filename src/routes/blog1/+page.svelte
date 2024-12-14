@@ -9,30 +9,57 @@
   );
 
   let blogs = []; // Blogs data
+  let selectedBlog = null; // Selected blog details
   let loading = true; // Loading state
   let errorMessage = ""; // Error message
   let currentPage = 1; // Current page for pagination
   const blogsPerPage = 3; // Number of blogs to show per page
+  let totalBlogs = 0; // Total number of blogs for pagination
 
-  // Fetch blogs from the Supabase database
+  // Fetch blogs for the main page
   const fetchBlogs = async () => {
     loading = true;
     try {
-      const { data, error } = await supabase
+      const { data, error, count } = await supabase
         .from("blogs") // Table name
-        .select("*") // Select all columns
+        .select("*", { count: "exact" }) // Select all columns and total count
         .order("date", { ascending: false }) // Sort by date (latest first)
-        .range((currentPage - 1) * blogsPerPage, currentPage * blogsPerPage - 1); // Pagination logic
+        .range((currentPage - 1) * blogsPerPage, currentPage * blogsPerPage - 1); // Paginate results
 
       if (error) {
         errorMessage = "Error fetching blogs: " + error.message;
         console.error(errorMessage);
       } else {
         blogs = data;
+        totalBlogs = count; // Set total number of blogs for pagination
       }
     } catch (err) {
       console.error("Unknown error:", err);
       errorMessage = "Unknown error fetching blogs.";
+    } finally {
+      loading = false;
+    }
+  };
+
+  // Fetch detailed information for the selected blog
+  const fetchBlogDetails = async (id) => {
+    loading = true;
+    try {
+      const { data, error } = await supabase
+        .from("blogs")
+        .select("*")  // Select all columns
+        .eq("id", id)
+        .single();
+
+      if (error) {
+        errorMessage = "Error fetching blog details: " + error.message;
+        console.error(errorMessage);
+      } else {
+        selectedBlog = data;
+      }
+    } catch (err) {
+      console.error("Unknown error:", err);
+      errorMessage = "Unknown error fetching blog details.";
     } finally {
       loading = false;
     }
@@ -43,13 +70,24 @@
     fetchBlogs();
   });
 
-  // Load next page of blogs
-  const loadNextPage = () => {
-    currentPage += 1;
-    fetchBlogs();
+  // Handle blog card click
+  const handleCardClick = (id) => {
+    fetchBlogDetails(id);
   };
 
-  // Load previous page of blogs
+  // Back to blog list
+  const backToList = () => {
+    selectedBlog = null;
+  };
+
+  // Handle pagination (next and previous)
+  const loadNextPage = () => {
+    if ((currentPage - 1) * blogsPerPage < totalBlogs) {
+      currentPage += 1;
+      fetchBlogs();
+    }
+  };
+
   const loadPreviousPage = () => {
     if (currentPage > 1) {
       currentPage -= 1;
@@ -58,90 +96,116 @@
   };
 </script>
 
-<!-- Blogs Section -->
+<!-- Blog Section -->
 <div class="container mx-auto px-4 py-16">
-  <h2 class="text-4xl font-extrabold text-center text-gray-900 mb-12 tracking-tight">
-    Our Latest Blogs
-    <span class="block text-base text-gray-600 mt-2 font-normal">Inspirational Insights and Expert Knowledge</span>
-  </h2>
+  <!-- Title and Subtitle -->
+  <div class="text-center mb-12">
+    <h1 class="text-4xl font-extrabold text-gray-900">Explore Our Blogs</h1>
+    <p class="text-xl text-gray-600">Discover the latest insights and articles to help you grow and learn.</p>
+  </div>
 
   {#if loading}
-    <div class="flex justify-center items-center h-64">
-      <div class="animate-pulse flex space-x-4">
-        <div class="rounded-full bg-gray-300 h-12 w-12"></div>
-        <div class="flex-1 space-y-4 py-1">
-          <div class="h-4 bg-gray-300 rounded w-3/4"></div>
-          <div class="space-y-3">
-            <div class="h-4 bg-gray-300 rounded"></div>
-            <div class="h-4 bg-gray-300 rounded w-5/6"></div>
-          </div>
+    <div class="text-center">Loading...</div>
+  {:else if errorMessage}
+    <div class="text-red-600 text-center">{errorMessage}</div>
+  {:else if selectedBlog}
+    <!-- Selected Blog Details -->
+    <div class="max-w-5xl mx-auto bg-white shadow-2xl rounded-xl overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105">
+      <!-- Back Button -->
+      <button
+        on:click={backToList}
+        class="mb-8 text-lg font-semibold text-red-600 hover:text-blue-800 focus:outline-none transition-all duration-300"
+      >
+        ← Back to Blogs
+      </button>
+    
+      <!-- Blog Image with Gradient Overlay -->
+      <div class="relative h-96 overflow-hidden rounded-t-xl">
+        <img
+          src={selectedBlog.image}
+          alt={selectedBlog.title}
+          class="w-full h-full object-cover object-center"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+      </div>
+    
+      <!-- Blog Content -->
+      <div class="px-10 py-8 space-y-6">
+        <!-- Blog Title -->
+        <h1 class="text-3xl font-bold text-gray-900 tracking-tight">
+          {selectedBlog.title}
+        </h1>
+
+        <!-- Author Name -->
+        <p class="text-sm text-gray-600">By {selectedBlog.author}</p> <!-- 'author' field in the blog -->
+
+        <!-- Blog Date -->
+        <time class="text-sm text-gray-600 block mt-2">{selectedBlog.date}</time>
+
+        <!-- Blog Content -->
+        <div class="text-gray-800 space-y-4 text-lg leading-relaxed">
+          <p>{selectedBlog.article}</p>
         </div>
       </div>
     </div>
-  {:else if errorMessage}
-    <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded relative text-center" role="alert">
-      <strong class="font-bold">Error: </strong>
-      <span class="block sm:inline">{errorMessage}</span>
-    </div>
+    
   {:else if blogs.length === 0}
-    <div class="text-center bg-gray-100 p-10 rounded-lg">
-      <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-      </svg>
-      <p class="mt-4 text-xl text-gray-600">No Blogs Found</p>
-    </div>
+    <div class="text-center bg-gray-100 p-10 rounded-lg">No Blogs Found</div>
   {:else}
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- Blog Cards (Vertical Stack) -->
+    <div class="flex flex-col gap-8">
       {#each blogs as blog}
-        <article class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 group">
-          <div class="relative overflow-hidden">
-            <img 
-              src={blog.image} 
-              alt={blog.title} 
-              class="w-full h-56 object-cover transition-transform duration-500 group-hover:text-red-600"
+        <article
+          class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 group"
+          on:click={() => handleCardClick(blog.id)}
+        >
+          <div class="relative overflow-hidden cursor-pointer">
+            <img
+              src={blog.image}
+              alt={blog.title}
+              class="w-full h-72 object-cover"  
             />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-              <p class="text-white font-medium text-sm tracking-wide">Learn More</p>
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4"
+            >
+              <p class="text-white font-medium text-sm tracking-wide">
+                Learn More
+              </p>
             </div>
           </div>
           <div class="p-6">
             <header>
-              <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-red-600 transition-colors">
+              <h3
+                class="text-xl font-semibold text-gray-900 mb-2"
+              >
                 {blog.title}
               </h3>
-              <time class="text-sm text-gray-500 block mb-3">{blog.date}</time>
+              <time class="text-sm text-gray-500 block mb-3">
+                {blog.date}
+              </time>
             </header>
             <p class="text-gray-600 text-sm leading-relaxed line-clamp-3">
               {blog.short_description}
             </p>
-            <div class="mt-4 flex items-center justify-between">
-              <a href="#" class="text-red-800 font-semibold text-sm hover:text-blue-800 transition-colors">
-                More Details
-              </a>
-              <div class="flex items-center space-x-2">
-                <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-              </div>
-            </div>
           </div>
         </article>
       {/each}
     </div>
-    
-    <!-- Pagination controls -->
+
+    <!-- Pagination Controls -->
     <div class="mt-12 flex justify-center">
       <nav aria-label="Pagination" class="inline-flex rounded-md shadow-sm -space-x-px">
-        <button 
-          on:click={loadPreviousPage} 
+        <button
+          on:click={loadPreviousPage}
           class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50"
           disabled={currentPage === 1}
         >
           Previous
         </button>
-        <button 
-          on:click={loadNextPage} 
+        <button
+          on:click={loadNextPage}
           class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+          disabled={(currentPage * blogsPerPage) >= totalBlogs}
         >
           Next
         </button>
