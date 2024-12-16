@@ -168,7 +168,7 @@
           </button>
         {:else}
           <form method="post" action="?/endLesson" use:enhance>
-            <input type="hidden" name="lostXP" />
+            <input type="hidden" name="lostXP" value=0/>
             <input type="hidden" name="user_id" value={data.session.user.id} />
             <button
               type="submit"
