@@ -66,21 +66,21 @@
       titel: "Viel sprechen, auch mit Fehlern",
       description:
         "Zögere nicht, Fehler zu machen. Je mehr du sprichst, desto besser wirst du.",
-      image: "graphics/image1.jpg", // Gleiche Bildstruktur wie cardInfo
+      image: "graphics/image1.jpg", 
     },
     {
       id: "1c70ec9a-2b70-4c67-b3c9-6d2c8411f2f0",
       titel: "Verwende die Sprache im Alltag",
       description:
         "Versuche, die neue Sprache in deinen Alltag zu integrieren.",
-      image: "graphics/image2.jpg", // Gleiche Bildstruktur wie cardInfo
+      image: "graphics/image2.jpg", 
     },
     {
       id: "23a3c668-0c09-4d95-9f5a-8f38eefc9c26",
       titel: "Setze auf regelmäßige Wiederholungen",
       description:
         "Verwende Apps wie Quizlet oder Anki, um regelmäßig zu üben.",
-      image: "graphics/image3.jpg", // Gleiche Bildstruktur wie cardInfo
+      image: "graphics/image3.jpg", 
     },
   ];
 
@@ -91,9 +91,9 @@
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ3emR4eHZjb2lmcmFqZHJmcmFpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDg2OTc5NjgsImV4cCI6MjAyNDI3Mzk2OH0.bsXtaDV4P95MZD7UETjk17ckEXedoZV6O4VKpVqit0E"
   );
 
-  let lessons = []; // Speichert die abgerufenen Daten
+  let lessons = []; 
 
-  // Daten abrufen
+ 
   async function loadLessons() {
     const { data, error } = await supabase
       .from("lessons")
@@ -102,11 +102,11 @@
     if (error) {
       console.error("Fehler beim Abrufen der Daten:", error);
     } else {
-      lessons = data; // Daten setzen
+      lessons = data; 
     }
   }
 
-  // Beim Laden der Komponente Daten abrufen
+ 
   loadLessons();
 
   let scrollContainer;
@@ -130,16 +130,17 @@
   }
 </script>
 
+  <!-- Hero Section -->
 <div
   class="relative bg-white min-h-screen flex items-center justify-start overflow-hidden px-8"
 >
-  <!-- Background Circle -->
+
   <div
     class="absolute bg-red-300 h-[450px] w-[450px] rounded-full -top-24 -right-24 opacity-40"
   ></div>
 
   <div class="relative z-10 max-w-6xl mx-auto w-full flex items-center">
-    <!-- Text content -->
+   
     <div class="w-1/2 z-20 pr-12">
       <h1 class="text-4xl lg:text-5xl font-bold text-gray-800 leading-tight">
         Develop your skills in a <br />
@@ -170,7 +171,7 @@
       </div>
     </div>
 
-    <!-- SVG Section -->
+   
     <div
       class="absolute top-0 right-0 w-1/2 h-full flex items-center justify-end"
     >
@@ -188,7 +189,6 @@
   <div
     class="container mx-auto flex flex-col lg:flex-row items-center justify-between space-y-8 lg:space-y-0 lg:space-x-12"
   >
-    <!-- Text Section -->
     <div class="w-full lg:w-1/2 text-center lg:text-left">
       <h2
         class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-800 leading-tight"
@@ -202,7 +202,7 @@
       </p>
     </div>
 
-    <!-- Benefits Grid -->
+
     <div class="w-full lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6">
       {#each benefits as benefit}
         <div
@@ -219,37 +219,28 @@
 
 <!-- Read our Blog Section -->
 <div class="bg-gray-50 py-16 px-8 mt-24">
-  <!-- Added mt-24 for more spacing -->
-  <!-- Blog Section Header -->
   <div class="max-w-6xl mx-auto flex justify-between items-center mb-12">
     <a href="\blog1">
       <h2 class="text-3xl font-bold text-gray-800 hover:text-red-500">Read Our Blog</h2>
-    </a>
-    
+    </a>   
   </div>
-
-  <!-- Blog Cards Grid -->
   <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
     {#each blogPosts as post, index}
       <div
         class="bg-white overflow-hidden group hover:shadow-lg transition duration-300"
-      >
-        <!-- Image Container -->
+      >   
         <div class="relative overflow-hidden">
-          <!-- Index Number -->
           <div
             class="absolute top-4 left-4 bg-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-medium text-gray-600"
           >
             {index + 1}
           </div>
-          <!-- Image -->
           <img
             src={post.image}
             alt={post.titel}
             class="w-full h-64 object-cover group-hover:scale-105 transition duration-300"
           />
         </div>
-
         <div class="p-6">
           <h3 class="text-xl font-semibold text-gray-800 mb-2">{post.titel}</h3>
           <p class="text-gray-600 text-sm mb-4 line-clamp-2">
@@ -261,7 +252,6 @@
 >
   Learn more →
 </a>
-
         </div>
       </div>
     {/each}
@@ -277,10 +267,7 @@
       knowledge.
     </p>
   </div>
-
-  <!-- Scroll Container with Buttons -->
   <div class="max-w-6xl mx-auto relative">
-    <!-- Left Scroll Button -->
     <button
       on:click={scrollLeft}
       class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition"
@@ -301,7 +288,6 @@
       </svg>
     </button>
 
-    <!-- Right Scroll Button -->
     <button
       on:click={scrollRight}
       class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition"
@@ -322,7 +308,6 @@
       </svg>
     </button>
 
-    <!-- Cards Container -->
     <div
       bind:this={scrollContainer}
       class="overflow-x-auto flex gap-6 scroll-smooth pb-4"
@@ -332,7 +317,6 @@
         <div
           class="min-w-[300px] bg-white rounded-lg shadow-md overflow-hidden group hover:shadow-lg transition duration-300 relative"
         >
-          <!-- Card Header -->
           <div class="bg-gray-200 h-40 flex items-center justify-center">
             {#if lesson.image}
               <img
@@ -347,15 +331,12 @@
             {/if}
           </div>
 
-          <!-- Card Content -->
           <div class="p-6">
             <h3 class="text-lg font-bold text-gray-800 mb-2">{lesson.name}</h3>
             <p class="text-sm text-gray-600 mb-10 line-clamp-3">
               {lesson.desc}
             </p>
           </div>
-
-          <!-- Card Button -->
         </div>
       {/each}
     </div>
