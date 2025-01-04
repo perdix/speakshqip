@@ -44,7 +44,7 @@
 
   <!-- Rechter Bereich: Formular -->
   <div class="md:w-1/2 bg-white shadow-lg rounded-lg p-8">
-    <h1 class="text-2xl font-bold text-red-600 mb-2">Need support?</h1>
+    <h1 class="text-2xl font-bold text-red-600 mb-2">Get in touch</h1>
     <p class="text-gray-600 mb-6">Contact us if you need further assistance.</p>
 
     {#if errorMessage}
