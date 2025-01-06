@@ -18,15 +18,28 @@
   }
 </script>
 
-<h1 class="text-6xl font-bold m-9 text-cd-black">Learn</h1>
+<h1 class="text-6xl font-bold m-9 text-cd-black text-center">
+  Learn <i class="fa-brands fa-leanpub ml-2 text-cd-red"></i>
+</h1>
 {#each data.unit as unit}
-  <h1 class="text-3xl font-semibold m-9 text-cd-black">{unit.name}</h1>
-  <h1 class="text-1xl font-semibold m-9 text-cd-black">{unit.desc}</h1>
+  <div class=" p-4 ml-auto mr-auto w-full flex justify-center items-center">
+    <div class="relative rounded-md p-4 overflow-hidden">
+      <div
+        class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+        style="background-image: url(https://images.pexels.com/photos/5987058/pexels-photo-5987058.jpeg); "
+      ></div>
+
+      <div class="relative z-10">
+        <h1 class="text-3xl font-semibold">
+          Welcome to <span class="text-cd-red">Albania</span>
+        </h1>
+        <h1 class="text-1xl font-semibold mt-3">{unit.desc}</h1>
+      </div>
+    </div>
+  </div>
 
   <div class="flex flex-col h-full rounded-md p-4">
     {#each data.lesson.sort((a, b) => a.count - b.count) as lesson}
-      <!-- svelte-ignore a11y-no-static-element-interactions -->
-      <!-- svelte-ignore a11y-click-events-have-key-events -->
       <div on:click={() => toggleLesson(lesson.id)}>
         <a href="#{lesson.id}">
           <SidebarLessons lessonName={lesson.name} />
