@@ -7,7 +7,6 @@ export const load = async ({ parent, url, locals: { supabase } }) => {
     let code = url.searchParams.get("code");
     if (code) {
       const { error, data } = await supabase.auth.exchangeCodeForSession(code);
-      // redirect(302, "/updatePassword");
     } else {
       redirect(302, "/login");
     }
