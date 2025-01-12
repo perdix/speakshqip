@@ -23,7 +23,7 @@ export const actions = {
 
     const user_id = formData.get("user_id");
     const xpNegative = formData.get("lostXP");
- 
+
     const { data: lessonData, error: lessonError } = await supabase
       .from("lessons")
       .select("xp")
