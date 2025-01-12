@@ -11,7 +11,6 @@ export async function load({ params, parent }) {
   if (!session) {
     redirect(302, "/login");
   }
-  // Falls benutzer noch keine profildaten hat wird er zu setup redirected
   const { data: userDetails, error } = await supabase
     .from("userdetails")
     .select("username")

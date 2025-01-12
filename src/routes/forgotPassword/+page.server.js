@@ -1,12 +1,11 @@
 import { redirect } from "@sveltejs/kit";
 
 export const actions = {
-  recover: async ({ cookies, request, locals: { supabase } }) => {
+  recover: async ({ cookies, request, locals: { supabase }, url }) => {
     const data = await request.formData();
     const email = data.get("email");
-
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: "https://speakshqip.net/UpdatePassword",
+      redirectTo: `${url.origin}/updatePassword`,
     });
     if (error) {
       console.error("error:", error);
@@ -14,5 +13,10 @@ export const actions = {
     } else {
       console.log("Password reset email sent");
     }
+    return {
+      success: {
+        successMessage: "Password recovery email has been sent",
+      },
+    };
   },
 };

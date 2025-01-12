@@ -4,13 +4,21 @@ import { redirect } from "@sveltejs/kit";
 export async function load({ params, parent, locals: { supabase } }) {
   const { session, userDetails } = await parent();
 
-  // Properly throw the redirect
+  const { data: nationalities, error: countryError } = await supabase
+    .from("countries")
+    .select("*");
+  if (countryError) {
+    console.error("error:", nationalityError);
+    return { success: false, message: "Nationalities could not be loaded" };
+  }
+
   if (!session) {
     throw redirect(302, "/login");
   }
 
   return {
     userDetails,
+    nationalities,
   };
 }
 

@@ -18,7 +18,7 @@
   $: currentPage = $page.url.pathname;
 </script>
 
-{#key $page.data.userDetails.public_image_url}
+{#key $page.data.userDetails?.public_image_url}
   <nav
     class="w-screen flex justify-between items-center p-3 bg-cd-red flex-row"
   >
@@ -41,8 +41,14 @@
       <li class="p-3 {currentPage === '/about' ? 'font-bold' : ''}">
         <a href="/about" on:click={closeNavbar}>About</a>
       </li>
-      <li class="md:mr-2 p-3">
+      <li class="p-3 {currentPage === '/learn' ? 'font-bold' : ''}">
         <a href="/learn" on:click={closeNavbar}>Learn</a>
+      </li>
+      <li class="p-3 {currentPage === '/profile' ? 'font-bold' : ''}">
+        <a href="/profile" on:click={closeNavbar}>Profile</a>
+      </li>
+      <li class="p-3 {currentPage === '/dashboard' ? 'font-bold' : ''}">
+        <a href="/dashboard" on:click={closeNavbar}>Dashboard</a>
       </li>
       <li class="p-3">
         {#if $page.data.session}
@@ -54,7 +60,7 @@
               id="submit"
               value="Log In"
             >
-              {#if $page.data.userDetails.public_image_url}
+              {#if $page.data.userDetails?.public_image_url}
                 <img
                   src={$page.data.userDetails.public_image_url}
                   alt="profile"

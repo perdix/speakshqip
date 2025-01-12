@@ -1,14 +1,16 @@
-<br /><br />
-<div class=" bg-cd-lightred w-full">
-  <div
-    class="info-top flex justify-between items-center p-3 flex-col sm:flex-row"
-  >
-    <div
-      class="rounded-3xl bg-zinc-900 ml-auto mr-auto mt-9 h-52 w-80 sm:h-60 sm:w-2/5 md:w-2/6"
-    ></div>
+<div class="bg-cd-lightred w-full mt-16">
+  <div class="info-top flex justify-between items-center p-3 flex-col sm:flex-row">
+    <div class="ml-auto mr-auto mt-9 mb-8 md:mb-0 h-52 sm:h-60 sm:w-2/5 md:w-2/6 w-full">
+      <img
+        src="graphics/home_1.jpg"
+        class="border-2 border-cd-red rounded-3xl"
+        alt=""
+      />
+    </div>
+
     <div class="info-right sm:w-3/5 md:w-4/6">
-      <h1 class=" text-left m-8 ml-10 font-bold text-5xl">About Us</h1>
-      <p class=" m-7 ml-10">
+      <h1 class="text-left m-8 ml-10 font-bold text-5xl">About Us</h1>
+      <p class="m-7 ml-10">
         SpeakShqip is a website that helps people learn Albanian. It has
         different sections with lots of words to learn. You can practice these
         words and build your Albanian skills step by step. Whether you're just
@@ -16,22 +18,17 @@
         use, and you can learn at your own pace.
       </p>
       <a
-        href="#"
+        href="/about"
         class="p-3 bg-cd-red text-white text-center rounded-md m-6 ml-10 shadow-lg transition-all hover:opacity-85"
         >Read More</a
       >
     </div>
   </div>
-  <!----> <br /><br />
-  <div
-    class="info-top flex justify-between items-center p-3 flex-col sm:flex-row"
-  >
-    <div
-      class="rounded-3xl bg-zinc-900 ml-auto mr-auto mt-9 h-52 w-80 sm:h-60 sm:w-2/5 order-2 md:w-2/6"
-    ></div>
-    <div class="info-left order-2 sm:w-3/5 sm:order-1 md:w-4/6">
-      <h1 class=" text-left m-7 ml-10 font-bold text-5xl">Contact Us</h1>
-      <p class=" m-7 ml-10">
+  <br /><br />
+  <div class="info-top flex justify-between items-center p-3 flex-col sm:flex-row">
+    <div class="info-left sm:w-3/5 md:w-4/6">
+      <h1 class="text-left m-7 ml-10 font-bold text-5xl">Contact Us</h1>
+      <p class="m-7 ml-10">
         Have questions, feedback, or just want to say hello? We'd love to hear
         from you! Reach out to us using the form below or connect with us via
         email or social media. Your input is invaluable as we strive to improve
@@ -39,10 +36,17 @@
         possible.
       </p>
       <a
-        href="#"
+        href="/learn"
         class="ml-10 p-3 bg-cd-red text-white text-center rounded-md m-6 shadow-lg transition-all hover:opacity-85"
         >Get Started</a
       >
+    </div>
+    <div class="ml-auto mr-auto mt-9 mb-8 md:mb-0 h-52 sm:h-60 sm:w-2/5 md:w-2/6 w-full sm:order-2">
+      <img
+        src="graphics/home_2.jpg"
+        class="border-2 border-cd-red rounded-3xl"
+        alt=""
+      />
     </div>
   </div>
   <br /><br />
