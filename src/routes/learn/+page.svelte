@@ -3,6 +3,7 @@
   import LessonRow from "../../lib/components/LessonRow.svelte";
   import SidebarLessons from "../../lib/components/SidebarLessons.svelte";
   import LessonRowInfo from "../../lib/components/LessonRowInfo.svelte";
+  import LearnHeader from "../../lib/components/LearnHeader.svelte";
   export let data;
 
   let selectedLessonId = null;
@@ -23,19 +24,7 @@
 </h1>
 {#each data.unit as unit}
   <div class=" p-4 ml-auto mr-auto w-full flex justify-center items-center">
-    <div class="relative rounded-md p-4 overflow-hidden">
-      <div
-        class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
-        style="background-image: url(https://images.pexels.com/photos/5987058/pexels-photo-5987058.jpeg); "
-      ></div>
-
-      <div class="relative z-10">
-        <h1 class="text-3xl font-semibold">
-          Welcome to <span class="text-cd-red">Albania</span>
-        </h1>
-        <h1 class="text-1xl font-semibold mt-3">{unit.desc}</h1>
-      </div>
-    </div>
+    <LearnHeader unitDescription={unit.desc} />
   </div>
 
   <div class="flex flex-col h-full rounded-md p-4">
