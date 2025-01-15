@@ -50,6 +50,9 @@
       <li class="p-3 {currentPage === '/dashboard' ? 'font-bold' : ''}">
         <a href="/dashboard" on:click={closeNavbar}>Dashboard</a>
       </li>
+      <li class="p-3 {currentPage === '/leaderboard' ? 'font-bold' : ''}">
+        <a href="/leaderboard" on:click={closeNavbar}>Leaderborad</a>
+      </li>
       <li class="p-3">
         {#if $page.data.session}
           <form action="/logout" method="POST">
