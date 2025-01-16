@@ -4,6 +4,7 @@
   import DashboardLeaderboardRight from "../../lib/components/DashboardLeaderboardRight.svelte";
 
   export let data;
+  const { words, leaderboard } = data; 
 </script>
 
 <link
@@ -22,5 +23,5 @@
     level={data.userDetails.level}
   />
   <DashboardContainerMiddle />
-  <DashboardLeaderboardRight />
+  <DashboardLeaderboardRight {leaderboard}/>
 </div>
