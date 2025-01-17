@@ -11,3 +11,5 @@ export async function load({ params, parent, locals: {supabase}}) {
    alphabetData 
  }
 }
+
+
