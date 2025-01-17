@@ -11,11 +11,8 @@
     <div class="info-right sm:w-3/5 md:w-4/6">
       <h1 class="text-left m-8 ml-10 font-bold text-5xl">About Us</h1>
       <p class="m-7 ml-10">
-        SpeakShqip is a website that helps people learn Albanian. It has
-        different sections with lots of words to learn. You can practice these
-        words and build your Albanian skills step by step. Whether you're just
-        starting or want to improve, SpeakShqip is here to help. It's easy to
-        use, and you can learn at your own pace.
+       
+SpeakShqip is a comprehensive website designed to help users learn Albanian from English. It offers a variety of interactive tools such as quizzes, vocabulary lists, and audio features to enhance learning. The website provides a fun and engaging way to practice and improve your Albanian skills, whether you're a beginner or looking to expand your knowledge. With its user-friendly interface, SpeakShqip makes language learning accessible and enjoyable for all.
       </p>
       <a
         href="/about"

@@ -2,56 +2,24 @@
   let name = '';
   let email = '';
   let message = '';
-  let errorMessage = '';
-
-  const validateEmail = (email) => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    errorMessage = '';
-
-    if (!name || !email || !message) {
-      errorMessage = 'Bitte füllen Sie alle Felder aus.';
-      return;
-    }
-
-    if (!validateEmail(email)) {
-      errorMessage = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.';
-      return;
-    }
-
-    console.log('Formular gesendet:', { name, email, message });
-    alert('Vielen Dank für Ihre Nachricht!');
-    
-    // Formular zurücksetzen
-    name = '';
-    email = '';
-    message = '';
-  };
 </script>
 
 <main class="flex flex-col md:flex-row items-center justify-center min-h-screen bg-gray-50 p-5">
-  <!-- Linker Bereich: Bild -->
+  <!-- Left Side: Image -->
   <div class="md:w-1/2 flex justify-center">
     <img
-    src="/graphics/animation_contact.gif"
-    alt="Support Phone"
-    class="w-[40%] md:w-[50%] max-w-lg h-auto">
+      src="/graphics/contact.png"
+      alt="Support Phone"
+      class="w-[40%] md:w-[50%] max-w-lg h-auto"
+    >
   </div>
 
-  <!-- Rechter Bereich: Formular -->
+  <!-- Right Side: Form -->
   <div class="md:w-1/2 bg-white shadow-lg rounded-lg p-8">
     <h1 class="text-2xl font-bold text-red-600 mb-2">Get in touch</h1>
     <p class="text-gray-600 mb-6">Contact us if you need further assistance.</p>
 
-    {#if errorMessage}
-      <div class="text-red-500 mb-4">{errorMessage}</div>
-    {/if}
-
-    <form on:submit={handleSubmit} class="space-y-4">
+    <form method="POST" action="/your-endpoint" class="space-y-4">
       <div>
         <label for="name" class="block text-sm font-medium text-gray-700">Name and surname</label>
         <input
@@ -94,3 +62,4 @@
     </form>
   </div>
 </main>
+

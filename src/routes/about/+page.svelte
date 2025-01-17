@@ -42,21 +42,21 @@
     {
       title: "Albanian Courses",
       description:
-        "Learn the Albanian language through structured courses for beginners and advanced learners.",
+        "Take advantage of our well-structured courses designed for both beginners and advanced learners. Start from the basics or dive deep into more complex topics.",
     },
     {
       title: "Vocabulary Training",
       description:
-        "Expand your vocabulary with interactive word lists and exercises.",
+        "Expand your vocabulary with interactive word lists and exercises.Learn words in context for better retention and recall.",
     },
     {
-      title: "Quizzes & Games",
+      title: "Interactive Quizzes",
       description:
-        "Test your knowledge with quizzes and language games for fun learning.",
+        "Test your knowledge with our fun and challenging quizzes, specially designed to improve your language comprehension.",
     },
     {
-      title: "1.5k+ Hours of Material",
-      description: "Access a vast range of learning resources and exercises.",
+      title: "Listening Exercises",
+      description: "Listen to native speakers and improve your listening skills to better navigate everyday conversations.",
     },
   ];
 
@@ -143,14 +143,14 @@
    
     <div class="w-1/2 z-20 pr-12">
       <h1 class="text-4xl lg:text-5xl font-bold text-gray-800 leading-tight">
-        Develop your skills in a <br />
-        <span class="text-red-600">new and unique way</span>
+        Develop Your Albanian Skills in a 
+
+ <br />
+        <span class="text-red-600">Unique Way</span>
       </h1>
 
       <p class="mt-6 text-base lg:text-lg text-gray-600">
-        Explore a transformative approach to skill development on our online
-        learning platform. Elevate your learning experience and unlock new
-        possibilities today!
+        Unlock the beauty of the Albanian language through an innovative approach to learning. Explore our interactive online platform that combines engaging content, practical exercises, and exciting challenges to accelerate your language journey.
       </p>
 
       <div class="mt-8 flex justify-start gap-4">
@@ -196,9 +196,7 @@
         Why <span class="text-red-600">Learn Albanian?</span>
       </h2>
       <p class="mt-4 sm:mt-6 text-base sm:text-lg text-gray-600">
-        Discover the beauty of the Albanian language with our interactive
-        learning platform. Learn at your own pace and enjoy exciting content
-        that will help you make rapid progress.
+        Dive into the rich culture and history of Albania by mastering its language. Our interactive learning platform offers a fun and effective way to study, so you can progress quickly and confidently at your own pace.
       </p>
     </div>
 
