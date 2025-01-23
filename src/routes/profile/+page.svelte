@@ -3,13 +3,14 @@
   import { invalidateAll } from "$app/navigation";
   export let data;
   export let form;
+  
 
   let submitForm;
   let edit = false;
   let showAvatarPopup = false; // Toggle for showing avatar popup
   let selectedAvatar = ""; // Selected avatar option
   let uploadImage = "";
-
+  console.log(data.urls);
   function openAvatarPopup() {
     showAvatarPopup = true;
   }
@@ -199,14 +200,14 @@
             <div class="bg-white p-6 rounded-md shadow-md">
               <h2 class="text-xl mb-4">Choose an Avatar</h2>
               <div class="flex gap-4">
-                {#each ["avatar1.png", "avatar2.png", "avatar3.png"] as avatar}
-                  <img
-                    src={avatar}
-                    alt="Avatar option"
-                    class="w-16 h-16 rounded-full cursor-pointer"
-                    on:click={() => selectAvatar(avatar)}
-                  />
-                {/each}
+                {#each data.urls as avatar}
+                <img
+                  src={avatar.publicUrl}
+                  alt="Avatar option"
+                  class="w-16 h-16 rounded-full cursor-pointer"
+                  on:click={() => selectAvatar(avatar)}
+                />
+              {/each}
               </div>
               <label class="block mt-4">
                 <span class="text-sm">Or upload an image:</span>
