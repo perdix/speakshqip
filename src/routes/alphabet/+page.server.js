@@ -6,7 +6,7 @@ export async function load({ params, parent, locals: { supabase } }) {
   const { session } = await parent();
   const { data } = supabase.storage
     .from("media")
-    .getPublicUrl("TestAudio/test.m4a");
+    .getPublicUrl("AlphabetAudio/A.m4a");
   const { data: alphabetData } = await supabase
     .from("alphabet")
     .select("*")

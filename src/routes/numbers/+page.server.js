@@ -9,7 +9,7 @@ export async function load({ params, parent, locals }) {
   const { session, user } = await parent();
   const { data } = supabase.storage
     .from("media")
-    .getPublicUrl("TestAudio/test.m4a");
+    .getPublicUrl("NumbersAudio/1.m4a");
   const { data: numbersData } = await supabase.from("numbers").select("*");
   return {
     publicUrl: data.publicUrl,
