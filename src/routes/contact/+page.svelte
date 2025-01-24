@@ -21,17 +21,17 @@
   function validateField(field, value) {
     switch(field) {
       case 'name':
-        errors.name = value.length < 2 ? "First name must be at least 2 characters" : "";
+        errors.name = value.length < 2 ? "First name too short" : "";
         break;
       case 'lastName':
-        errors.lastName = value.length < 2 ? "Last name must be at least 2 characters" : "";
+        errors.lastName = value.length < 2 ? "Last name too short" : "";
         break;
       case 'email':
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        errors.email = !emailRegex.test(value) ? "Invalid email address" : "";
+        errors.email = !emailRegex.test(value) ? "Invalid email" : "";
         break;
       case 'message':
-        errors.message = value.length < 10 ? "Message must be at least 10 characters" : "";
+        errors.message = value.length < 5 ? "Message too short" : "";
         break;
     }
   }
@@ -69,93 +69,86 @@
       }
     }
   };
-  </script>
-  
-  <div class="min-h-screen bg-gray-100 flex items-center justify-center px-4 py-12">
-    <div class="max-w-md w-full bg-white shadow-2xl rounded-xl overflow-hidden">
-      <div class="px-6 py-8">
-        <h2 class="text-3xl font-extrabold text-center text-gray-900 mb-8">
-          Contact Form
-        </h2>
-        <form on:submit={handleSubmit} class="space-y-6">
-          <div class="grid grid-cols-2 gap-4">
-            <div>
-              <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
-                First Name
-              </label>
-              <input 
-                id="name" 
-                type="text" 
-                bind:value={name} 
-                on:blur={() => validateField('name', name)}
-                class="w-full px-3 py-2 border {errors.name ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-2 {errors.name ? 'focus:ring-red-500' : 'focus:ring-indigo-500'}" 
-                placeholder="Your first name" 
-              />
-              {#if errors.name}
-                <p class="text-red-500 text-xs mt-1">{errors.name}</p>
-              {/if}
-            </div>
-            <div>
-              <label for="lastName" class="block text-sm font-medium text-gray-700 mb-2">
-                Last Name
-              </label>
-              <input 
-                id="lastName" 
-                type="text" 
-                bind:value={lastName} 
-                on:blur={() => validateField('lastName', lastName)}
-                class="w-full px-3 py-2 border {errors.lastName ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-2 {errors.lastName ? 'focus:ring-red-500' : 'focus:ring-indigo-500'}" 
-                placeholder="Your last name" 
-              />
-              {#if errors.lastName}
-                <p class="text-red-500 text-xs mt-1">{errors.lastName}</p>
-              {/if}
-            </div>
-          </div>
-          
+</script>
+
+<div class="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-12">
+  <div class="max-w-screen-xl w-full flex items-center justify-between bg-white shadow-lg rounded-xl overflow-hidden">
+ 
+    <div class="w-1/2 p-8">
+      <img src="graphics\contact_page.jpg" alt="Image Description" class="w-full h-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+    </div>
+
+    <div class="w-1/2 bg-white px-12 py-8">
+      <h2 class="text-3xl font-light text-center text-rose-800 mb-10">
+        Get in touch
+      </h2>
+      <form on:submit={handleSubmit} class="space-y-6">
+        <div class="grid grid-cols-2 gap-4">
           <div>
-            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
-              Email
-            </label>
             <input 
-              id="email" 
-              type="email" 
-              bind:value={email} 
-              on:blur={() => validateField('email', email)}
-              class="w-full px-3 py-2 border {errors.email ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-2 {errors.email ? 'focus:ring-red-500' : 'focus:ring-indigo-500'}" 
-              placeholder="Your email" 
+              id="name" 
+              type="text" 
+              bind:value={name} 
+              on:blur={() => validateField('name', name)}
+              class="w-full px-3 py-2 border-b border-rose-300 focus:border-rose-600 focus:outline-none" 
+              placeholder="First Name" 
             />
-            {#if errors.email}
-              <p class="text-red-500 text-xs mt-1">{errors.email}</p>
+            {#if errors.name}
+              <p class="text-rose-500 text-xs mt-1">{errors.name}</p>
             {/if}
           </div>
-          
           <div>
-            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">
-              Message
-            </label>
-            <textarea 
-              id="message" 
-              bind:value={message} 
-              on:blur={() => validateField('message', message)}
-              rows="4" 
-              class="w-full px-3 py-2 border {errors.message ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-2 {errors.message ? 'focus:ring-red-500' : 'focus:ring-indigo-500'}" 
-              placeholder="Your message"
-            ></textarea>
-            {#if errors.message}
-              <p class="text-red-500 text-xs mt-1">{errors.message}</p>
+            <input 
+              id="lastName" 
+              type="text" 
+              bind:value={lastName} 
+              on:blur={() => validateField('lastName', lastName)}
+              class="w-full px-3 py-2 border-b border-rose-300 focus:border-rose-600 focus:outline-none" 
+              placeholder="Last Name" 
+            />
+            {#if errors.lastName}
+              <p class="text-rose-500 text-xs mt-1">{errors.lastName}</p>
             {/if}
           </div>
-          
-          <div>
-            <button 
-              type="submit" 
-              class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105"
-            >
-              Send Message
-            </button>
-          </div>
-        </form>
-      </div>
+        </div>
+        
+        <div>
+          <input 
+            id="email" 
+            type="email" 
+            bind:value={email} 
+            on:blur={() => validateField('email', email)}
+            class="w-full px-3 py-2 border-b border-rose-300 focus:border-rose-600 focus:outline-none" 
+            placeholder="Email" 
+          />
+          {#if errors.email}
+            <p class="text-rose-500 text-xs mt-1">{errors.email}</p>
+          {/if}
+        </div>
+        
+        <div>
+          <textarea 
+            id="message" 
+            bind:value={message} 
+            on:blur={() => validateField('message', message)}
+            rows="4" 
+            class="w-full px-3 py-2 border-b border-rose-300 focus:border-rose-600 focus:outline-none resize-none" 
+            placeholder="Your Message"
+          ></textarea>
+          {#if errors.message}
+            <p class="text-rose-500 text-xs mt-1">{errors.message}</p>
+          {/if}
+        </div>
+        
+        <div>
+          <button 
+            type="submit" 
+            class="w-full py-3 bg-rose-600 text-white hover:bg-rose-700 transition-colors rounded-md"
+          >
+            Send Message
+          </button>
+        </div>
+      </form>
     </div>
   </div>
+</div>
