@@ -1,9 +1,8 @@
 <script>
   import Numbers from "../../lib/components/Numbers.svelte";
-  import { useSound } from "svelte-sound";
+  import { useSound,sound } from "svelte-sound";
 
   export let data;
-  const click_sound = useSound(data.publicUrl, ["click"]);
 </script>
 
 {#if data.error}
@@ -11,7 +10,7 @@
 {:else}
 <div class="flex flex-wrap justify-evenly items-center gap-4 p-4">
   {#each data.numbersData as numbers}
-    <button  use:click_sound class="px-4 py-2 rounded">
+    <button  use:sound={{ src: numbers.audioUrl, events: ["click"] }} class="px-4 py-2 rounded">
       <Numbers numbersColumn={numbers.numbers_column} numbersPronunciation={numbers.pronunciation} />
     </button>
   {/each}

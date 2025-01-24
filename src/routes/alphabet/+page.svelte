@@ -1,5 +1,5 @@
 <script>
-  import { useSound } from "svelte-sound";
+  import { useSound,sound } from "svelte-sound";
   import Alphabet from "../../lib/components/Alphabet.svelte";
 
   export let data;
@@ -10,12 +10,13 @@
 {:else}
 <div class="flex flex-wrap justify-evenly items-center gap-4 p-4">
   {#each data.alphabetData as alphabet}
-    <button use:click_sound class="px-4 py-2 rounded">
-      <Alphabet 
-        letterUpperCase={alphabet.uppercase_letter} 
+    <button use:sound={{ src: alphabet.audioUrl, events: ["click"] }} class="px-4 py-2 rounded">
+      <Alphabet
+        letterUpperCase={alphabet.uppercase_letter}
         letterLowerCase={alphabet.lowercase_letter}
       />
     </button>
+  
   {/each}
 </div>
 {/if}
