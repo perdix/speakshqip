@@ -7,11 +7,26 @@ export async function load({ params, parent, locals: { supabase } }) {
   const { data: nationalities, error: countryError } = await supabase
     .from("countries")
     .select("*");
+    const urls = [];
+
+    for(let i = 1; i <= 7; i++){
+      const filePath = `avatars/avatar${i}.jpg`;
+      const { data: avatarFiles, error: avatarError } = await supabase.storage.from("media").getPublicUrl(filePath);
+      if(avatarError){
+        console.error("error:", avatarError);
+        return { success: false, message: "Avatars could not be loaded" };
+      }
+    
+      urls.push(avatarFiles);
+
+    }
+    console.log(urls);
   if (countryError) {
-    console.error("error:", nationalityError);
+    console.error("error:", countryError);
     return { success: false, message: "Nationalities could not be loaded" };
   }
 
+ 
   if (!session) {
     throw redirect(302, "/login");
   }
@@ -19,6 +34,7 @@ export async function load({ params, parent, locals: { supabase } }) {
   return {
     userDetails,
     nationalities,
+    urls
   };
 }
 
