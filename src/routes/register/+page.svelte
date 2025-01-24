@@ -5,7 +5,6 @@
   import ModalSuccess from "../../lib/components/ModalSuccess.svelte";
   export let data;
   export let form = { error: null, successMessage: null };
-
 </script>
 
 <div class="flex justify-center items-center flex-col h-64">
@@ -35,16 +34,13 @@
       placeholder="Password"
     />
     <input
-    class=" bg-zinc-200 h-12 w-72 p-3 rounded-md mt-8 focus:outline-none focus:border-zinc-600 focus:ring-1 focus:ring-zinc-600 transition-all"
-    type="password"
-    name="passwordRepeat"
-    id="passwordRepeat"
-    placeholder="Repeat Password"
-  />
+      class=" bg-zinc-200 h-12 w-72 p-3 rounded-md mt-8 focus:outline-none focus:border-zinc-600 focus:ring-1 focus:ring-zinc-600 transition-all"
+      type="password"
+      name="passwordRepeat"
+      id="passwordRepeat"
+      placeholder="Repeat Password"
+    />
 
-    <a href="#" class=" mt-8 hover:opacity-85"
-      >Why do we need this information?</a
-    >
     <button
       class="transition-all bg-zinc-800 h-10 p-2 flex justify-center items-center w-auto rounded-lg mt-8 drop-shadow-md text-white hover:opacity-75"
       type="submit"
@@ -61,7 +57,7 @@
 </div>
 
 {#if form?.error}
-<ModalError errorMessage={form.error} />
+  <ModalError errorMessage={form.error} />
 {/if}
 
 {#if form?.success?.successMessage}

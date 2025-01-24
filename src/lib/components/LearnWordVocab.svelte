@@ -12,7 +12,7 @@
 
 <button use:click_sound on:click={handleClick} class={isPulsing ? "pulse" : ""}>
   <div
-    class="m-1 h-32 w-36 bg-zinc-300 rounded-xl flex justify-between items-start flex-col p-7 text-zinc-500 cursor-pointer transition-all hover:opacity-85"
+    class=" mr-1 mb-1 mt-1 h-32 w-36 bg-zinc-300 rounded-xl flex justify-between items-start flex-col p-7 text-zinc-500 cursor-pointer transition-all hover:opacity-85"
   >
     <h1 class="font-bold text-3xl">Fjalë</h1>
     <p class="flex items-center justify-between w-full text-xl">

@@ -11,7 +11,6 @@
     SpeakShqip
   </h1>
 </div>
-
 <div use:tilt class="flex justify-center">
   <div
     class=" pointer-events-none m-9 flex justify-center items-center bg-center bg-cover"
@@ -23,6 +22,7 @@
     />
   </div>
 </div>
+
 
 <p class="text-base text-center mt-10">
   Start your Albanian language journey with SpeakShqip.

@@ -3,6 +3,7 @@
   import LessonRow from "../../lib/components/LessonRow.svelte";
   import SidebarLessons from "../../lib/components/SidebarLessons.svelte";
   import LessonRowInfo from "../../lib/components/LessonRowInfo.svelte";
+  import LearnHeader from "../../lib/components/LearnHeader.svelte";
   export let data;
 
   let selectedLessonId = null;
@@ -18,15 +19,16 @@
   }
 </script>
 
-<h1 class="text-6xl font-bold m-9 text-cd-black">Learn</h1>
+<h1 class="text-6xl font-bold m-9 text-cd-black text-center">
+  Learn <i class="fa-brands fa-leanpub ml-2 text-cd-red"></i>
+</h1>
 {#each data.unit as unit}
-  <h1 class="text-3xl font-semibold m-9 text-cd-black">{unit.name}</h1>
-  <h1 class="text-1xl font-semibold m-9 text-cd-black">{unit.desc}</h1>
+  <div class=" p-4 ml-auto mr-auto w-full flex justify-center items-center">
+    <LearnHeader unitDescription={unit.desc} />
+  </div>
 
   <div class="flex flex-col h-full rounded-md p-4">
     {#each data.lesson.sort((a, b) => a.count - b.count) as lesson}
-      <!-- svelte-ignore a11y-no-static-element-interactions -->
-      <!-- svelte-ignore a11y-click-events-have-key-events -->
       <div on:click={() => toggleLesson(lesson.id)}>
         <a href="#{lesson.id}">
           <SidebarLessons lessonName={lesson.name} />

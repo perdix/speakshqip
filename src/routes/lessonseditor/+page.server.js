@@ -11,10 +11,14 @@ export async function load({ url, parent, locals: { supabase } }) {
   const limit = 10;
   const offset = (page - 1) * limit;
 
-  const { data: lessons, error, count } = await supabase
+  const {
+    data: lessons,
+    error,
+    count,
+  } = await supabase
     .from("lessons")
     .select("*", { count: "exact" })
-    .order('count', { ascending: true })
+    .order("count", { ascending: true })
     .range(offset, offset + limit - 1);
 
   if (error) {
@@ -37,7 +41,7 @@ export const actions = {
       const { error } = await supabase
         .from("lessons")
         .update(updatedDetails)
-        .eq("id", updatedDetails.id); 
+        .eq("id", updatedDetails.id);
 
       if (error) {
         console.error("Error updating lesson details:", error);
@@ -51,4 +55,3 @@ export const actions = {
     }
   },
 };
-

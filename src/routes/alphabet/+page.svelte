@@ -10,7 +10,7 @@
   <p class="text-red-500">{data.error}</p>
   {:else}
   <div class="flex flex-wrap justify-evenly items-center gap-4 p-4">
-    {#each data.alphabetData as alphabet}
+    {#each data.alphabetData as                                                                alphabet}
       <button use:click_sound class="px-4 py-2 rounded">
         <Alphabet 
           letterUpperCase={alphabet.uppercase_letter} 
@@ -25,4 +25,3 @@
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
   
-
