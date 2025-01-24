@@ -4,7 +4,7 @@
   import DashboardLeaderboardRight from "../../lib/components/DashboardLeaderboardRight.svelte";
 
   export let data;
-  const { words, leaderboard } = data; 
+  const { words, leaderboard } = data;
 </script>
 
 <link
@@ -16,21 +16,26 @@
 />
 
 {#if data.userDetails.role === "Admin"}
-  <header class="bg-red-500 text-white p-6 flex flex-col md:flex-row md:justify-between items-center shadow-md">
+  <header
+    class="bg-red-500 text-white p-6 flex flex-col md:flex-row md:justify-between items-center shadow-md"
+  >
     <div class="mb-4 md:mb-0">
       <h1 class="text-2xl font-bold">Hello, {data.userDetails.username}!</h1>
-      <p class="text-sm md:text-base">Welcome to the Admin Dashboard. You can manage users and edit lessons from here.</p>
+      <p class="text-sm md:text-base">
+        Welcome to the Admin Dashboard. You can manage users and edit lessons
+        from here.
+      </p>
     </div>
 
     <nav class="flex space-x-4">
-      <a 
-        href="/usereditor" 
+      <a
+        href="/usereditor"
         class="px-4 py-2 bg-white text-red-600 hover:bg-red-100 rounded-lg font-medium shadow transition"
       >
         User Editor
       </a>
-      <a 
-        href="/lessonseditor" 
+      <a
+        href="/lessonseditor"
         class="px-4 py-2 bg-white text-red-600 hover:bg-red-100 rounded-lg font-medium shadow transition"
       >
         Lessons Editor
@@ -39,8 +44,7 @@
   </header>
 {/if}
 
-
-<div class=" m-5 flex flex-col md:flex-row">
+<div class=" m-5 flex flex-col lg:flex-row">
   <DashboardContainerLeft
     pfp={data.userDetails.public_image_url}
     username={data.userDetails.username}
@@ -48,5 +52,5 @@
     level={data.userDetails.level}
   />
   <DashboardContainerMiddle />
-  <DashboardLeaderboardRight {leaderboard}/>
+  <DashboardLeaderboardRight {leaderboard} />
 </div>

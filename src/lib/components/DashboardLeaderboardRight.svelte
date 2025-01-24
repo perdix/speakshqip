@@ -3,7 +3,7 @@
 </script>
 
 <div
-  class="w-full mt-3 md:mt-0 p-5 rounded-lg flex justify-start items-start flex-col border-2 md:ml-3"
+  class="w-full mt-3 lg:mt-0 p-5 rounded-lg flex justify-start items-start flex-col border-2 lg:ml-3"
 >
   <h1 class="text-3xl font-bold text-cd-black mb-4">Leaderboard</h1>
   <ul class="w-full list-none">

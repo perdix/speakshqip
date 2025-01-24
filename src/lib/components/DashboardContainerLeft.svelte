@@ -21,7 +21,7 @@
   </h1>
   <div class=" w-full mx-auto">
     <div
-      class="w-1/2 mx-auto mt-5 flex justify-center items-center p-2 rounded-md text-white transition-all border-2 border-yellow-300 hover:opacity-80"
+      class="w-1/2 md:w-4/5 mx-auto mt-5 flex justify-center items-center p-2 md:p-3 rounded-md text-white transition-all border-2 border-yellow-300 hover:opacity-80"
       style="box-shadow: 2px 0px 300px -59px yellow;"
     >
       <span class=" font-bold text-yellow-300">{xp}</span>
@@ -31,7 +31,7 @@
       ></i>
     </div>
     <div
-      class="w-1/2 mx-auto mt-2 flex justify-center items-center p-2 rounded-md text-white transition-all border-2 border-cd-red hover:opacity-80"
+      class="w-1/2 md:w-4/5 mx-auto mt-2 flex justify-center items-center p-2 md:p-3 rounded-md text-white transition-all border-2 border-cd-red hover:opacity-80"
       style="box-shadow: 2px 0px 300px -59px red;"
     >
       <span class=" font-bold text-cd-red">Level {level}</span>
@@ -39,7 +39,7 @@
     </div>
     <a href="/profile">
       <button
-        class="w-1/2 mx-auto mt-2 flex justify-center items-center p-2 rounded-md text-white transition-all border-2 border-cd-red bg-cd-red hover:opacity-80"
+        class="w-1/2 md:w-4/5 mx-auto mt-2 flex justify-center items-center p-2 md:p-3 rounded-md text-white transition-all border-2 border-cd-red bg-cd-red hover:opacity-80"
         style="box-shadow: 2px 0px 300px -59px red;"
       >
         <span class=" font-bold">Edit profile</span>
