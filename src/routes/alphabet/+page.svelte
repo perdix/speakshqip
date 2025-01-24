@@ -3,7 +3,6 @@
   import Alphabet from "../../lib/components/Alphabet.svelte";
 
   export let data;
-  const click_sound = useSound(data.publicUrl, ["click"]);
 </script>
 
 {#if data.error}
