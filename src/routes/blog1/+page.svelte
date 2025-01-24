@@ -21,17 +21,17 @@
     loading = true;
     try {
       const { data, error, count } = await supabase
-        .from("blogs") // Table name
-        .select("*", { count: "exact" }) // Select all columns and total count
-        .order("date", { ascending: false }) // Sort by date (latest first)
-        .range((currentPage - 1) * blogsPerPage, currentPage * blogsPerPage - 1); // Paginate results
+        .from("blogs")
+        .select("*", { count: "exact" })
+        .order("date", { ascending: false })
+        .range((currentPage - 1) * blogsPerPage, currentPage * blogsPerPage - 1);
 
       if (error) {
         errorMessage = "Error fetching blogs: " + error.message;
         console.error(errorMessage);
       } else {
         blogs = data;
-        totalBlogs = count; // Set total number of blogs for pagination
+        totalBlogs = count;
       }
     } catch (err) {
       console.error("Unknown error:", err);
@@ -47,7 +47,7 @@
     try {
       const { data, error } = await supabase
         .from("blogs")
-        .select("*")  // Select all columns
+        .select("*")
         .eq("id", id)
         .single();
 
@@ -99,7 +99,7 @@
 <!-- Blog Section -->
 <div class="container mx-auto px-4 py-16">
   <!-- Title and Subtitle -->
-  <div class="text-center mb-12">
+  <div class="text-center mb-10">
     <h1 class="text-4xl font-extrabold text-gray-900">Explore Our Blogs</h1>
     <p class="text-xl text-gray-600">Discover the latest insights and articles to help you grow and learn.</p>
   </div>
@@ -118,7 +118,7 @@
       >
         ← Back to Blogs
       </button>
-    
+
       <!-- Blog Image with Gradient Overlay -->
       <div class="relative h-96 overflow-hidden rounded-t-xl">
         <img
@@ -128,7 +128,7 @@
         />
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
       </div>
-    
+
       <!-- Blog Content -->
       <div class="px-10 py-8 space-y-6">
         <!-- Blog Title -->
@@ -137,7 +137,7 @@
         </h1>
 
         <!-- Author Name -->
-        <p class="text-sm text-gray-600">By {selectedBlog.author}</p> <!-- 'author' field in the blog -->
+        <p class="text-sm text-gray-600">By {selectedBlog.author}</p>
 
         <!-- Blog Date -->
         <time class="text-sm text-gray-600 block mt-2">{selectedBlog.date}</time>
@@ -148,12 +148,12 @@
         </div>
       </div>
     </div>
-    
+
   {:else if blogs.length === 0}
     <div class="text-center bg-gray-100 p-10 rounded-lg">No Blogs Found</div>
   {:else}
     <!-- Blog Cards (Vertical Stack) -->
-    <div class="flex flex-col gap-8">
+    <div class="max-w-3xl mx-auto flex flex-col gap-8">
       {#each blogs as blog}
         <article
           class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 group"
@@ -163,7 +163,7 @@
             <img
               src={blog.image}
               alt={blog.title}
-              class="w-full h-72 object-cover"  
+              class="w-full h-72 object-cover"
             />
             <div
               class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4"
@@ -190,26 +190,26 @@
           </div>
         </article>
       {/each}
-    </div>
 
-    <!-- Pagination Controls -->
-    <div class="mt-12 flex justify-center">
-      <nav aria-label="Pagination" class="inline-flex rounded-md shadow-sm -space-x-px">
-        <button
-          on:click={loadPreviousPage}
-          class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50"
-          disabled={currentPage === 1}
-        >
-          Previous
-        </button>
-        <button
-          on:click={loadNextPage}
-          class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
-          disabled={(currentPage * blogsPerPage) >= totalBlogs}
-        >
-          Next
-        </button>
-      </nav>
+      <!-- Pagination Controls -->
+      <div class="mt-12 flex justify-center">
+        <nav aria-label="Pagination" class="inline-flex rounded-md shadow-sm -space-x-px">
+          <button
+            on:click={loadPreviousPage}
+            class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50"
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
+          <button
+            on:click={loadNextPage}
+            class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+            disabled={(currentPage * blogsPerPage) >= totalBlogs}
+          >
+            Next
+          </button>
+        </nav>
+      </div>
     </div>
   {/if}
 </div>
