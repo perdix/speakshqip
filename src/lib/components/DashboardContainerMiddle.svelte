@@ -1,5 +1,10 @@
-<div class="w-full mt-3 lg:mt-0 rounded-lg lg:ml-3">
-  <div class="grid grid-cols-2 gap-3 h-full">
+<script>
+  export let user;
+</script>
+
+<div class="w-full mt-3 lg:mt-0 rounded-lg lg:ml-3 flex flex-col justify-start">
+  <div class=" text-4xl font-bold mb-6">Welcome, {user}</div>
+  <div class="grid grid-cols-2 gap-3">
     <a href="/vocabulary" class="h-full">
       <button
         class="w-full h-full border-2 rounded-lg flex justify-center p-7 items-center flex-col transition-all hover:bg-zinc-200"

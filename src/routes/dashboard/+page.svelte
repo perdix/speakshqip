@@ -51,6 +51,6 @@
     xp={data.userDetails.xp}
     level={data.userDetails.level}
   />
-  <DashboardContainerMiddle />
+  <DashboardContainerMiddle user={data.userDetails.username} />
   <DashboardLeaderboardRight {leaderboard} />
 </div>
