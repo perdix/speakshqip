@@ -8,13 +8,26 @@
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ3emR4eHZjb2lmcmFqZHJmcmFpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDg2OTc5NjgsImV4cCI6MjAyNDI3Mzk2OH0.bsXtaDV4P95MZD7UETjk17ckEXedoZV6O4VKpVqit0E"
   );
 
-  let blogs = []; // Blogs data
-  let selectedBlog = null; // Selected blog details
-  let loading = true; // Loading state
-  let errorMessage = ""; // Error message
-  let currentPage = 1; // Current page for pagination
-  const blogsPerPage = 3; // Number of blogs to show per page
-  let totalBlogs = 0; // Total number of blogs for pagination
+  export let data = { userDetails: {} }; // Provide default value
+
+  let blogs = [];
+  let selectedBlog = null;
+  let loading = true;
+  let errorMessage = "";
+  let currentPage = 1;
+  let totalBlogs = 0;
+  const blogsPerPage = 3;
+  let showCreateForm = false;
+
+  // New blog form data
+  let newBlog = {
+    title: "",
+    short_description: "",
+    article: "",
+    image: "",
+    author: "",
+    date: new Date().toISOString().split('T')[0]
+  };
 
   // Fetch blogs for the main page
   const fetchBlogs = async () => {
@@ -65,22 +78,56 @@
     }
   };
 
-  // Fetch data when the component mounts
-  onMount(() => {
-    fetchBlogs();
+  // Reset form
+  const resetForm = () => {
+    newBlog = {
+      title: "",
+      short_description: "",
+      article: "",
+      image: "",
+      author: "",
+      date: new Date().toISOString().split('T')[0]
+    };
+    showCreateForm = false;
+  };
+
+  // Create new blog
+  const createBlog = async () => {
+    try {
+      loading = true;
+      const { data: blogData, error } = await supabase
+        .from("blogs")
+        .insert([{
+          ...newBlog,
+          author: newBlog.author
+        }])
+        .select();
+
+      if (error) throw error;
+
+      blogs = [blogData[0], ...blogs];
+      resetForm();
+      await fetchBlogs();
+    } catch (error) {
+      errorMessage = "Error creating blog: " + error.message;
+      console.error(errorMessage);
+    } finally {
+      loading = false;
+    }
+  };
+
+  onMount(async () => {
+    await fetchBlogs();
   });
 
-  // Handle blog card click
   const handleCardClick = (id) => {
     fetchBlogDetails(id);
   };
 
-  // Back to blog list
   const backToList = () => {
     selectedBlog = null;
   };
 
-  // Handle pagination (next and previous)
   const loadNextPage = () => {
     if ((currentPage - 1) * blogsPerPage < totalBlogs) {
       currentPage += 1;
@@ -96,9 +143,103 @@
   };
 </script>
 
+<!-- Admin Header - Only shown if user is admin -->
+{#if data?.userDetails?.role === "Admin"}
+  <div class="bg-blue-600 text-white p-4 text-center">
+    <p class="text-lg font-bold">You are Admin</p>
+    <button
+      on:click={() => showCreateForm = !showCreateForm}
+      class="mt-2 bg-white text-blue-600 px-4 py-2 rounded-md hover:bg-blue-50 transition-colors"
+    >
+      {showCreateForm ? 'Cancel' : 'Create New Article'}
+    </button>
+  </div>
+
+  {#if showCreateForm}
+    <div class="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+      <div class="bg-white rounded-xl p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <h2 class="text-2xl font-bold mb-4">Create New Blog Post</h2>
+        
+        <form on:submit|preventDefault={createBlog} class="space-y-4">
+          <div>
+            <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
+            <input
+              type="text"
+              id="title"
+              bind:value={newBlog.title}
+              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="author" class="block text-sm font-medium text-gray-700">Author</label>
+            <input
+              type="text"
+              id="author"
+              bind:value={newBlog.author}
+              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="short_description" class="block text-sm font-medium text-gray-700">Short Description</label>
+            <textarea
+              id="short_description"
+              bind:value={newBlog.short_description}
+              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              rows="3"
+              required
+            ></textarea>
+          </div>
+
+          <div>
+            <label for="article" class="block text-sm font-medium text-gray-700">Article Content</label>
+            <textarea
+              id="article"
+              bind:value={newBlog.article}
+              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              rows="6"
+              required
+            ></textarea>
+          </div>
+
+          <div>
+            <label for="image" class="block text-sm font-medium text-gray-700">Image URL</label>
+            <input
+              type="url"
+              id="image"
+              bind:value={newBlog.image}
+              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              required
+            />
+          </div>
+
+          <div class="flex justify-end space-x-3 pt-4">
+            <button
+              type="button"
+              on:click={resetForm}
+              class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+              disabled={loading}
+            >
+              {loading ? 'Creating...' : 'Create Blog'}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  {/if}
+{/if}
+
 <!-- Blog Section -->
 <div class="container mx-auto px-4 py-16">
-  <!-- Title and Subtitle -->
   <div class="text-center mb-10">
     <h1 class="text-4xl font-extrabold text-gray-900">Explore Our Blogs</h1>
     <p class="text-xl text-gray-600">Discover the latest insights and articles to help you grow and learn.</p>
@@ -110,8 +251,7 @@
     <div class="text-red-600 text-center">{errorMessage}</div>
   {:else if selectedBlog}
     <!-- Selected Blog Details -->
-    <div class="max-w-5xl mx-auto bg-white shadow-2xl rounded-xl overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105">
-      <!-- Back Button -->
+    <div class="max-w-5xl mx-auto bg-white shadow-2xl rounded-xl overflow-hidden">
       <button
         on:click={backToList}
         class="mb-8 text-lg font-semibold text-red-600 hover:text-blue-800 focus:outline-none transition-all duration-300"
@@ -119,7 +259,6 @@
         ← Back to Blogs
       </button>
 
-      <!-- Blog Image with Gradient Overlay -->
       <div class="relative h-96 overflow-hidden rounded-t-xl">
         <img
           src={selectedBlog.image}
@@ -129,30 +268,21 @@
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
       </div>
 
-      <!-- Blog Content -->
       <div class="px-10 py-8 space-y-6">
-        <!-- Blog Title -->
         <h1 class="text-3xl font-bold text-gray-900 tracking-tight">
           {selectedBlog.title}
         </h1>
-
-        <!-- Author Name -->
         <p class="text-sm text-gray-600">By {selectedBlog.author}</p>
-
-        <!-- Blog Date -->
         <time class="text-sm text-gray-600 block mt-2">{selectedBlog.date}</time>
-
-        <!-- Blog Content -->
         <div class="text-gray-800 space-y-4 text-lg leading-relaxed">
           <p>{selectedBlog.article}</p>
         </div>
       </div>
     </div>
-
   {:else if blogs.length === 0}
     <div class="text-center bg-gray-100 p-10 rounded-lg">No Blogs Found</div>
   {:else}
-    <!-- Blog Cards (Vertical Stack) -->
+    <!-- Blog Cards -->
     <div class="max-w-3xl mx-auto flex flex-col gap-8">
       {#each blogs as blog}
         <article
@@ -175,9 +305,7 @@
           </div>
           <div class="p-6">
             <header>
-              <h3
-                class="text-xl font-semibold text-gray-900 mb-2"
-              >
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">
                 {blog.title}
               </h3>
               <time class="text-sm text-gray-500 block mb-3">

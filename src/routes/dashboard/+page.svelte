@@ -40,6 +40,12 @@
       >
         Lessons Editor
       </a>
+      <a
+      href="/blog1"
+      class="px-4 py-2 bg-white text-red-600 hover:bg-red-100 rounded-lg font-medium shadow transition"
+    >
+      Create Blog Article
+    </a>
     </nav>
   </header>
 {/if}
