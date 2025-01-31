@@ -20,7 +20,7 @@ export async function load({ params, parent, locals: { supabase } }) {
       urls.push(avatarFiles);
 
     }
-    console.log(urls);
+
   if (countryError) {
     console.error("error:", countryError);
     return { success: false, message: "Nationalities could not be loaded" };
@@ -50,7 +50,7 @@ export const actions = {
     let image_url = null;
     let public_image_url = null;
 
-    if (image.size > 0) {
+    if (image) {
       const { data: imageData, error: imageError } = await supabase.storage
         .from("profiles")
         .upload(`${user_id}/${image.name}`, image, {
@@ -78,9 +78,12 @@ export const actions = {
         })
         .eq("id", user_id);
     } else {
+      image_url = formData.get("avatarUrl");
+      public_image_url = formData.get("avatarUrl");
+
       const { data, error } = await supabase
         .from("userdetails")
-        .update({ username, bio, age, nationality })
+        .update({ username, bio, age, nationality, image_url ,public_image_url})
         .eq("id", user_id);
     }
   },
