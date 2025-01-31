@@ -19,11 +19,43 @@
     showAvatarPopup = false;
   }
 
-  function selectAvatar(avatarUrl) {
-    data.userDetails.public_image_url = avatarUrl;
-    selectedAvatar = avatarUrl;
+  async function selectAvatar(avatar) {
+  try {
+    const response = await fetch(avatar.publicUrl);
+    const blob = await response.blob();
+    const file = new File([blob], "avatar.jpg", { type: blob.type });
+    selectedAvatar = file;
+    data.userDetails.public_image_url = avatar.publicUrl;
+
     closeAvatarPopup();
+  } catch (error) {
+    console.error("Error selecting avatar:", error);
   }
+}
+
+async function urlToFile(url, fileName = "avatar.jpg") {
+  try {
+    // Fetch the image from the URL
+    const response = await fetch(url);
+
+    // Ensure the fetch was successful
+    if (!response.ok) {
+      throw new Error(`Failed to fetch image: ${response.statusText}`);
+    }
+
+    // Convert the response into a Blob
+    const blob = await response.blob();
+
+    // Create a File object from the Blob
+    const file = new File([blob], fileName, { type: blob.type });
+
+    return file; // Return the File object
+  } catch (error) {
+    console.error("Error converting URL to file:", error);
+    throw error; // Re-throw the error for handling elsewhere
+  }
+}
+
 
   function imageSelect(e) {
     const [file] = e.target.files;
@@ -31,6 +63,8 @@
       uploadImage = file;
       data.userDetails.public_image_url = URL.createObjectURL(file);
     }
+    closeAvatarPopup();
+
   }
 </script>
 
@@ -40,6 +74,10 @@
     bind:this={submitForm}
     action={"?/editUser"}
     use:enhance={({ formElement, formData, action, cancel, submitter }) => {
+      if (selectedAvatar) {
+        formData.append("avatarUrl", selectedAvatar); // Add the public URL of the avatar
+      }
+
       if (uploadImage) {
       formData.append("image", uploadImage);
       }

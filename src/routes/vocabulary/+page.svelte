@@ -4,12 +4,13 @@
   export let vocabNum;
   export let wordData = data.wordData;
 
-  const wordPairs = wordData.map((word) => ({
+  const wordPairs = wordData?.map((word) => ({
     word: word.word_al,
     translation: word.word_en,
-  }));
+  })) || [];
 
-  const repeatTimes = Array(15).fill(0);
+  const repeatTimes = wordPairs.length;
+
 </script>
 
 <link
@@ -29,12 +30,12 @@
   <p
     class=" md:w-4/5 pointer-events-none p-4 bg-zinc-300 rounded-lg mt-4 font-bold text-zinc-500 flex justify-start items-center"
   >
-    Click on a word to hear its pronounciation <i
+    Click on a word to hear its pronunciation <i
       class="fa-solid fa-arrow-pointer ml-3 text-xl"
     ></i>
   </p>
   <p class="md:w-4/5 mt-4 p-4 rounded-lg bg-zinc-300 text-zinc-500">
-    <span class=" font-bold">{vocabNum}</span> words learned
+    <span class=" font-bold">{repeatTimes}</span> words learned
   </p>
 
   <h1 class=" mt-8 text-2xl font-bold">Your vocabulary</h1>
@@ -42,8 +43,8 @@
   <div
     class=" flex justify-between md:justify-start items-center flex-wrap w-full mt-4 mb-3"
   >
-    {#each repeatTimes as _}
-      <LearnWordVocab />
+    {#each wordPairs as { word, translation }}
+      <LearnWordVocab word_al={word} word_en={translation} />
     {/each}
   </div>
 </div>
