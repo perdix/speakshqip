@@ -144,92 +144,120 @@
 </script>
 
 <!-- Admin Header - Only shown if user is admin -->
+<!-- Admin Header - Only shown if user is admin -->
 {#if data?.userDetails?.role === "Admin"}
-  <div class="bg-blue-600 text-white p-4 text-center">
-    <p class="text-lg font-bold">You are Admin</p>
-    <button
-      on:click={() => showCreateForm = !showCreateForm}
-      class="mt-2 bg-white text-blue-600 px-4 py-2 rounded-md hover:bg-blue-50 transition-colors"
-    >
-      {showCreateForm ? 'Cancel' : 'Create New Article'}
-    </button>
+  <div class="bg-white border-b border-gray-200 py-6 px-8">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div>
+        <h2 class="text-xl font-medium text-gray-800">Admin Dashboard</h2>
+        <p class="text-gray-500 text-sm mt-1">Manage your blog posts</p>
+      </div>
+      <button
+        on:click={() => showCreateForm = !showCreateForm}
+        class="inline-flex items-center px-4 py-2 text-gray-700 bg-gray-50 rounded-md font-medium hover:bg-gray-100 border border-gray-200 transition-colors"
+      >
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
+        </svg>
+        {showCreateForm ? 'Cancel' : 'New Article'}
+      </button>
+    </div>
   </div>
 
   {#if showCreateForm}
-    <div class="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-      <div class="bg-white rounded-xl p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-        <h2 class="text-2xl font-bold mb-4">Create New Blog Post</h2>
+    <div class="fixed inset-0 bg-black/20 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+      <div class="bg-white rounded-lg p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-lg">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-xl font-medium text-gray-800">New Blog Post</h2>
+          <button
+            on:click={resetForm}
+            class="text-gray-400 hover:text-gray-600"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
         
-        <form on:submit|preventDefault={createBlog} class="space-y-4">
-          <div>
-            <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
-            <input
-              type="text"
-              id="title"
-              bind:value={newBlog.title}
-              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-              required
-            />
+        <form on:submit|preventDefault={createBlog} class="space-y-5">
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label for="title" class="block text-sm text-gray-600">Title</label>
+              <input
+                type="text"
+                id="title"
+                bind:value={newBlog.title}
+                class="mt-1 block w-full rounded-md border-gray-200 shadow-sm focus:border-rose-200 focus:ring focus:ring-rose-100 focus:ring-opacity-50"
+                required
+              />
+            </div>
+
+            <div>
+              <label for="author" class="block text-sm text-gray-600">Author</label>
+              <input
+                type="text"
+                id="author"
+                bind:value={newBlog.author}
+                class="mt-1 block w-full rounded-md border-gray-200 shadow-sm focus:border-rose-200 focus:ring focus:ring-rose-100 focus:ring-opacity-50"
+                required
+              />
+            </div>
           </div>
 
           <div>
-            <label for="author" class="block text-sm font-medium text-gray-700">Author</label>
-            <input
-              type="text"
-              id="author"
-              bind:value={newBlog.author}
-              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-              required
-            />
-          </div>
-
-          <div>
-            <label for="short_description" class="block text-sm font-medium text-gray-700">Short Description</label>
+            <label for="short_description" class="block text-sm text-gray-600">Short Description</label>
             <textarea
               id="short_description"
               bind:value={newBlog.short_description}
-              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              class="mt-1 block w-full rounded-md border-gray-200 shadow-sm focus:border-rose-200 focus:ring focus:ring-rose-100 focus:ring-opacity-50"
               rows="3"
               required
             ></textarea>
+            <p class="mt-1 text-xs text-gray-400">Brief summary for the article overview</p>
           </div>
 
           <div>
-            <label for="article" class="block text-sm font-medium text-gray-700">Article Content</label>
+            <label for="article" class="block text-sm text-gray-600">Article Content</label>
             <textarea
               id="article"
               bind:value={newBlog.article}
-              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-              rows="6"
+              class="mt-1 block w-full rounded-md border-gray-200 shadow-sm focus:border-rose-200 focus:ring focus:ring-rose-100 focus:ring-opacity-50"
+              rows="8"
               required
             ></textarea>
           </div>
 
           <div>
-            <label for="image" class="block text-sm font-medium text-gray-700">Image URL</label>
+            <label for="image" class="block text-sm text-gray-600">Image URL</label>
             <input
               type="url"
               id="image"
               bind:value={newBlog.image}
-              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              class="mt-1 block w-full rounded-md border-gray-200 shadow-sm focus:border-rose-200 focus:ring focus:ring-rose-100 focus:ring-opacity-50"
               required
             />
           </div>
 
-          <div class="flex justify-end space-x-3 pt-4">
+          <div class="flex justify-end space-x-3 pt-5">
             <button
               type="button"
               on:click={resetForm}
-              class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
+              class="px-4 py-2 text-sm text-gray-600 hover:text-gray-800 transition-colors"
             >
               Cancel
             </button>
             <button
               type="submit"
-              class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+              class="px-4 py-2 bg-gray-900 text-white rounded-md text-sm hover:bg-gray-800 transition-colors flex items-center"
               disabled={loading}
             >
-              {loading ? 'Creating...' : 'Create Blog'}
+              {#if loading}
+                <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+              {/if}
+              {loading ? 'Creating...' : 'Create'}
             </button>
           </div>
         </form>
@@ -237,7 +265,6 @@
     </div>
   {/if}
 {/if}
-
 <!-- Blog Section -->
 <div class="container mx-auto px-4 py-16">
   <div class="text-center mb-10">
