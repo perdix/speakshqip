@@ -84,16 +84,30 @@
                   {/if}
               </td>
               <td class="border border-gray-300 px-4 py-2">
+                <div class="flex space-x-2"> <!-- Add a flex container with space-x-2 for horizontal spacing -->
                   {#if editableRow === index}
-                      <button on:click={() => submitRow(index)} class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
-                          Submit
-                      </button>
+                    <button
+                      on:click={() => submitRow(index)}
+                      class="bg-green-500 text-white px-4 py-2 rounded"
+                    >
+                      Submit
+                    </button>
                   {:else}
-                      <button on:click={() => editRow(index, lesson)} class="bg-cd-red text-white px-4 py-2 rounded hover:bg-blue-600">
-                          Edit
-                      </button>
+                    <button
+                      on:click={() => editRow(index, lesson)}
+                      class="bg-cd-red text-white px-4 py-2 rounded"
+                    >
+                      Edit Details
+                    </button>
                   {/if}
+                  <button class="bg-cd-red text-white px-4 py-2 rounded">
+                    <a href="/lessonsContent/{lesson.id}">
+                    Edit Content
+                </a>
+                  </button>
+                </div>
               </td>
+              
           </tr>
       {/each}
   </tbody>

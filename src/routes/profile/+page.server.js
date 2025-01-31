@@ -9,7 +9,7 @@ export async function load({ params, parent, locals: { supabase } }) {
     .select("*");
     const urls = [];
 
-    for(let i = 1; i <= 7; i++){
+    for(let i = 1; i <= 10; i++){
       const filePath = `avatars/avatar${i}.jpg`;
       const { data: avatarFiles, error: avatarError } = await supabase.storage.from("media").getPublicUrl(filePath);
       if(avatarError){
