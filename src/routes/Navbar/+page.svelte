@@ -51,7 +51,7 @@
         <a href="/dashboard" on:click={closeNavbar}>Dashboard</a>
       </li>
       <li class="p-3 {currentPage === '/leaderboard' ? 'font-bold' : ''}">
-        <a href="/leaderboard" on:click={closeNavbar}>Leaderbord</a>
+        <a href="/leaderboard" on:click={closeNavbar}>Leaderboard</a>
       </li>
       <li class="p-3">
         {#if $page.data.session}
