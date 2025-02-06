@@ -54,6 +54,32 @@
     }
   };
 
+  // New function to delete a blog
+  const deleteBlog = async (blogId) => {
+    try {
+      loading = true;
+      const { error } = await supabase
+        .from("blogs")
+        .delete()
+        .eq("id", blogId);
+
+      if (error) throw error;
+
+      // Reset selected blog and refresh the blog list
+      selectedBlog = null;
+      currentPage = 1;
+      await fetchBlogs();
+
+      // Optional: Show a success message
+      alert("Blog deleted successfully!");
+    } catch (error) {
+      errorMessage = "Error deleting blog: " + error.message;
+      console.error(errorMessage);
+    } finally {
+      loading = false;
+    }
+  };
+
   // Fetch detailed information for the selected blog
   const fetchBlogDetails = async (id) => {
     loading = true;
@@ -143,7 +169,6 @@
   };
 </script>
 
-<!-- Admin Header - Only shown if user is admin -->
 <!-- Admin Header - Only shown if user is admin -->
 {#if data?.userDetails?.role === "Admin"}
   <div class="bg-white border-b border-gray-200 py-6 px-8">
@@ -265,6 +290,7 @@
     </div>
   {/if}
 {/if}
+
 <!-- Blog Section -->
 <div class="container mx-auto px-4 py-16">
   <div class="text-center mb-10">
@@ -279,12 +305,31 @@
   {:else if selectedBlog}
     <!-- Selected Blog Details -->
     <div class="max-w-5xl mx-auto bg-white shadow-2xl rounded-xl overflow-hidden">
-      <button
-        on:click={backToList}
-        class="mb-8 text-lg font-semibold text-red-600 hover:text-blue-800 focus:outline-none transition-all duration-300"
-      >
-        ← Back to Blogs
-      </button>
+      <div class="flex justify-between items-center mb-8">
+        <button
+          on:click={backToList}
+          class="text-lg font-semibold text-red-600 hover:text-blue-800 focus:outline-none transition-all duration-300"
+        >
+          ← Back to Blogs
+        </button>
+
+        <!-- Delete Blog Button - Only visible to Admin -->
+        {#if data?.userDetails?.role === "Admin"}
+          <button
+            on:click={() => deleteBlog(selectedBlog.id)}
+            disabled={loading}
+            class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors flex items-center"
+          >
+            {#if loading}
+              <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+            {/if}
+            Delete Blog
+          </button>
+        {/if}
+      </div>
 
       <div class="relative h-96 overflow-hidden rounded-t-xl">
         <img
