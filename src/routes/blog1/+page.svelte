@@ -110,7 +110,7 @@
       title: "",
       short_description: "",
       article: "",
-      image: "",
+      image: null,
       author: "",
       date: new Date().toISOString().split('T')[0]
     };
@@ -126,6 +126,7 @@
         .insert([{
           ...newBlog,
           author: newBlog.author
+
         }])
         .select();
 
@@ -165,6 +166,13 @@
     if (currentPage > 1) {
       currentPage -= 1;
       fetchBlogs();
+    }
+  };
+
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      newBlog.image = URL.createObjectURL(file);
     }
   };
 </script>
@@ -253,14 +261,21 @@
           </div>
 
           <div>
-            <label for="image" class="block text-sm text-gray-600">Image URL</label>
+            <label for="image" class="block text-sm text-gray-600">Upload Image</label>
             <input
-              type="url"
+              type="file"
               id="image"
-              bind:value={newBlog.image}
+              accept="image/*"
+              on:change={handleFileUpload}
               class="mt-1 block w-full rounded-md border-gray-200 shadow-sm focus:border-rose-200 focus:ring focus:ring-rose-100 focus:ring-opacity-50"
               required
             />
+            
+            {#if newBlog.image}
+              <div class="mt-4">
+                <img src={newBlog.image} alt="Uploaded Preview" class="rounded-lg shadow-md object-cover w-full max-h-96" />
+              </div>
+            {/if}
           </div>
 
           <div class="flex justify-end space-x-3 pt-5">
