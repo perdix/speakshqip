@@ -4,13 +4,14 @@
   export let vocabNum;
   export let wordData = data.wordData;
 
-  const wordPairs = wordData?.map((word) => ({
-    word: word.word_al,
-    translation: word.word_en,
-  })) || [];
+  const wordPairs =
+    wordData?.map((word) => ({
+      word: word.word_al,
+      translation: word.word_en,
+      // Here i think we shall put the audio url maybe?
+    })) || [];
 
   const repeatTimes = wordPairs.length;
-
 </script>
 
 <link
@@ -44,6 +45,7 @@
     class=" flex justify-between md:justify-start items-center flex-wrap w-full mt-4 mb-3"
   >
     {#each wordPairs as { word, translation }}
+      <!-- Here we should assign the audioUrl prop, but we don't have it yeeeet-->
       <LearnWordVocab word_al={word} word_en={translation} />
     {/each}
   </div>

@@ -1,21 +1,22 @@
 <script>
-  import { useSound } from "svelte-sound";
-  import test from "./test.m4a";
   export let word_al;
   export let word_en;
-
-
-  const click_sound = useSound(test, ["click"]);
+  export let audioUrl;
 
   let isPulsing = false;
   function handleClick() {
     isPulsing = true;
     setTimeout(() => (isPulsing = false), 200);
   }
+
+  const audio = new Audio();
 </script>
+
 <button
-  use:click_sound
-  on:click={handleClick}
+  on:click={() => {
+    const audio = new Audio({ audioUrl });
+    audio.play();
+  }}
   class={`relative w-full border-2 border-red-500 rounded-xl transition-all ${
     isPulsing ? "pulse" : "hover:scale-[1.02]"
   } focus:outline-none focus-visible:ring-4 focus-visible:ring-red-400 focus-visible:ring-opacity-50 my-3`}
@@ -29,8 +30,6 @@
     </p>
   </div>
 </button>
-
-
 
 <style>
   @keyframes pulse {
