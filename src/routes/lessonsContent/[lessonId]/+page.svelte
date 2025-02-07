@@ -107,7 +107,7 @@
                     {#if editableRow === index}
                       <button
                         on:click={() => submitRow(index, name.toLowerCase())}
-                        class="bg-green-500 text-white px-4 py-2 rounded"
+                        class="bg-cd-red text-white px-4 py-2 rounded"
                       >
                         Submit
                       </button>
@@ -141,7 +141,7 @@
         </div>
       {/each}
       <div class="flex space-x-4 mt-4">
-        <button on:click={addRow} class="bg-green-500 text-white px-4 py-2 rounded">Submit</button>
+        <button on:click={addRow} class="bg-cd-red text-white px-4 py-2 rounded">Submit</button>
         <button on:click={() => (showModal = false)} class="bg-gray-500 text-white px-4 py-2 rounded">Cancel</button>
       </div>
     </div>
