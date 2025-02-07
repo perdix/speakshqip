@@ -14,18 +14,15 @@
         <span class="font-bold text-lg flex justify-center items-center"
           >{index + 1}
           <img
-            class=" h-16 w-16 object-cover rounded-full ml-3 border-2 pointer-events-none"
+            class=" h-10 w-10 md:h-16 md:w-16 object-cover rounded-full ml-3 border-2 pointer-events-none"
             src={user.public_image_url}
             alt=""
           />
-          <span class=" ml-3">{user.username}</span></span
+          <span class=" ml-3 text-zinc-600">{user.username}</span></span
         >
-        <span class="text-yellow-300 font-medium"
+        <span class="text-zinc-300 font-medium"
           >{user.xp}
-          <i
-            class="fa-solid text-yellow-300 fa-bolt ml-1"
-            style="text-shadow: 0 0 10px yellow;"
-          ></i></span
+          <i class="fa-solid text-zinc-300 fa-bolt ml-1"></i></span
         >
       </li>
     {/each}
