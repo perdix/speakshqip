@@ -10,11 +10,15 @@
   referrerpolicy="no-referrer"
 />
 
-<div
-  class="w-full mt-5 p-5 rounded-lg flex justify-start items-start flex-col border-2 shadow-md"
->
-  <h1 class="text-3xl font-bold text-cd-black mb-4">Leaderboard</h1>
-  <ul class="w-full list-none">
+<div class="w-w-90/100 ml-auto mr-auto flex flex-col mb-3">
+  <h1 class="text-4xl md:text-6xl font-bold mt-9 text-cd-black">
+    Leaderboard <i class="fa-solid fa-server ml-2 text-cd-red"></i>
+  </h1>
+  <p class=" text-xl md:text-2xl md:font-bold mt-9">
+    Gather XP points by completing lessons and quizzes. <br /> <br /> Compete with
+    others to be at the top of the leaderboard.
+  </p>
+  <ul class="w-full list-none mt-3">
     {#each data.leaderboard as user, index}
       <li
         class="flex justify-between items-center bg-white border-2 border-gray-200 rounded-lg p-3 mt-2 shadow-sm transition hover:bg-gray-50"
@@ -22,18 +26,15 @@
         <span class="font-bold text-lg flex justify-center items-center"
           >{index + 1}
           <img
-            class=" h-16 w-16 object-cover rounded-full ml-3 border-2"
+            class=" h-10 w-10 object-cover rounded-full ml-3 border-2"
             src={user.public_image_url}
             alt=""
           />
-          <span class=" ml-3">{user.username}</span></span
+          <span class=" ml-3 text-zinc-600">{user.username}</span></span
         >
-        <span class="text-yellow-300 font-medium"
+        <span class="text-zinc-300 font-medium"
           >{user.xp}
-          <i
-            class="fa-solid text-yellow-300 fa-bolt ml-1"
-            style="text-shadow: 0 0 10px yellow;"
-          ></i></span
+          <i class="fa-solid text-zinc-300 fa-bolt ml-1"></i></span
         >
       </li>
     {/each}

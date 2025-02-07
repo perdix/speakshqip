@@ -11,20 +11,20 @@
     };
   
     const submitRow = async (index, table) => {
-      console.log(`Updated Details for ${table}:`, updatedDetails);
-  
-      const response = await fetch(`/${table}editor`, {
+      console.log(`Updating ${table}:`, updatedDetails);
+
+      const response = await fetch(window.location.pathname, {
         method: "POST",
-        body: JSON.stringify({ updatedDetails }),
+        body: JSON.stringify({ table, updatedDetails }),
       });
-  
+  console.log(JSON.stringify({ updatedDetails }));
       if (response.ok) {
         console.log("Update successful");
         window.location.reload();
       } else {
         console.error("Update failed");
       }
-  
+
       editableRow = null;
       updatedDetails = {};
     };
@@ -43,7 +43,7 @@
         <div class="table-container mb-8">
           <h2 class="font-bold text-xl mb-4">{name}</h2>
           <table class="table-auto w-full border-collapse border border-gray-300">
-            <thead class="bg-cd-red">
+            <thead class="bg-cd-red text-white uppercase text-sm font-semibold">
               <tr>
                 {#each fields as field}
                   <th class="border border-gray-300 px-4 py-2">{field}</th>
@@ -112,22 +112,14 @@
       margin-top: 1rem;
     }
   
-    th, td {
+     td {
       border: 1px solid #ddd;
       padding: 0.75rem;
       text-align: left;
     }
   
-    th {
-      background-color: #f9fafb;
-      font-weight: bold;
-      text-transform: capitalize;
-    }
   
-    tr:hover {
-      background-color: #f5f5f5;
-    }
-  
+ 
     button {
       background-color: #ef4444;
       color: white;
