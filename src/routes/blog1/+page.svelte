@@ -70,7 +70,7 @@
       currentPage = 1;
       await fetchBlogs();
 
-      // Optional: Show a success message
+      // success message
       alert("Blog deleted successfully!");
     } catch (error) {
       errorMessage = "Error deleting blog: " + error.message;
