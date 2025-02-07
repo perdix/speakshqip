@@ -34,7 +34,10 @@
         >
         <span class="text-zinc-300 font-medium"
           >{user.xp}
-          <i class="fa-solid text-zinc-300 fa-bolt ml-1"></i></span
+          <i
+            class="fa-solid text-yellow-300 fa-bolt ml-1"
+            style="filter: drop-shadow(0px 0px 10px yellow);"
+          ></i></span
         >
       </li>
     {/each}
