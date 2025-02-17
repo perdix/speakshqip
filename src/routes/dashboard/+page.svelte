@@ -17,7 +17,7 @@
 
 {#if data.userDetails.role === "Admin"}
   <header
-    class="bg-red-500 text-white p-6 flex flex-col md:flex-row md:justify-between items-center shadow-md"
+    class="bg-cd-red m-5 rounded-md text-white p-6 flex flex-col md:flex-row md:justify-between items-start md:items-center shadow-md"
   >
     <div class="mb-4 md:mb-0">
       <h1 class="text-2xl font-bold">Hello, {data.userDetails.username}!</h1>
@@ -27,25 +27,25 @@
       </p>
     </div>
 
-    <nav class="flex space-x-4">
+    <nav class="flex flex-col md:flex-row justify-center items-start">
       <a
         href="/usereditor"
-        class="px-4 py-2 bg-white text-red-600 hover:bg-red-100 rounded-lg font-medium shadow transition"
+        class="px-4 py-2 mt-1 md: bg-white text-red-600 hover:bg-red-100 rounded-lg font-medium shadow transition"
       >
         User Editor
       </a>
       <a
         href="/lessonseditor"
-        class="px-4 py-2 bg-white text-red-600 hover:bg-red-100 rounded-lg font-medium shadow transition"
+        class="px-4 py-2 mt-1 md:ml-2 bg-white text-red-600 hover:bg-red-100 rounded-lg font-medium shadow transition"
       >
         Lessons Editor
       </a>
       <a
-      href="/blog1"
-      class="px-4 py-2 bg-white text-red-600 hover:bg-red-100 rounded-lg font-medium shadow transition"
-    >
-      Create Blog Article
-    </a>
+        href="/blog1"
+        class="px-4 py-2 mt-1 md:ml-2 bg-white text-red-600 hover:bg-red-100 rounded-lg font-medium shadow transition"
+      >
+        Create Blog Article
+      </a>
     </nav>
   </header>
 {/if}
