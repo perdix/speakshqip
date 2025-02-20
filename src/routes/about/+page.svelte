@@ -130,6 +130,8 @@
   }
 </script>
 
+
+
   <!-- Hero Section -->
 <div
   class="relative bg-white min-h-screen flex items-center justify-start overflow-hidden px-8"
@@ -168,6 +170,7 @@
             Learn More
           </button>
         </a>
+        
       </div>
     </div>
 
@@ -215,18 +218,20 @@
   </div>
 </div>
 
-<!-- Read our Blog Section -->
 <div class="bg-gray-50 py-16 px-8 mt-24">
   <div class="max-w-6xl mx-auto flex justify-between items-center mb-12">
-    <a href="\blog1">
-      <h2 class="text-3xl font-bold text-gray-800 hover:text-red-500">Read Our Blog</h2>
-    </a>   
+    <a href="/blog">
+      <h2 class="text-3xl font-bold text-gray-800 hover:text-red-500">
+        Read Our Blog
+      </h2>
+    </a>
   </div>
   <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
     {#each blogPosts as post, index}
-      <div
-        class="bg-white overflow-hidden group hover:shadow-lg transition duration-300"
-      >   
+      <a 
+        href="/blog" 
+        class="bg-white overflow-hidden group hover:shadow-lg transition duration-300 block"
+      >
         <div class="relative overflow-hidden">
           <div
             class="absolute top-4 left-4 bg-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-medium text-gray-600"
@@ -240,21 +245,21 @@
           />
         </div>
         <div class="p-6">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">{post.titel}</h3>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">
+            {post.titel}
+          </h3>
           <p class="text-gray-600 text-sm mb-4 line-clamp-2">
             {post.description}
           </p>
-          <a 
-  href="src\routes\blogs\+page.svelte" 
-  class="text-gray-600 text-sm hover:text-gray-800 transition flex items-center gap-2"
->
-  Learn more →
-</a>
+          <div class="text-gray-600 text-sm hover:text-gray-800 transition flex items-center gap-2">
+            Learn more →
+          </div>
         </div>
-      </div>
+      </a>
     {/each}
   </div>
 </div>
+
 
 <!-- Our Courses Section -->
 <div class="bg-gray-50 py-16 px-8">

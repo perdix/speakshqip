@@ -42,7 +42,7 @@
           Have questions, feedback, or just want to say hello? We'd love to hear from you! Your thoughts and ideas are incredibly important to us as we continuously work to make SpeakShqip the best it can be. Whether you have suggestions for new features, improvements to existing lessons, or just want to share your experience learning Albanian, don't hesitate to reach out.
         </p>
         <a
-          href="/learn"
+          href="/contact"
           class="inline-flex items-center px-6 py-3 bg-red-200 text-red-800 font-medium rounded-lg shadow-lg hover:bg-rose-700 hover:text-white transition-colors duration-200"
         >
           Get Started
