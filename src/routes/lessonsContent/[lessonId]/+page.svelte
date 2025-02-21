@@ -43,7 +43,10 @@
   const addRow = async () => {
     const response = await fetch(window.location.pathname, {
       method: "POST",
-      body: JSON.stringify({ table: selectedTable.toLowerCase(), updatedDetails: newItem }),
+      body: JSON.stringify({
+        table: selectedTable.toLowerCase(),
+        updatedDetails: newItem,
+      }),
     });
 
     if (response.ok) {
@@ -59,25 +62,22 @@
 {#if error}
   <div class="text-red-500 font-bold">Error: {error}</div>
 {:else}
-  <div class="tables-container">
-    {#each [
-      { data: infoCards, name: "InfoCards", fields: ["id", "informationHeader", "informationBody", "lessonId"] },
-      { data: examples, name: "Examples", fields: ["id", "exampleHeader", "exampleALB", "exampleENG"] },
-      { data: tests, name: "Tests", fields: ["id", "testInfo", "questionCount", "lessonId"] },
-      { data: questions, name: "Questions", fields: ["id", "questionInfo", "op1", "op2", "op3", "op4", "ans", "testId"] }
-    ] as { data, name, fields }}
+  <div class="tables-container m-5">
+    {#each [{ data: infoCards, name: "InfoCards", fields: ["id", "informationHeader", "informationBody", "lessonId"] }, { data: examples, name: "Examples", fields: ["id", "exampleHeader", "exampleALB", "exampleENG"] }, { data: tests, name: "Tests", fields: ["id", "testInfo", "questionCount", "lessonId"] }, { data: questions, name: "Questions", fields: ["id", "questionInfo", "op1", "op2", "op3", "op4", "ans", "testId"] }] as { data, name, fields }}
       <div class="table-container mb-8">
         <div class="flex justify-between items-center mb-4">
           <h2 class="font-bold text-xl">{name}</h2>
           <button
             on:click={() => openModal(name, fields)}
-            class="bg-cd-red text-white px-4 py-2 rounded"
+            class="bg-cd-red text-white px-4 py-2 rounded-lg shadow-md hover:bg-red-600 transition duration-200"
           >
             Add New {name}
           </button>
         </div>
 
-        <table class="table-auto w-full border-collapse border border-gray-300">
+        <table
+          class="table-auto w-full border-collapse border border-gray-300 shadow-lg rounded-lg overflow-hidden"
+        >
           <thead class="bg-cd-red text-white uppercase text-sm font-semibold">
             <tr>
               {#each fields as field}
@@ -95,7 +95,7 @@
                       <input
                         type="text"
                         bind:value={updatedDetails[field]}
-                        class="border border-gray-300 px-2 py-1 w-full"
+                        class="border border-gray-300 px-2 py-1 w-full rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500"
                       />
                     {:else}
                       {item[field]}
@@ -107,14 +107,14 @@
                     {#if editableRow === index}
                       <button
                         on:click={() => submitRow(index, name.toLowerCase())}
-                        class="bg-cd-red text-white px-4 py-2 rounded"
+                        class="bg-cd-red text-white px-4 py-2 rounded-lg shadow-md hover:bg-red-600 transition duration-200"
                       >
                         Submit
                       </button>
                     {:else}
                       <button
                         on:click={() => editRow(index, item)}
-                        class="bg-cd-red text-white px-4 py-2 rounded"
+                        class="bg-cd-red text-white px-4 py-2 rounded-lg shadow-md hover:bg-red-600 transition duration-200"
                       >
                         Edit
                       </button>
@@ -132,17 +132,29 @@
 
 {#if showModal}
   <div class="modal">
-    <div class="modal-content">
+    <div class="modal-content rounded-lg shadow-lg">
       <h2 class="text-xl font-bold mb-4">Add New {selectedTable}</h2>
       {#each Object.keys(newItem) as field}
         <div class="mb-2">
           <label class="block font-semibold">{field}</label>
-          <input type="text" bind:value={newItem[field]} class="border px-2 py-1 w-full" />
+          <input
+            type="text"
+            bind:value={newItem[field]}
+            class="border border-gray-300 px-2 py-1 w-full rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500"
+          />
         </div>
       {/each}
       <div class="flex space-x-4 mt-4">
-        <button on:click={addRow} class="bg-cd-red text-white px-4 py-2 rounded">Submit</button>
-        <button on:click={() => (showModal = false)} class="bg-gray-500 text-white px-4 py-2 rounded">Cancel</button>
+        <button
+          on:click={addRow}
+          class="bg-cd-red text-white px-4 py-2 rounded-lg shadow-md hover:bg-red-600 transition duration-200"
+          >Submit</button
+        >
+        <button
+          on:click={() => (showModal = false)}
+          class="bg-gray-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-gray-600 transition duration-200"
+          >Cancel</button
+        >
       </div>
     </div>
   </div>
@@ -164,7 +176,7 @@
   .modal-content {
     background: white;
     padding: 2rem;
-    border-radius: 5px;
+    border-radius: 10px;
     width: 400px;
   }
 </style>
