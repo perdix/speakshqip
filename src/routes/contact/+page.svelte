@@ -72,18 +72,18 @@
 </script>
 
 <div class="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-12">
-  <div class="max-w-screen-xl w-full flex items-center justify-between bg-white shadow-lg rounded-xl overflow-hidden">
+  <div class="max-w-screen-xl w-full flex flex-col lg:flex-row items-center justify-between bg-white shadow-lg rounded-xl overflow-hidden">
  
-    <div class="w-1/2 p-8">
+    <div class="w-full lg:w-1/2 p-8">
       <img src="graphics\contact_page.jpg" alt="Image Description" class="w-full h-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
     </div>
 
-    <div class="w-1/2 bg-white px-12 py-8">
+    <div class="w-full lg:w-1/2 bg-white px-12 py-8">
       <h2 class="text-3xl font-light text-center text-rose-800 mb-10">
         Get in touch
       </h2>
       <form on:submit={handleSubmit} class="space-y-6">
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <input 
               id="name" 

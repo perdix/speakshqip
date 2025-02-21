@@ -16,6 +16,13 @@
   });
 </script>
 
+<style>
+  html, body {
+    @apply overflow-hidden;
+  }
+</style>
+
+
 <div class="relative min-h-screen w-full overflow-hidden">
   <!-- Video Background -->
   <div class="absolute inset-0 w-full h-full">
