@@ -6,6 +6,7 @@
   export let description;
   export let user;
   function getProgressMessage(progress) {
+    if (progress ==0 ) return "What are you waiting for?! Start Learning! 🎓";
     if (progress < 25) return "Just getting started! Keep going! 🚀";
     if (progress < 50) return "Great job! You're making progress! 👏";
     if (progress < 75) return "You're more than halfway there! 🔥";
@@ -61,8 +62,8 @@
       <h2 class="text-xl font-bold mb-3 text-gray-800">
         Your Journey in <span class="text-cd-red">SpeakShqip</span>
       </h2>
-      <a href="#" class="bg-cd-red text-white rounded-md text-center p-2"
-        >Keep going</a
+      <a href="/learn" class="bg-cd-red text-white rounded-md text-center p-2"
+        >Learn →</a
       >
     </div>
 
