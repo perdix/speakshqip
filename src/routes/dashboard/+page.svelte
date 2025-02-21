@@ -4,7 +4,10 @@
   import DashboardLeaderboardRight from "../../lib/components/DashboardLeaderboardRight.svelte";
 
   export let data;
-  const { words, leaderboard } = data;
+
+
+  const { words, leaderboard,progress,totalLessons } = data;
+
 </script>
 
 <link
@@ -66,6 +69,7 @@
     xp={data.userDetails.xp}
     level={data.userDetails.level}
   />
-  <DashboardContainerMiddle user={data.userDetails.username} />
+  <DashboardContainerMiddle count={data.unitCount} description={data.unitDescription} unitName={data.currentUnit} user={data.userDetails.username} progress={data.progress} totalLessons={data.totalLessons} />
+
   <DashboardLeaderboardRight {leaderboard} />
 </div>

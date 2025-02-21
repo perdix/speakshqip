@@ -10,7 +10,6 @@ export async function load({ locals: { supabase } }) {
     .from("user_learned_words")
     .select("*")
     .eq("userID", userId);
-  console.log(":", vocabularyData);
 
   if (vocabularyError) {
     console.error("Error fetching vocabulary data:", vocabularyError);
@@ -23,7 +22,6 @@ export async function load({ locals: { supabase } }) {
       .from("words")
       .select("*")
       .eq("id", vocabEntry.wordID);
-    console.log(":", wordEntry);
     if (wordAccessError) {
       console.error("Error fetching word:", wordAccessError);
       continue;

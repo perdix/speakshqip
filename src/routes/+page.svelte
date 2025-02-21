@@ -27,7 +27,7 @@
       loop
       playsinline
     >
-      <source src="\graphics\hero_video.MP4" type="video/mp4" />
+      <source src="\graphics\hero.mp4" type="video/mp4" />
     </video>
     
     <!-- Gradient Overlay -->
