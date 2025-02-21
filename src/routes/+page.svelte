@@ -16,11 +16,6 @@
   });
 </script>
 
-<style>
-  html, body {
-    @apply overflow-hidden;
-  }
-</style>
 
 
 <div class="relative min-h-screen w-full overflow-hidden">
@@ -47,7 +42,7 @@
       <!-- Logo/Brand -->
       <div 
         class="mb-8"
-        in:fly="{{ y: -50, duration:600, delay: 200 }}"
+        in:fly="{{ y: -50, duration:500, delay: 50 }}"
       >
         <h1 class="text-6xl md:text-8xl font-bold tracking-tight text-center">
           <span class="text-red-500">Speak</span>Shqip

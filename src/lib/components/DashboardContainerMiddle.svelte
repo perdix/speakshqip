@@ -7,6 +7,7 @@
   export let user;
 
   function getProgressMessage(progress) {
+    if (progress ==0 ) return "What are you waiting for?! Start Learning! 🎓";
     if (progress < 25) return "Just getting started! Keep going! 🚀";
     if (progress < 50) return "Great job! You're making progress! 👏";
     if (progress < 75) return "You're more than halfway there! 🔥";
@@ -92,12 +93,19 @@
     </a>
   </div>
   <div class="mt-5 p-6 border-2 border-gray-300 bg-white rounded-lg">
-    <h2 class="text-xl font-bold mb-3 text-gray-800">Your Journey in <span class="text-red-600">SpeakShqip</span></h2>
-    
-    <h2 class="text-lg font-semibold mb-3 text-red-600">Unit {count}: {unitName}</h2>
-    
-    <p class="text-sm text-gray-700">{description}</p>
-  
+    <div class=" flex flex-col md:justify-between md:items-center md:flex-row">
+      <h2 class="text-xl font-bold mb-3 text-gray-800">
+        Your Journey in <span class="text-cd-red">SpeakShqip</span>
+      </h2>
+      <a href="/learn" class="bg-cd-red text-white rounded-md text-center p-2"
+        >Learn →</a
+      >
+    </div>
+
+    <h2 class="text-lg font-semibold mb-3 text-red-600">
+      Unit {count}: {unitName}
+    </h2>
+
     <div class="relative flex items-center mt-3">
     <div class="absolute top-1/2 left-0 w-full h-1 rounded bg-gray-300 -translate-y-1/2"></div>
 
