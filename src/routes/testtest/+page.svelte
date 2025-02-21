@@ -1,5 +1,7 @@
 <script>
+  import LockedLesson from "../../lib/components/LockedLesson.svelte";
   import ProfileDropdown from "../../lib/components/ProfileDropdown.svelte";
+  import SidebarLessons from "../../lib/components/SidebarLessons.svelte";
 </script>
 
 <link
@@ -12,4 +14,6 @@
 
 <div class=" w-full flex justify-center items-center">
   <ProfileDropdown />
+  <LockedLesson />
+  <SidebarLessons />
 </div>
