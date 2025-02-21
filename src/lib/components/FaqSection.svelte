@@ -60,7 +60,7 @@
           class="flex items-center justify-between w-full px-4 py-5 sm:p-6"
         >
           <span class="flex text-lg font-semibold text-black"
-            >What is the pricing structure?</span
+            >How does learning on this website work?</span
           >
           <svg
             id="arrow2"
@@ -84,8 +84,7 @@
           class="px-4 pb-5 sm:px-6 sm:pb-6"
         >
           <p>
-            Our pricing structure is flexible. We offer both free and paid
-            plans. You can choose the one that suits your needs and budget.
+            You can access various lessons that guide you step by step in learning the language. Each lesson includes exercises, explanations, and audio recordings to improve your skills.
           </p>
         </div>
       </div>
@@ -99,7 +98,7 @@
           class="flex items-center justify-between w-full px-4 py-5 sm:p-6"
         >
           <span class="flex text-lg font-semibold text-black"
-            >What kind of support do you provide?</span
+            >Do I need any prior knowledge to use this website?</span
           >
           <svg
             id="arrow3"
@@ -123,9 +122,7 @@
           class="px-4 pb-5 sm:px-6 sm:pb-6"
         >
           <p>
-            We offer comprehensive customer support. You can reach out to our
-            support team through various channels, including email, chat, and a
-            knowledge base.
+            No! The website is suitable for beginners as well as advanced learners. There are lessons for all levels, and you can start anytime.
           </p>
         </div>
       </div>
@@ -139,7 +136,7 @@
           class="flex items-center justify-between w-full px-4 py-5 sm:p-6"
         >
           <span class="flex text-lg font-semibold text-black"
-            >Can I cancel my subscription anytime?</span
+            >Can I use the website on mobile devices?</span
           >
           <svg
             id="arrow4"
@@ -163,9 +160,7 @@
           class="px-4 pb-5 sm:px-6 sm:pb-6"
         >
           <p>
-            Yes, you can cancel your subscription at any time without any hidden
-            fees. We believe in providing a hassle-free experience for our
-            users.
+            Yes, the website is accessible on both computers and smartphones/tablets, so you can learn anytime and anywhere.
           </p>
         </div>
       </div>
