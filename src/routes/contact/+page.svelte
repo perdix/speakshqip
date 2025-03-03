@@ -79,7 +79,7 @@
     </div>
 
     <div class="w-full lg:w-1/2 bg-white px-12 py-8">
-      <h2 class="text-3xl font-light text-center text-rose-800 mb-10">
+      <h2 class="text-3xl font-light text-center text-cd-red mb-10">
         Get in touch
       </h2>
       <form on:submit={handleSubmit} class="space-y-6">
@@ -143,7 +143,7 @@
         <div>
           <button 
             type="submit" 
-            class="w-full py-3 bg-rose-600 text-white hover:bg-rose-700 transition-colors rounded-md"
+            class="w-full py-3 bg-cd-red text-white hover:bg-rose-700 transition-colors rounded-md"
           >
             Send Message
           </button>
