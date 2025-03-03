@@ -322,7 +322,7 @@
     <div class="flex justify-between items-center mb-8">
       <button
         on:click={backToList}
-        class="text-lg font-semibold text-red-600 hover:text-blue-800 focus:outline-none transition-all duration-300 p-2"
+        class="text-lg font-semibold text-red-600 hover:text-red-700 focus:outline-none transition-all duration-300 p-2"
       >
         ← Back to Blogs
       </button>
