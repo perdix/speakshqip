@@ -33,11 +33,13 @@
     "@supabase/ssr": "^0.3.0",
     "@supabase/supabase-js": "^2.47.6",
     "awesome": "^0.0.7",
+    "dotenv": "^16.4.7",
     "esbuild": "^0.24.0",
     "font": "^0.0.4",
     "font-awesome": "^4.7.0",
     "i": "^0.3.7",
     "punycode": "^2.3.1",
+    "resend": "^4.2.0",
     "svelte-sound": "^0.6.0",
     "uglify-js": "^3.19.3",
     "underscore.string": "^3.3.6"
