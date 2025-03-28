@@ -33,6 +33,7 @@
     "@supabase/ssr": "^0.3.0",
     "@supabase/supabase-js": "^2.47.6",
     "awesome": "^0.0.7",
+    "axios": "^1.8.4",
     "dotenv": "^16.4.7",
     "esbuild": "^0.24.0",
     "font": "^0.0.4",
