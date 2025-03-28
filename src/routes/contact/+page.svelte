@@ -41,10 +41,10 @@
 			<img 
 				src="\graphics\contact_page.jpg" 
 				alt="Contact Background" 
-				class="absolute inset-0 w-full h-full object-cover filter grayscale-[30%]"
+				class="absolute inset-0 w-full h-full object-cover filter grayscale-[20%]"
 			/>
 			<div class="absolute inset-0 bg-gradient-to-br from-red-500/20 to-rose-700/10"></div>
-			<div class="relative z-10 text-white p-8 flex flex-col justify-center h-full">
+			<div class="relative z-10 text-white p-9 flex flex-col justify-center h-full">
 				<h2 class="text-4xl font-bold mb-4 tracking-tight">Contact us</h2>
 				<p class="text-xl opacity-80">We're here to help. Send us a message and we'll respond promptly.</p>
 			</div>
@@ -122,10 +122,3 @@
 	</div>
 </div>
 
-<style>
-	/* Additional custom styles if needed */
-	input::placeholder, textarea::placeholder {
-		color: #9ca3af;
-		opacity: 0.7;
-	}
-</style>
