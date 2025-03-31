@@ -1,6 +1,5 @@
 // src/routes/contact/send/+server.js
 import { json } from '@sveltejs/kit';
-import axios from 'axios';
 import {RESEND_API_KEY} from "$env/static/private";
 
 const TO_EMAIL = "Erlelb18@htl-shkoder.com"; 
@@ -24,12 +23,15 @@ export async function POST({ request }) {
       `,
     };
 
-    await axios.post('https://api.resend.com/emails', payload, {
+    await fetch('https://api.resend.com/emails', {
+      method: 'POST',
       headers: {
-        Authorization: `Bearer ${RESEND_API_KEY}`,
+        'Authorization': `Bearer ${RESEND_API_KEY}`,
         'Content-Type': 'application/json',
       },
+      body: JSON.stringify(payload),
     });
+
 
     return json({ success: true }, { status: 200 });
   } catch (error) {
