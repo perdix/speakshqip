@@ -3,6 +3,7 @@ import { redirect } from "@sveltejs/kit";
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ params, parent, locals: { supabase } }) {
   const { session, user } = await parent();
+  console.log(session)
   if (!session) {
     redirect(302, "/login");
   }
