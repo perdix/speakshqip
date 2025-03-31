@@ -1,5 +1,4 @@
 import { redirect } from "@sveltejs/kit";
-import { createClient } from "@supabase/supabase-js";
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ params, parent, locals: { supabase } }) {
@@ -11,6 +10,8 @@ export async function load({ params, parent, locals: { supabase } }) {
     .from("userdetails")
     .select("username")
     .eq("id", session.user.id);
+  
+  console.log(userDetails)
   const userName = userDetails[0].username;
   console.log(userName);
   if (userName == null) {
