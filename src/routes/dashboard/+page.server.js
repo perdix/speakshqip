@@ -16,6 +16,7 @@ export async function load({ params, parent, locals: { supabase } }) {
   console.log("...")
   const userName = userDetails[0].username;
   console.log(userName);
+  
   if (userName == null) {
     redirect(303, "/setup");
   }
