@@ -12,6 +12,7 @@ export async function load({ params, parent, locals: { supabase } }) {
     .eq("id", session.user.id);
   
   console.log(userDetails)
+  console.log("...")
   const userName = userDetails[0].username;
   console.log(userName);
   if (userName == null) {
