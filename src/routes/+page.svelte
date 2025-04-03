@@ -19,8 +19,14 @@
 
 
 <div class="relative min-h-screen w-full overflow-hidden">
-  <!-- Video Background -->
+  <!-- Video Background with Image Fallback -->
   <div class="absolute inset-0 w-full h-full">
+    <!-- Background Image (fallback) -->
+    <div 
+      class="absolute inset-0 w-full h-full bg-cover bg-center"
+      style="background-image: url('/graphics/hero_background.png');"
+    ></div>
+    
     <video
       bind:this={videoElement}
       class="absolute top-0 left-0 w-full h-full object-cover filter brightness-75"
@@ -28,19 +34,20 @@
       muted
       loop
       playsinline
+      poster="/graphics/hero_background.png"
     >
-      <source src="\graphics\hero.mp4" type="video/mp4" />
+      <source src="/graphics/hero.mp4" type="video/mp4" />
     </video>
     
     <!-- Gradient Overlay -->
     <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/70"></div>
   </div>
-
+  
   <!-- Hero Content -->
   <div class="relative z-10 flex flex-col items-center justify-center h-screen text-white px-4 py-16">
     {#if isVisible}
       <!-- Logo/Brand -->
-      <div 
+      <div
         class="mb-8"
         in:fly="{{ y: -50, duration:500, delay: 50 }}"
       >
@@ -48,15 +55,15 @@
           <span class="text-red-500">Speak</span>Shqip
         </h1>
       </div>
-
+      
       <!-- Tagline -->
-      <p 
+      <p
         class="text-xl md:text-3xl text-center mb-12 max-w-2xl font-light"
         in:fade="{{ duration: 1000, delay: 500 }}"
       >
         Embark on your journey to master Albanian with our immersive learning experience
       </p>
-
+      
       <!-- CTA Button -->
       <div
         in:fade="{{ duration: 1000, delay: 800 }}"
@@ -75,7 +82,6 @@
     {/if}
   </div>
 </div>
-
 <!-- Features Section -->
 <div class="bg-white py-24">
   <InfoSection />
