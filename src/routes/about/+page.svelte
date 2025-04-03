@@ -63,23 +63,23 @@
   const blogPosts = [
     {
       id: "051d532d-2b90-4c49-8034-7e2e4578296",
-      titel: "Viel sprechen, auch mit Fehlern",
+      titel: "Language – More Than a Tool: A Gateway to Culture and Diversity",
       description:
-        "Zögere nicht, Fehler zu machen. Je mehr du sprichst, desto besser wirst du.",
+        "language is not just a tool for communication but also a gateway to understanding a rich and diverse cultural heritage. .",
       image: "graphics/image1.jpg", 
     },
     {
       id: "1c70ec9a-2b70-4c67-b3c9-6d2c8411f2f0",
-      titel: "Verwende die Sprache im Alltag",
+      titel: "Albanian – A Language Full of Surprises",
       description:
-        "Versuche, die neue Sprache in deinen Alltag zu integrieren.",
+        "Albanian, or Shqip, is a language full of surprises, standing out as one of the most unique and ancient languages in Europe.",
       image: "graphics/image2.jpg", 
     },
     {
       id: "23a3c668-0c09-4d95-9f5a-8f38eefc9c26",
-      titel: "Setze auf regelmäßige Wiederholungen",
+      titel: "The Language of History: Albanian – A Legacy of Over 7 Million Speakers",
       description:
-        "Verwende Apps wie Quizlet oder Anki, um regelmäßig zu üben.",
+        "Spoken by over 7 million people primarily in Albania, Kosovo, and surrounding regions, it carries centuries of history and cultural depth within its words and expressions.",
       image: "graphics/image3.jpg", 
     },
   ];
