@@ -36,7 +36,7 @@
       playsinline
       poster="/graphics/hero_background.png"
     >
-      <source src="/graphics/hero.mp4" type="video/mp4" />
+      <source src="/graphics/hero_new.mp4" type="video/mp4" />
     </video>
     
     <!-- Gradient Overlay -->
