@@ -7,26 +7,26 @@ export async function load({ params, parent, locals: { supabase } }) {
   const { data: nationalities, error: countryError } = await supabase
     .from("countries")
     .select("*");
-    const urls = [];
+  const urls = [];
 
-    for(let i = 1; i <= 10; i++){
-      const filePath = `avatars/avatar${i}.jpg`;
-      const { data: avatarFiles, error: avatarError } = await supabase.storage.from("media").getPublicUrl(filePath);
-      if(avatarError){
-        console.error("error:", avatarError);
-        return { success: false, message: "Avatars could not be loaded" };
-      }
-    
-      urls.push(avatarFiles);
-
+  for (let i = 1; i <= 10; i++) {
+    const filePath = `avatars/avatar${i}.jpg`;
+    const { data: avatarFiles, error: avatarError } = await supabase.storage
+      .from("media")
+      .getPublicUrl(filePath);
+    if (avatarError) {
+      console.error("error:", avatarError);
+      return { success: false, message: "Avatars could not be loaded" };
     }
+
+    urls.push(avatarFiles);
+  }
 
   if (countryError) {
     console.error("error:", countryError);
     return { success: false, message: "Nationalities could not be loaded" };
   }
 
- 
   if (!session) {
     throw redirect(302, "/login");
   }
@@ -34,7 +34,7 @@ export async function load({ params, parent, locals: { supabase } }) {
   return {
     userDetails,
     nationalities,
-    urls
+    urls,
   };
 }
 
@@ -83,7 +83,14 @@ export const actions = {
 
       const { data, error } = await supabase
         .from("userdetails")
-        .update({ username, bio, age, nationality, image_url ,public_image_url})
+        .update({
+          username,
+          bio,
+          age,
+          nationality,
+          image_url,
+          public_image_url,
+        })
         .eq("id", user_id);
     }
   },

@@ -1,8 +1,8 @@
 // src/routes/contact/send/+server.js
-import { json } from '@sveltejs/kit';
-import {RESEND_API_KEY} from "$env/static/private";
+import { json } from "@sveltejs/kit";
+import { RESEND_API_KEY } from "$env/static/private";
 
-const TO_EMAIL = "Erlelb18@htl-shkoder.com"; 
+const TO_EMAIL = "Erlelb18@htl-shkoder.com";
 
 /** @type {import('./$types').RequestHandler} */
 export async function POST({ request }) {
@@ -23,15 +23,14 @@ export async function POST({ request }) {
       `,
     };
 
-    await fetch('https://api.resend.com/emails', {
-      method: 'POST',
+    await fetch("https://api.resend.com/emails", {
+      method: "POST",
       headers: {
-        'Authorization': `Bearer ${RESEND_API_KEY}`,
-        'Content-Type': 'application/json',
+        Authorization: `Bearer ${RESEND_API_KEY}`,
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(payload),
     });
-
 
     return json({ success: true }, { status: 200 });
   } catch (error) {

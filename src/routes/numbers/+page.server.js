@@ -15,17 +15,18 @@ export async function load({ params, parent, locals: { supabase } }) {
   }
 
   const numbersWithAudio = numbersData.map((number) => {
-    const fileName = `NumbersAudio/${number.numbers_column}.m4a`; 
-    const { data: publicUrlData } = supabase.storage.from("media").getPublicUrl(fileName);
+    const fileName = `NumbersAudio/${number.numbers_column}.m4a`;
+    const { data: publicUrlData } = supabase.storage
+      .from("media")
+      .getPublicUrl(fileName);
 
     return {
       ...number,
-      audioUrl: publicUrlData?.publicUrl || null, 
+      audioUrl: publicUrlData?.publicUrl || null,
     };
   });
 
-
   return {
-    numbersData: numbersWithAudio, 
+    numbersData: numbersWithAudio,
   };
 }

@@ -5,6 +5,7 @@
   export let unitName;
   export let description;
   export let user;
+  export let totalUnits;
 
   function getProgressMessage(progress) {
     if (progress == 0) return "What are you waiting for?! Start Learning! 🎓";
@@ -70,7 +71,7 @@
     </div>
 
     <h2 class="text-lg font-semibold mb-3 text-red-600">
-      Unit {count}: {unitName}
+      Unit {count} of {totalUnits}: {unitName}
     </h2>
 
     <div class="relative flex items-center mt-3">

@@ -11,12 +11,7 @@ export const handle = async ({ event, resolve }) => {
     {
       cookies: {
         get: (key) => event.cookies.get(key),
-        /**
-         * Note: You have to add the `path` variable to the
-         * set and remove method due to sveltekit's cookie API
-         * requiring this to be set, setting the path to an empty string
-         * will replicate previous/standard behaviour (https://kit.svelte.dev/docs/types#public-types-cookies)
-         */
+
         set: (key, value, options) => {
           event.cookies.set(key, value, { ...options, path: "/" });
         },

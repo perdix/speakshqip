@@ -5,7 +5,7 @@ export const actions = {
   default: async ({ request, locals: { supabase } }) => {
     try {
       const { table, updatedDetails } = await request.json();
-      console.log(updatedDetails);  
+      console.log(updatedDetails);
       if (!updatedDetails) {
         throw error(400, "Invalid data: Missing details");
       }

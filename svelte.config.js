@@ -1,10 +1,10 @@
 import adapter from "@sveltejs/adapter-auto";
 import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
-import { loadEnv } from 'vite';
+import { loadEnv } from "vite";
 
-const env = loadEnv('', process.cwd(), '');
+const env = loadEnv("", process.cwd(), "");
 
-/** @type {import('@sveltejs/kit').Config} */ 
+/** @type {import('@sveltejs/kit').Config} */
 const config = {
   kit: {
     // adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.

@@ -29,7 +29,6 @@ export const load = async ({ fetch, data, depends }) => {
     .select("*")
     .eq("id", session?.user.id)
     .single();
-  
-  
+
   return { supabase, session, userDetails };
 };

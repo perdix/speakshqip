@@ -4,9 +4,11 @@
   import DashboardLeaderboardRight from "../../lib/components/DashboardLeaderboardRight.svelte";
 
   export let data;
+  import { enhance } from "$app/forms";
+  export let form;
 
-
-  const { words, leaderboard,progress,totalLessons } = data;
+  
+  const { words, leaderboard,progress,totalLessons,hasUsername,nationalities } = data;
 
 </script>
 
@@ -17,12 +19,12 @@
   crossorigin="anonymous"
   referrerpolicy="no-referrer"
 />
-
+{#if data.hasUsername}
 {#if data.userDetails.role === "Admin"}
 <header class="bg-gradient-to-r from-red-600 to-red-500 m-5 rounded-xl text-white p-8 shadow-lg transform transition-all">
   <div class="max-w-7xl mx-auto">
     <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-6">
-      <!-- Left side - Welcome message -->
+      
       <div class="space-y-3">
         <h1 class="text-3xl font-bold tracking-tight">
           Hello, {data.userDetails.username}! 👋
@@ -69,7 +71,78 @@
     xp={data.userDetails.xp}
     level={data.userDetails.level}
   />
-  <DashboardContainerMiddle count={data.unitCount} description={data.unitDescription} unitName={data.currentUnit} user={data.userDetails.username} progress={data.progress} totalLessons={data.totalLessons} />
+  <DashboardContainerMiddle count={data.unitCount} description={data.unitDescription} unitName={data.currentUnit} user={data.userDetails.username} progress={data.progress} totalLessons={data.totalLessons} totalUnits={data.count} />
 
   <DashboardLeaderboardRight {leaderboard} />
 </div>
+
+{:else}
+
+
+<div class="flex justify-center items-center flex-col h-64">
+  <h1 class=" text-5xl font-bold mt-28 mr-28 ml-28 sm:text-6xl">
+    Welcome to SpeakShqip
+  </h1>
+  <h3 class="text-5xl font-bold mt-14 text-center">Let's set you up!</h3>
+</div>
+
+<div class="login-container flex justify-center items-center flex-col">
+  <form
+    action="?/setup"
+    use:enhance
+    method="POST"
+    class="flex justify-center items-center flex-col mt-16 mr-16 ml-16"
+  >
+    <input
+      class=" bg-zinc-200 h-12 w-72 p-3 rounded-md focus:outline-none focus:border-zinc-600 focus:ring-1 focus:ring-zinc-600 transition-all"
+      type="text"
+      name="username"
+      id="username"
+      placeholder="Enter username"
+    />
+    <input
+      class=" bg-zinc-200 h-12 w-72 p-3 rounded-md mt-8 focus:outline-none focus:border-zinc-600 focus:ring-1 focus:ring-zinc-600 transition-all"
+      type="number"
+      name="age"
+      id="age"
+      placeholder="Enter Age"
+    />
+    <input
+      class=" bg-zinc-200 h-12 w-72 p-3 rounded-md mt-8 focus:outline-none focus:border-zinc-600 focus:ring-1 focus:ring-zinc-600 transition-all"
+      type="text"
+      name="desc"
+      id="desc"
+      placeholder="Enter Profile Description"
+    />
+    <input
+      class="bg-zinc-200 h-12 w-72 p-3 rounded-md mt-8 focus:outline-none focus:border-zinc-600 focus:ring-1 focus:ring-zinc-600 transition-all"
+      type="text"
+      name="nationality"
+      id="nationality"
+      placeholder="Enter Nationality"
+      list="nationality-list"
+    />
+    <input type="hidden" name="user_id" value={data.session.user.id} />
+    <datalist id="nationality-list">
+      {#each data.nationalities as nationality}
+      <option value="{nationality.country_ennationality}"></option>
+    {/each}
+    </datalist>
+
+    <button
+      class="transition-all bg-cd-red h-10 p-2 flex justify-center items-center w-auto rounded-lg mt-8 mb-8 drop-shadow-md text-white hover:opacity-75"
+      type="submit"
+      name="submit"
+      id="submit"
+      value="Sign Up">Continue</button
+    >
+  </form>
+</div>
+
+{#if form?.error}
+  <p>{form.error}</p>
+{/if}
+
+
+
+{/if}
