@@ -167,10 +167,12 @@
     </div>
     <p class="text-center text-gray-600 textbase mt-9">
       Still have questions?
-      <span
-        class="cursor-pointer font-medium text-tertiary transition-all duration-200 hover:text-tertiary focus:text-tertiary hover-underline"
-        >Contact our support
-      </span>
+      <a
+      href="/contact"
+      class="cursor-pointer font-medium text-tertiary transition-all duration-200 hover:text-tertiary focus:text-tertiary hover-underline"
+    >
+      Contact our support
+    </a>
     </p>
   </div>
   <script>
