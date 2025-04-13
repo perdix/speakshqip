@@ -12,7 +12,7 @@
 
 <div class="flex justify-center items-center flex-col h-64">
   <h1 class=" text-5xl font-bold mt-28 mr-28 ml-28 sm:text-6xl">SpeakShqip</h1>
-  <h3 class="text-5xl font-bold mt-14 text-center">Reset Email</h3>
+  <h3 class="text-5xl font-bold mt-14 text-center">Reset Password</h3>
 </div>
 
 <div class="login-container flex justify-center items-center flex-col">
