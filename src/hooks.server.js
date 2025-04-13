@@ -3,6 +3,7 @@ import {
   PUBLIC_SUPABASE_ANON_KEY,
 } from "$env/static/public";
 import { createServerClient } from "@supabase/ssr";
+const isProd = process.env.NODE_ENV === "production";
 
 export const handle = async ({ event, resolve }) => {
   event.locals.supabase = createServerClient(
@@ -16,7 +17,7 @@ export const handle = async ({ event, resolve }) => {
           event.cookies.set(key, value, { ...options, path: "/" });
         },
         remove: (key, options) => {
-          event.cookies.delete(key, { ...options, path: "/" });
+          event.cookies.delete(key, { ...options, path: "/",});
         },
       },
     },

@@ -22,6 +22,6 @@ export const actions = {
       };
     }
 
-    return redirect(303, "/dashboard");
+    throw redirect(303, "/dashboard");
   },
 };
