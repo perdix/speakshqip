@@ -5,6 +5,7 @@
   import LessonRowInfo from "../../lib/components/LessonRowInfo.svelte";
   import LearnHeader from "../../lib/components/LearnHeader.svelte";
   import LockedLessonRow from "../../lib/components/LockedLesson.svelte";
+
   export let data;
 
   let selectedLessonId = null;
@@ -18,29 +19,28 @@
     isPulsing = true;
     setTimeout(() => (isPulsing = false), 200);
   }
-  
 </script>
 
 <h1 class="text-6xl font-bold m-9 text-cd-black text-center">
   Learn <i class="fa-brands fa-leanpub ml-2 text-cd-red"></i>
 </h1>
+
 {#each data.unit as unit}
   <div class="p-4 ml-auto mr-auto w-full flex justify-center items-center">
-    <LearnHeader unitDescription={unit.desc} />
+    <LearnHeader unitDescription={unit.desc} unitName={unit.name} />
   </div>
 
   <div class="flex flex-col h-full rounded-md p-4">
-    {#each data.lesson as lesson}
-    {#if lesson.count <= data.lastCompletedCount + 1}
+    {#each data.lesson.filter(lesson => lesson.unitId === unit.id) as lesson}
+      {#if lesson.count <= data.lastCompletedCount + 1}
+        <div on:click={() => toggleLesson(lesson.id)}>
+          <a href="#{lesson.id}">
+            <SidebarLessons lessonName={lesson.name} />
+          </a>
+        </div>
 
-      <div on:click={() => toggleLesson(lesson.id)}>
-        <a href="#{lesson.id}">
-          <SidebarLessons lessonName={lesson.name} />
-        </a>
-      </div>
-
-      {#if lesson.unitId == unit.id && selectedLessonId === lesson.id}
-        <div class="md:w-w-95/100 md:ml-3 md:flex md:justify-between md:items-center">
+        {#if selectedLessonId === lesson.id}
+          <div class="md:w-w-95/100 md:ml-3 md:flex md:justify-between md:items-center">
             <a
               href="lessons/{lesson.id}"
               on:click={handleClick}
@@ -55,16 +55,14 @@
                 xp={lesson.xp}
               />
             </a>
-         
-        </div>
-      {/if}
+          </div>
+        {/if}
       {:else}
-      <LockedLessonRow lessonName={lesson.name} />
+        <LockedLessonRow lessonName={lesson.name} />
       {/if}
     {/each}
   </div>
 {/each}
-
 
 <style>
   @keyframes pulse {
