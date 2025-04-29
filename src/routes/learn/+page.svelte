@@ -5,7 +5,6 @@
   import LessonRowInfo from "../../lib/components/LessonRowInfo.svelte";
   import LearnHeader from "../../lib/components/LearnHeader.svelte";
   import LockedLessonRow from "../../lib/components/LockedLesson.svelte";
-
   export let data;
 
   let selectedLessonId = null;
@@ -19,6 +18,11 @@
     isPulsing = true;
     setTimeout(() => (isPulsing = false), 200);
   }
+
+  // Helper to get only lessons for a specific unit
+  function lessonsForUnit(unitId) {
+    return data.lesson.filter(lesson => lesson.unitId === unitId);
+  }
 </script>
 
 <h1 class="text-6xl font-bold m-9 text-cd-black text-center">
@@ -31,7 +35,7 @@
   </div>
 
   <div class="flex flex-col h-full rounded-md p-4">
-    {#each data.lesson.filter(lesson => lesson.unitId === unit.id) as lesson}
+    {#each lessonsForUnit(unit.id) as lesson}
       {#if lesson.count <= data.lastCompletedCount + 1}
         <div on:click={() => toggleLesson(lesson.id)}>
           <a href="#{lesson.id}">
@@ -50,7 +54,7 @@
               <LessonRow image={lesson.image} />
               <LessonRowInfo
                 title={lesson.name}
-                description={lesson.desc}
+                description={lesson.description}
                 id={lesson.id}
                 xp={lesson.xp}
               />
@@ -66,14 +70,14 @@
 
 <style>
   @keyframes pulse {
-    0%,
-    100% {
+    0%, 100% {
       transform: scale(1);
     }
     50% {
       transform: scale(0.99);
     }
   }
+
   .pulse {
     animation: pulse 0.15s ease-in-out;
   }
