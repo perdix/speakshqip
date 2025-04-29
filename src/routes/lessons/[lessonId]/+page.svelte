@@ -73,10 +73,10 @@
       </div>
 
       <h1 class="text-2xl font-semibold text-left md:text-5xl">
-        {data.infoCards[currentInfoCardIndex].informationHeader}
+        {data.infoCards[currentInfoCardIndex].informationheader}
       </h1>
       <p class="mt-3 md:text-xl md:mt-10 md:w-w-80/100">
-        {data.infoCards[currentInfoCardIndex].informationBody}
+        {data.infoCards[currentInfoCardIndex].informationbody}
       </p>
     </div>
     <button
@@ -111,12 +111,12 @@
         >
       </div>
       <h1 class="text-3xl font-semibold text-left md:text-5xl">
-        {data.examples[currentExampleIndex].exampleHeader}
+        {data.examples[currentExampleIndex].exampleheader}
       </h1>
       <p class="mt-3 md:text-xl md:mt-10 md:w-w-80/100">
-        {data.examples[currentExampleIndex].exampleALB}
+        {data.examples[currentExampleIndex].examplealb}
         <br />
-        {data.examples[currentExampleIndex].exampleENG}
+        {data.examples[currentExampleIndex].exampleeng}
       </p>
     </div>
     <button
@@ -136,11 +136,11 @@
     class="flex flex-col justify-center items-center mt-6 w-w-85/100 ml-auto mr-auto relative md:w-w-60/100"
     id="quiz"
   >
-    <h2 class="text-3xl font-semibold m-3">{data.tests[0].testInfo}</h2>
+    <h2 class="text-3xl font-semibold m-3">{data.tests[0].testinfo}</h2>
 
     {#if currentQuestionIndex < data.questions.length}
       <h2 class="text-xl font-semibold m-3">
-        {data.questions[currentQuestionIndex].questionInfo}
+        {data.questions[currentQuestionIndex].questioninfo}
       </h2>
       <div class="w-full m-3 grid gap-2 md:grid-cols-2">
         {#each [data.questions[currentQuestionIndex].op1, data.questions[currentQuestionIndex].op2, data.questions[currentQuestionIndex].op3, data.questions[currentQuestionIndex].op4] as option}

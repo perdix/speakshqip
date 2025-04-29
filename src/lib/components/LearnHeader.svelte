@@ -1,5 +1,6 @@
 <script>
   export let unitDescription;
+  export let unitName;
 </script>
 
 <div class="relative rounded-md p-4 overflow-hidden">
@@ -9,7 +10,7 @@
 
   <div class="relative z-10">
     <h1 class="text-3xl font-semibold text-center">
-      Welcome to <span class="text-cd-red">Albania</span>
+      <span class="text-cd-red">{unitName}</span>
     </h1>
     <h1 class="text-1xl font-semibold mt-3">{unitDescription}</h1>
 

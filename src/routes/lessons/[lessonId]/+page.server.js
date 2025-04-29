@@ -12,7 +12,7 @@ export async function load({ params, parent, locals: { supabase } }) {
   const { data: infoCards, error: infoError } = await supabase
     .from("infocards")
     .select("*")
-    .eq("lessonId", params.lessonId);
+    .eq("lessonid", params.lessonId);
   if (infoError) {
     console.error("Error fetching infoCards:", infoError.message);
     return {
@@ -25,7 +25,7 @@ export async function load({ params, parent, locals: { supabase } }) {
   const { data: examples, error: exampleError } = await supabase
     .from("examples")
     .select("*")
-    .eq("lessonId", params.lessonId);
+    .eq("lessonid", params.lessonId);
   if (exampleError) {
     console.error("Error fetching examples:", exampleError.message);
     return {
@@ -38,7 +38,7 @@ export async function load({ params, parent, locals: { supabase } }) {
   const { data: tests, error: testError } = await supabase
     .from("tests")
     .select("*")
-    .eq("lessonId", params.lessonId);
+    .eq("lessonid", params.lessonId);
   if (testError) {
     console.error("Error fetching tests:", testError.message);
     return {
@@ -58,7 +58,7 @@ export async function load({ params, parent, locals: { supabase } }) {
   const { data: questions, error: questionError } = await supabase
     .from("questions")
     .select("*")
-    .eq("testId", tests[0].id);
+    .eq("testid", tests[0].id);
   if (questionError) {
     console.error("Error fetching questions:", questionError.message);
     return {

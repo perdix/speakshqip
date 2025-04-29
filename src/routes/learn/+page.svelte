@@ -18,29 +18,33 @@
     isPulsing = true;
     setTimeout(() => (isPulsing = false), 200);
   }
-  
+
+  // Helper to get only lessons for a specific unit
+  function lessonsForUnit(unitId) {
+    return data.lesson.filter(lesson => lesson.unitId === unitId);
+  }
 </script>
 
 <h1 class="text-6xl font-bold m-9 text-cd-black text-center">
   Learn <i class="fa-brands fa-leanpub ml-2 text-cd-red"></i>
 </h1>
+
 {#each data.unit as unit}
   <div class="p-4 ml-auto mr-auto w-full flex justify-center items-center">
-    <LearnHeader unitDescription={unit.desc} />
+    <LearnHeader unitDescription={unit.desc} unitName={unit.name} />
   </div>
 
   <div class="flex flex-col h-full rounded-md p-4">
-    {#each data.lesson as lesson}
-    {#if lesson.count <= data.lastCompletedCount + 1}
+    {#each lessonsForUnit(unit.id) as lesson}
+      {#if lesson.count <= data.lastCompletedCount + 1}
+        <div on:click={() => toggleLesson(lesson.id)}>
+          <a href="#{lesson.id}">
+            <SidebarLessons lessonName={lesson.name} />
+          </a>
+        </div>
 
-      <div on:click={() => toggleLesson(lesson.id)}>
-        <a href="#{lesson.id}">
-          <SidebarLessons lessonName={lesson.name} />
-        </a>
-      </div>
-
-      {#if lesson.unitId == unit.id && selectedLessonId === lesson.id}
-        <div class="md:w-w-95/100 md:ml-3 md:flex md:justify-between md:items-center">
+        {#if selectedLessonId === lesson.id}
+          <div class="md:w-w-95/100 md:ml-3 md:flex md:justify-between md:items-center">
             <a
               href="lessons/{lesson.id}"
               on:click={handleClick}
@@ -50,32 +54,30 @@
               <LessonRow image={lesson.image} />
               <LessonRowInfo
                 title={lesson.name}
-                description={lesson.desc}
+                description={lesson.description}
                 id={lesson.id}
                 xp={lesson.xp}
               />
             </a>
-         
-        </div>
-      {/if}
+          </div>
+        {/if}
       {:else}
-      <LockedLessonRow lessonName={lesson.name} />
+        <LockedLessonRow lessonName={lesson.name} />
       {/if}
     {/each}
   </div>
 {/each}
 
-
 <style>
   @keyframes pulse {
-    0%,
-    100% {
+    0%, 100% {
       transform: scale(1);
     }
     50% {
       transform: scale(0.99);
     }
   }
+
   .pulse {
     animation: pulse 0.15s ease-in-out;
   }
