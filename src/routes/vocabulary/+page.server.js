@@ -12,7 +12,7 @@ export async function load({ locals: { supabase } }) {
 
   const { data: vocabularyData, error: vocabularyError } = await supabase
     .from("user_learned_words")
-    .select("*")
+    .select("wordID")
     .eq("userID", userId);
 
   if (vocabularyError || !vocabularyData) {
@@ -20,33 +20,32 @@ export async function load({ locals: { supabase } }) {
     return { wordData: [] };
   }
 
-  const wordData = [];
+  const wordIds = vocabularyData.map(entry => entry.wordID);
 
-  for (const vocabEntry of vocabularyData) {
-    const { data: wordEntry, error: wordAccessError } = await supabase
-      .from("words")
-      .select("*")
-      .eq("id", vocabEntry.wordID)
-      .single();
+  if (wordIds.length === 0) {
+    return { wordData: [] };
+  }
 
-    if (wordAccessError || !wordEntry) {
-      console.error("Error fetching word:", wordAccessError);
-      continue;
-    }
+  const { data: wordsData, error: wordsError } = await supabase
+    .from("words")
+    .select("*")
+    .in("id", wordIds);
 
+  if (wordsError || !wordsData) {
+    console.error("Error fetching words:", wordsError);
+    return { wordData: [] };
+  }
+
+  const wordData = wordsData.map(wordEntry => {
     const fileName = `Vocab/${wordEntry.sound_url}.m4a`;
-    const { data: audioData, error: audioError } = supabase.storage.from("media").getPublicUrl(fileName);
+    const { data: audioData } = supabase.storage.from("media").getPublicUrl(fileName);
 
-    if (audioError) {
-      console.error("Error getting audio URL:", audioError);
-    }
-
-    wordData.push({
+    return {
       word: wordEntry.word_al,
       translation: wordEntry.word_en,
       audioUrl: audioData?.publicUrl ?? null,
-    });
-  }
+    };
+  });
 
   return {
     wordData,
