@@ -26,6 +26,8 @@ export async function load({ params, parent, locals: { supabase } }) {
       .eq("id", session.user.id)
       .single();
 
+
+
     let hasUsername = true;
     const userName = userDetails?.username;
     if (!userName) hasUsername = false;
